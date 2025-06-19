@@ -47,78 +47,46 @@ const closeModal = document.querySelector('.close');
 const portfolioData = {
     'social-media': {
         title: 'Social Media Design',
-        items: [
-            {
-                title: 'Instagram Campaign - Tech Startup',
-                description: 'Complete visual identity for social media campaign',
-                tools: 'Adobe Photoshop, Illustrator'
-            },
-            {
-                title: 'Facebook Ad Series - Healthcare',
-                description: 'Medical company social media advertisements',
-                tools: 'Adobe Creative Suite'
-            },
-            {
-                title: 'LinkedIn Content - Corporate',
-                description: 'Professional social media content design',
-                tools: 'Figma, Photoshop'
-            },
-            {
-                title: 'Social Media Templates',
-                description: 'Reusable template designs for various platforms',
-                tools: 'Adobe Illustrator'
-            }
-        ]
+        items: []
     },
     'branding': {
         title: 'Brand Identity & Logos',
         items: [
             {
-                title: 'Baseline Medical - Logo Design',
-                description: 'Complete brand identity for medical company',
-                tools: 'Adobe Illustrator, Photoshop'
+                title: 'تليفوني - Phone Store Branding',
+                description: 'Complete brand identity for mobile phone and accessories store',
+                tools: 'Adobe Illustrator, Adobe Photoshop',
+                images: ['images/1000229017.jpg', 'images/1000229016.jpg']
             },
             {
-                title: 'Tech Startup Branding',
-                description: 'Full brand package including logo and guidelines',
-                tools: 'Adobe Creative Suite'
+                title: 'مؤسسة د/أبو ذر الكودة - Educational Institution',
+                description: 'Logo design for educational institution',
+                tools: 'Adobe Illustrator, Adobe Photoshop',
+                images: ['images/1000229023.jpg', 'images/1000229024.jpg']
             },
             {
-                title: 'Restaurant Chain Identity',
-                description: 'Brand identity for Gulf region restaurant',
-                tools: 'Illustrator, InDesign'
+                title: 'Nook Nest - Furniture Store',
+                description: 'Brand identity for home and office furniture store',
+                tools: 'Adobe Illustrator, Adobe Photoshop',
+                images: ['images/1000229008.jpg', 'images/1000229009.jpg']
             },
             {
-                title: 'Corporate Rebranding',
-                description: 'Complete rebrand for established company',
-                tools: 'Adobe Creative Suite'
+                title: 'JK Arts - Content Creator Logo',
+                description: 'Logo design for artistic content creator',
+                tools: 'Adobe Illustrator, Adobe Photoshop',
+                images: ['images/1000229019.jpg', 'images/1000229020.jpg']
+            },
+            {
+                title: 'Ratina - Sudanese Beauty Brand',
+                description: 'Brand identity for Sudanese hijab and cosmetics brand',
+                tools: 'Adobe Illustrator, Adobe Photoshop',
+                images: ['images/1000229011.jpg', 'images/1000229012.jpg']
             }
         ]
     },
     'ui-ux': {
         title: 'UI/UX Design',
-        items: [
-            {
-                title: 'Mobile App Interface',
-                description: 'Healthcare mobile application design',
-                tools: 'Figma, Adobe XD'
-            },
-            {
-                title: 'E-commerce Website',
-                description: 'Complete website design and user experience',
-                tools: 'Figma, Sketch'
-            },
-            {
-                title: 'Dashboard Design',
-                description: 'Admin dashboard for business management',
-                tools: 'Adobe XD, Figma'
-            },
-            {
-                title: 'Landing Page Design',
-                description: 'High-converting landing page layouts',
-                tools: 'Figma, Photoshop'
-            }
-        ]
+        items: []
     }
 };
 
@@ -137,19 +105,47 @@ function openPortfolioModal(category) {
     modalTitle.textContent = data.title;
     modalGallery.innerHTML = '';
 
-    data.items.forEach(item => {
-        const galleryItem = document.createElement('div');
-        galleryItem.className = 'gallery-item';
-        galleryItem.innerHTML = `
-            <div class="gallery-placeholder">
-                <i class="fas fa-image" style="font-size: 2rem; color: #666;"></i>
+    // Check if category has items
+    if (data.items.length === 0) {
+        const emptyMessage = document.createElement('div');
+        emptyMessage.className = 'empty-category';
+        emptyMessage.innerHTML = `
+            <div style="text-align: center; padding: 40px; color: #666;">
+                <i class="fas fa-folder-open" style="font-size: 3rem; margin-bottom: 20px;"></i>
+                <h3 style="color: #f4c430; margin-bottom: 10px;">Coming Soon</h3>
+                <p>Projects in this category will be added soon.</p>
             </div>
-            <h4 style="margin-bottom: 10px; color: #f4c430;">${item.title}</h4>
-            <p style="color: #ccc; margin-bottom: 10px; font-size: 0.9rem;">${item.description}</p>
-            <p style="color: #999; font-size: 0.8rem;"><strong>Tools:</strong> ${item.tools}</p>
         `;
-        modalGallery.appendChild(galleryItem);
-    });
+        modalGallery.appendChild(emptyMessage);
+    } else {
+        data.items.forEach(item => {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            
+            let imageContent = '';
+            if (item.images && item.images.length > 0) {
+                imageContent = `
+                    <div class="gallery-images">
+                        ${item.images.map(img => `<img src="${img}" alt="${item.title}" class="gallery-image">`).join('')}
+                    </div>
+                `;
+            } else {
+                imageContent = `
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-image" style="font-size: 2rem; color: #666;"></i>
+                    </div>
+                `;
+            }
+            
+            galleryItem.innerHTML = `
+                ${imageContent}
+                <h4 style="margin-bottom: 10px; color: #f4c430;">${item.title}</h4>
+                <p style="color: #ccc; margin-bottom: 10px; font-size: 0.9rem;">${item.description}</p>
+                <p style="color: #999; font-size: 0.8rem;"><strong>Tools:</strong> ${item.tools}</p>
+            `;
+            modalGallery.appendChild(galleryItem);
+        });
+    }
 
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
@@ -247,6 +243,34 @@ document.querySelectorAll('.category-card').forEach(card => {
     card.addEventListener('mouseleave', () => {
         card.style.transform = 'translateY(0) scale(1)';
     });
+});
+
+// Image modal functionality
+const imageModal = document.getElementById('image-modal');
+const modalImage = document.getElementById('modal-image');
+const imageClose = document.querySelector('.image-close');
+
+// Add click event to gallery images
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('gallery-image')) {
+        modalImage.src = e.target.src;
+        modalImage.alt = e.target.alt;
+        imageModal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+});
+
+// Close image modal
+imageClose.addEventListener('click', () => {
+    imageModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+});
+
+window.addEventListener('click', (e) => {
+    if (e.target === imageModal) {
+        imageModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
 });
 
 // Dynamic typing effect for hero subtitle (optional enhancement)
