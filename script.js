@@ -1,99 +1,213 @@
 // Mobile Navigation Toggle
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
+hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
 });
 
 // Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('active');
+document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
 }));
 
 // Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+document.querySelectorAll("a[href^=\"#\"]").forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(this.getAttribute("href"));
         if (target) {
             target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+                behavior: "smooth",
+                block: "start"
             });
         }
     });
 });
 
 // Navbar background on scroll
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
+window.addEventListener("scroll", () => {
+    const navbar = document.querySelector(".navbar");
     if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+        navbar.style.background = "rgba(10, 10, 10, 0.98)";
     } else {
-        navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+        navbar.style.background = "rgba(10, 10, 10, 0.95)";
     }
 });
 
 // Portfolio Modal Functionality
-const modal = document.getElementById('portfolio-modal');
-const modalTitle = document.getElementById('modal-title');
-const modalGallery = document.getElementById('modal-gallery');
-const closeModal = document.querySelector('.close');
+const modal = document.getElementById("portfolio-modal");
+const modalTitle = document.getElementById("modal-title");
+const modalGallery = document.getElementById("modal-gallery");
+const closeModal = document.querySelector(".close");
 
 // Portfolio data structure
 const portfolioData = {
-    'social-media': {
-        title: 'Social Media Design',
-        items: []
-    },
-    'branding': {
-        title: 'Brand Identity & Logos',
+    "social-media": {
+        title: "Social Media Design",
         items: [
             {
-                title: 'تليفوني - Phone Store Branding',
-                description: 'Complete brand identity for mobile phone and accessories store',
-                tools: 'Adobe Illustrator, Adobe Photoshop',
-                images: ['images/1000229017.jpg', 'images/1000229016.jpg']
+                title: "Baseline Medical - Eid Mubarak Campaign",
+                description: "Eid greeting social media post for Baseline Medical with mosque imagery",
+                tools: "Adobe Illustrator, Adobe Photoshop",
+                images: ["images/social/1000003401.jpg", "images/social/1000003324.png"]
             },
             {
-                title: 'مؤسسة د/أبو ذر الكودة - Educational Institution',
-                description: 'Logo design for educational institution',
-                tools: 'Adobe Illustrator, Adobe Photoshop',
-                images: ['images/1000229023.jpg', 'images/1000229024.jpg']
+                title: "Baseline Medical - Location Services",
+                description: "Social media post promoting location-based services with map pin design",
+                tools: "Adobe Illustrator, Adobe Photoshop",
+                images: ["images/social/1000003400.jpg"]
             },
             {
-                title: 'Nook Nest - Furniture Store',
-                description: 'Brand identity for home and office furniture store',
-                tools: 'Adobe Illustrator, Adobe Photoshop',
-                images: ['images/1000229008.jpg', 'images/1000229009.jpg']
+                title: "Baseline Medical - Religious Content",
+                description: "Islamic-themed social media post with Quran and prayer content",
+                tools: "Adobe Illustrator, Adobe Photoshop",
+                images: ["images/social/1000003399.jpg"]
             },
             {
-                title: 'JK Arts - Content Creator Logo',
-                description: 'Logo design for artistic content creator',
-                tools: 'Adobe Illustrator, Adobe Photoshop',
-                images: ['images/1000229019.jpg', 'images/1000229020.jpg']
+                title: "Baseline Medical - Technical Support",
+                description: "Educational post about technical support and equipment maintenance",
+                tools: "Adobe Illustrator, Adobe Photoshop",
+                images: ["images/social/1000003398.jpg"]
             },
             {
-                title: 'Ratina - Sudanese Beauty Brand',
-                description: 'Brand identity for Sudanese hijab and cosmetics brand',
-                tools: 'Adobe Illustrator, Adobe Photoshop',
-                images: ['images/1000229011.jpg', 'images/1000229012.jpg']
+                title: "Baseline Medical - Eid Al-Adha Campaign",
+                description: "Eid Al-Adha themed social media post with sheep and laboratory equipment",
+                tools: "Adobe Illustrator, Adobe Photoshop",
+                images: ["images/social/1000003397.jpg"]
             }
         ]
     },
-    'ui-ux': {
-        title: 'UI/UX Design',
-        items: []
+    "branding": {
+        title: "Brand Identity & Logos",
+        items: [
+            {
+                title: "Ratina clothing & cosmeticss",
+                description: "براند سوداني يتخصص في بيع الاقمشة و الملابس و مستحضرات التجميل",
+                tools: "Adobe Illustrator, Photoshop",
+                image: "images/branding/1000003226.jpg"
+            },
+            {
+                title: "Ratina clothing & cosmeticss",
+                description: "براند سوداني يتخصص في بيع الاقمشة و الملابس و مستحضرات التجميل",
+                tools: "Adobe Illustrator, Photoshop",
+                image: "images/branding/1000003227.jpg"
+            },
+            {
+                title: "مؤسسة ابو ذر الكودة",
+                description: "مؤسسة سودانية تعليمية",
+                tools: "Adobe Illustrator, Photoshop",
+                image: "images/branding/1000003228.jpg"
+            },
+            {
+                title: "مؤسسة ابو ذر الكودة",
+                description: "مؤسسة سودانية تعليمية",
+                tools: "Adobe Illustrator, Photoshop",
+                image: "images/branding/1000003234.jpg"
+            },
+            {
+                title: "متجر تلفوني",
+                description: "متجر لبيع الهواتف و ملحقات الهواتف",
+                tools: "Adobe Illustrator, Photoshop",
+                image: "images/branding/1000003233.jpg"
+            },
+            {
+                title: "متجر تلفوني",
+                description: "متجر لبيع الهواتف و ملحقات الهواتف",
+                tools: "Adobe Illustrator, Photoshop",
+                image: "images/branding/1000003232.jpg"
+            },
+            {
+                title: "Nook Nest",
+                description: "محل لبيع الأثاثات المنزلية و المكتبية",
+                tools: "Adobe Illustrator, Photoshop",
+                image: "images/branding/1000003222.jpg"
+            },
+            {
+                title: "Nook Nest",
+                description: "محل لبيع الأثاثات المنزلية و المكتبية",
+                tools: "Adobe Illustrator, Photoshop",
+                image: "images/branding/1000003221.jpg"
+            },
+            {
+                title: "Nook Nest",
+                description: "محل لبيع الأثاثات المنزلية و المكتبية",
+                tools: "Adobe Illustrator, Photoshop",
+                image: "images/branding/1000003223.jpg"
+            },
+            {
+                title: "Nook Nest",
+                description: "محل لبيع الأثاثات المنزلية و المكتبية",
+                tools: "Adobe Illustrator, Photoshop",
+                image: "images/branding/1000003224.jpg"
+            }
+        ]
+    },
+    "ui-ux": {
+        title: "UI/UX Design",
+        items: [
+            {
+                title: "Mobile App Interface",
+                description: "Healthcare mobile application design",
+                tools: "Figma, Adobe XD"
+            },
+            {
+                title: "E-commerce Website",
+                description: "Complete website design and user experience",
+                tools: "Figma, Sketch"
+            },
+            {
+                title: "Dashboard Design",
+                description: "Admin dashboard for business management",
+                tools: "Adobe XD, Figma"
+            },
+            {
+                title: "Landing Page Design",
+                description: "High-converting landing page layouts",
+                tools: "Figma, Photoshop"
+            }
+        ]
     }
 };
 
+// Function to populate card previews
+function populateCardPreviews() {
+    document.querySelectorAll(".portfolio-category").forEach(categoryDiv => {
+        const category = categoryDiv.dataset.category;
+        const previewContainer = categoryDiv.querySelector(".card-preview");
+        const items = portfolioData[category].items;
+
+        // Clear existing placeholders
+        previewContainer.innerHTML = "";
+
+        // Add up to 3 image thumbnails
+        for (let i = 0; i < Math.min(items.length, 3); i++) {
+            const item = items[i];
+            if (item.image) {
+                const img = document.createElement("img");
+                img.src = item.image;
+                img.alt = item.title;
+                img.className = "preview-item-img"; // Add a class for styling
+                previewContainer.appendChild(img);
+            } else {
+                // Fallback for items without images (though all branding items now have images)
+                const placeholder = document.createElement("div");
+                placeholder.className = "preview-item";
+                previewContainer.appendChild(placeholder);
+            }
+        }
+    });
+}
+
+// Call populateCardPreviews on page load
+window.addEventListener("load", populateCardPreviews);
+
 // Open modal when portfolio category is clicked
-document.querySelectorAll('.card-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        const category = e.target.closest('.portfolio-category').dataset.category;
+document.querySelectorAll(".card-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+        const category = e.target.closest(".portfolio-category").dataset.category;
         openPortfolioModal(category);
     });
 });
@@ -103,7 +217,7 @@ function openPortfolioModal(category) {
     if (!data) return;
 
     modalTitle.textContent = data.title;
-    modalGallery.innerHTML = '';
+    modalGallery.innerHTML = "";
 
     // Check if category has items
     if (data.items.length === 0) {
@@ -119,14 +233,20 @@ function openPortfolioModal(category) {
         modalGallery.appendChild(emptyMessage);
     } else {
         data.items.forEach(item => {
-            const galleryItem = document.createElement('div');
-            galleryItem.className = 'gallery-item';
+            const galleryItem = document.createElement("div");
+            galleryItem.className = "gallery-item";
             
             let imageContent = '';
             if (item.images && item.images.length > 0) {
                 imageContent = `
                     <div class="gallery-images">
                         ${item.images.map(img => `<img src="${img}" alt="${item.title}" class="gallery-image">`).join('')}
+                    </div>
+                `;
+            } else if (item.image) {
+                imageContent = `
+                    <div class="gallery-images">
+                        <img src="${item.image}" alt="${item.title}" class="gallery-image">
                     </div>
                 `;
             } else {
@@ -147,73 +267,73 @@ function openPortfolioModal(category) {
         });
     }
 
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
+    modal.style.display = "block";
+    document.body.style.overflow = "hidden";
 }
 
 // Close modal
-closeModal.addEventListener('click', closePortfolioModal);
-window.addEventListener('click', (e) => {
+closeModal.addEventListener("click", closePortfolioModal);
+window.addEventListener("click", (e) => {
     if (e.target === modal) {
         closePortfolioModal();
     }
 });
 
 function closePortfolioModal() {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
 }
 
 // Contact form handling
-const contactForm = document.getElementById('contact-form');
-contactForm.addEventListener('submit', (e) => {
+const contactForm = document.getElementById("contact-form");
+contactForm.addEventListener("submit", (e) => {
     e.preventDefault();
     
     // Get form data
     const formData = new FormData(contactForm);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const subject = formData.get('subject');
-    const message = formData.get('message');
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const subject = formData.get("subject");
+    const message = formData.get("message");
     
     // Simple form validation
     if (!name || !email || !subject || !message) {
-        alert('Please fill in all fields');
+        alert("Please fill in all fields");
         return;
     }
     
     // Simulate form submission
-    alert('Thank you for your message! I will get back to you soon.');
+    alert("Thank you for your message! I will get back to you soon.");
     contactForm.reset();
 });
 
 // Intersection Observer for animations
 const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    rootMargin: "0px 0px -50px 0px"
 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
         }
     });
 }, observerOptions);
 
 // Observe elements for animation
-document.querySelectorAll('.category-card, .skill-item, .contact-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+document.querySelectorAll(".category-card, .skill-item, .contact-item").forEach(el => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(30px)";
+    el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
     observer.observe(el);
 });
 
 // Parallax effect for floating elements
-window.addEventListener('scroll', () => {
+window.addEventListener("scroll", () => {
     const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.element');
+    const parallaxElements = document.querySelectorAll(".element");
     
     parallaxElements.forEach((element, index) => {
         const speed = 0.5 + (index * 0.1);
@@ -223,60 +343,32 @@ window.addEventListener('scroll', () => {
 });
 
 // Add loading animation
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
+window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
 });
 
 // Keyboard navigation for accessibility
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.style.display === 'block') {
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.style.display === "block") {
         closePortfolioModal();
     }
 });
 
 // Add hover effects to portfolio cards
-document.querySelectorAll('.category-card').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        card.style.transform = 'translateY(-10px) scale(1.02)';
+document.querySelectorAll(".category-card").forEach(card => {
+    card.addEventListener("mouseenter", () => {
+        card.style.transform = "translateY(-10px) scale(1.02)";
     });
     
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'translateY(0) scale(1)';
+    card.addEventListener("mouseleave", () => {
+        card.style.transform = "translateY(0) scale(1)";
     });
-});
-
-// Image modal functionality
-const imageModal = document.getElementById('image-modal');
-const modalImage = document.getElementById('modal-image');
-const imageClose = document.querySelector('.image-close');
-
-// Add click event to gallery images
-document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('gallery-image')) {
-        modalImage.src = e.target.src;
-        modalImage.alt = e.target.alt;
-        imageModal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    }
-});
-
-// Close image modal
-imageClose.addEventListener('click', () => {
-    imageModal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-});
-
-window.addEventListener('click', (e) => {
-    if (e.target === imageModal) {
-        imageModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
 });
 
 // Dynamic typing effect for hero subtitle (optional enhancement)
 function typeWriter(element, text, speed = 100) {
     let i = 0;
-    element.innerHTML = '';
+    element.innerHTML = "";
     
     function type() {
         if (i < text.length) {
@@ -291,10 +383,13 @@ function typeWriter(element, text, speed = 100) {
 
 // Initialize typing effect after page load
 setTimeout(() => {
-    const subtitle = document.querySelector('.hero-subtitle');
+    const subtitle = document.querySelector(".hero-subtitle");
     if (subtitle) {
         const originalText = subtitle.textContent;
         typeWriter(subtitle, originalText, 80);
     }
 }, 1500);
+
+
+
 
