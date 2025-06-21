@@ -52,7 +52,7 @@ const portfolioData = {
                 title: "Baseline Medical - Eid Mubarak Campaign",
                 description: "Eid greeting social media post for Baseline Medical with mosque imagery",
                 tools: "Adobe Illustrator, Adobe Photoshop",
-                images: ["images/social/1000003401.jpg", "images/social/1000003324.png"]
+                images: ["images/social/1000003401.jpg"]
             },
             {
                 title: "Baseline Medical - Location Services",
