@@ -120,6 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     title: "khomra",
                     images: ["images/social/Untitled197_20250620094504_cY0UGwIr7L.jpg"]
                 },
+            ]  
         "branding": {
             title: "Brand Identity & Logos",
             items: [
