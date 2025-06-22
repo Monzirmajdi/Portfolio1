@@ -42,34 +42,80 @@ document.addEventListener("DOMContentLoaded", () => {
             title: "Social Media Design",
             items: [
                 {
-                    title: "Baseline Medical - Eid Mubarak Campaign",
-                    description: "Eid greeting social media post for Baseline Medical with mosque imagery",
-                    tools: "Adobe Illustrator, Adobe Photoshop",
+                    title: "Baseline Medical - Jumaa Mubarak Campaign",
                     images: ["images/social/1000003401.jpg"]
                 },
                 {
                     title: "Baseline Medical - Location Services",
-                    description: "Social media post promoting location-based services with map pin design",
-                    tools: "Adobe Illustrator, Adobe Photoshop",
                     images: ["images/social/1000003400.jpg"]
                 },
                 {
                     title: "Baseline Medical - Religious Content",
-                    description: "Islamic-themed social media post with Quran and prayer content",
-                    tools: "Adobe Illustrator, Adobe Photoshop",
                     images: ["images/social/1000003399.jpeg"]
                 },
                 {
                     title: "Baseline Medical - Technical Support",
-                    description: "Educational post about technical support and equipment maintenance",
-                    tools: "Adobe Illustrator, Adobe Photoshop",
                     images: ["images/social/1000003398.jpeg"]
                 },
                 {
-                    title: "Baseline Medical - Eid Al-Adha Campaign",
-                    description: "Eid Al-Adha themed social media post with sheep and laboratory equipment",
-                    tools: "Adobe Illustrator, Adobe Photoshop",
+                    title: "Baseline Medical",
                     images: ["images/social/1000003397.jpg"]
+                    
+                },
+                {
+                    title: "Baseline Medical",
+                    images: ["images/social/Untitled102_20250402071023_U48Jxi888h.jpg"]
+                    
+                }, 
+                {
+                    title: "Baseline Medical",
+                    images: ["images/social/Untitled106_20250405034447_HRODD1Gv87.jpg"]
+                    
+                },
+                {
+                    title: "Baseline Medical",
+                    images: ["images/social/Untitled116_20250410122545_pOAvwGdE46.jpg"]
+                    
+                },
+                {
+                    title: "Baseline Medical",
+                    images: ["Untitled115_20250410034107_z09rro0p6z.jpg"]
+                    
+                },
+                {
+                    title: "Baseline Medical",
+                    images: ["images/social/Untitled137_20250504191027_i8Yz5CJA1l.jpg"]
+                    
+                },
+                {
+                    title: "Baseline Medical",
+                    images: ["images/social/Untitled126_20250423164653_GIcphMOb1F.jpg"]
+                    
+                },
+                {
+                    title: "Baseline Medical",
+                    images: ["images/social/Untitled120_20250416181851_4em5lWym0Y.jpg"]
+                    
+                },
+                {
+                    title: "Baseline Medical",
+                    images: ["images/social/Untitled148_20250519082112_rCboTPRA9J.jpg"]
+                    
+                },
+                {
+                    title: "Baseline Medical",
+                    images: ["images/social/Untitled197_20250620094504_cY0UGwIr7L.jpg"]
+                    
+                },
+                {
+                    title: "Baseline Medical",
+                    images: ["images/social/Untitled19_20250621143722_kHAbQXq70C.jpg"]
+                    
+                },
+                {
+                    title: "Baseline Medical",
+                    images: ["images/social/Untitled149_Restored_20250520022900_obwjtrvP6j.jpg"]
+                    
                 }
             ]
         },
