@@ -57,13 +57,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     title: "Baseline Medical - Religious Content",
                     description: "Islamic-themed social media post with Quran and prayer content",
                     tools: "Adobe Illustrator, Adobe Photoshop",
-                    images: ["images/social/1000003399.jpg"]
+                    images: ["images/social/1000003399.jpeg"]
                 },
                 {
                     title: "Baseline Medical - Technical Support",
                     description: "Educational post about technical support and equipment maintenance",
                     tools: "Adobe Illustrator, Adobe Photoshop",
-                    images: ["images/social/1000003398.jpg"]
+                    images: ["images/social/1000003398.jpeg"]
                 },
                 {
                     title: "Baseline Medical - Eid Al-Adha Campaign",
