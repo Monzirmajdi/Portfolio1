@@ -45,35 +45,20 @@ document.addEventListener("DOMContentLoaded", () => {
                     description: "Eid greeting social media post for Baseline Medical with mosque imagery",
                     tools: "Adobe Illustrator, Adobe Photoshop",
                     previewImage: "images/social/1000003401.jpg",
-                    images: ["images/social/1000003401.jpg", "images/social/1000003324.png", "images/social/1000003399.jpg", "images/social/1000003398.jpg", "images/social/1000003397.jpg", "images/social/1000003400.jpg"]
+                    images: ["images/social/1000003401.jpg", "images/social/1000003324.png",
+                             "images/social/1000003399.jpg", "images/social/1000003398.jpg", 
+                             "images/social/1000003397.jpg", "images/social/1000003400.jpg",
+                            "images/social/1000003400.jpg", "images/social/1000003324.png",
+                            "images/social/1000003399.jpg","images/social/1000003398.jpg",
+                             "images/social/1000003397.jpg
+                            ]
                 },
                 {
-                    title: "Baseline Medical - Location Services",
+                    title: "khomra",
                     description: "Social media post promoting location-based services with map pin design",
                     tools: "Adobe Illustrator, Adobe Photoshop",
                     previewImage: "images/social/1000003400.jpg",
-                    images: ["images/social/1000003400.jpg", "images/social/1000003324.png"]
-                },
-                {
-                    title: "Baseline Medical - Religious Content",
-                    description: "Islamic-themed social media post with Quran and prayer content",
-                    tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/social/1000003399.jpg",
-                    images: ["images/social/1000003399.jpg"]
-                },
-                {
-                    title: "Baseline Medical - Technical Support",
-                    description: "Educational post about technical support and equipment maintenance",
-                    tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/social/1000003398.jpg",
-                    images: ["images/social/1000003398.jpg"]
-                },
-                {
-                    title: "Baseline Medical - Eid Al-Adha Campaign",
-                    description: "Eid Al-Adha themed social media post with sheep and laboratory equipment",
-                    tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/social/1000003397.jpg",
-                    images: ["images/social/1000003397.jpg"]
+                    images: ["images/social/1000003400.jpg"]
                 }
             ]
         },
