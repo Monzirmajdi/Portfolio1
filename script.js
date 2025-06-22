@@ -38,8 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Portfolio data structure
     const portfolioData = {
-        "social-media": {
-            title: "Social Media Design",
+        "social-media-design ": {
+            title: "Baseline Medical",
             items: [
                 {
                     title: "Baseline Medical - Jumaa Mubarak Campaign",
@@ -104,11 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 {
                     title: "Baseline Medical",
-                    images: ["images/social/Untitled197_20250620094504_cY0UGwIr7L.jpg"]
-                    
-                },
-                {
-                    title: "Baseline Medical",
                     images: ["images/social/Untitled19_20250621143722_kHAbQXq70C.jpg"]
                     
                 },
@@ -117,8 +112,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     images: ["images/social/Untitled149_Restored_20250520022900_obwjtrvP6j.jpg"]
                     
                 }
-            ]
-        },
+            ], 
+            
+            title: "Social media designs",
+            items: [
+                {
+                    title: "khomra",
+                    images: ["images/social/Untitled197_20250620094504_cY0UGwIr7L.jpg"]
+                },
         "branding": {
             title: "Brand Identity & Logos",
             items: [
