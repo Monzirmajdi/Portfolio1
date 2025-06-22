@@ -112,15 +112,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     images: ["images/social/Untitled149_Restored_20250520022900_obwjtrvP6j.jpg"]
                     
                 }
-            ], 
+           ] 
             
-            title: "Social media designs",
-            items: [
-                {
-                    title: "khomra",
-                    images: ["images/social/Untitled197_20250620094504_cY0UGwIr7L.jpg"]
-                }
-            ]  
+            
+           }, 
         "branding": {
             title: "Brand Identity & Logos",
             items: [
