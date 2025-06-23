@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     images: [
                         "images/social/1000003401.jpg",
                         "images/social/1000003324.png",
-                        "images/social/1000003399.jpg",
-                        "images/social/1000003398.jpg",
+                        "images/social/1000003399.jpeg",
+                        "images/social/1000003398.jpeg",
                         "images/social/1000003397.jpg",
                         "images/social/1000003400.jpg"
                     ]
@@ -58,12 +58,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     title: "Khomra",
                     description: "Social media posts for Khomra perfume brand",
                     tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/social/1000004769.png",
+                    previewImage: "images/social/1000004769.jpg",
                     images: [
-                        "images/social/1000004769.png",
+                        "images/social/1000004769.jpg",
                         "images/social/1000004768.png",
                         "images/social/1000004767.png",
-                        "images/social/1000004656.jpg"
+                        "images/social/1000004656.png"
                     ]
                 }
             ]
