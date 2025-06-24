@@ -105,8 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     title: "Ratina - براند سوداني للطرح والمنتجات التجميلية",
                     description: "تصميم هوية بصرية لبراند سوداني للطرح والمنتجات التجميلية",
                     tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/1000229011.jpg",
-                    images: ["images/1000229011.jpg", "images/1000229012.jpg"]
+                    previewImage: "images/Branding/Ratina/Untitled182_20250605061344_CvWhFKhQ4Q.webp",
+                    images: ["images/Branding/Ratina/Untitled182_20250605061344_CvWhFKhQ4Q.webp", "images/Branding/Ratina/Untitled183_a66VRPGx8P.webp","images/Branding/Ratina/Untitled184_20250605062347_cyR4cyNw8B.webp","images/Branding/Ratina/Untitled181_20250605061101_BGUEtEPg0Y.webp","images/Branding/Ratina/Untitled180_20250605060456_vryLtoMw0E.webp"]
                 }
             ]
         },
