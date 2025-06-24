@@ -107,7 +107,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     tools: "Adobe Illustrator, Adobe Photoshop",
                     previewImage: "images/Branding/Ratina/Untitled182_20250605061344_CvWhFKhQ4Q.webp",
                     images: ["images/Branding/Ratina/Untitled182_20250605061344_CvWhFKhQ4Q.webp", "images/Branding/Ratina/Untitled183_a66VRPGx8P.webp","images/Branding/Ratina/Untitled184_20250605062347_cyR4cyNw8B.webp","images/Branding/Ratina/Untitled181_20250605061101_BGUEtEPg0Y.webp","images/Branding/Ratina/Untitled180_20250605060456_vryLtoMw0E.webp"]
-                }
+                }, 
+                {
+                    title: "Sa Stainless Steel - براند سوداني للاكسسوارات الفضة الاستيل",
+                    description: "تصميم هوية بصرية لبراند سوداني للاكسسوارات الفضة",
+                    tools: "Adobe Illustrator, Adobe Photoshop",
+                    previewImage: "images/Branding/Sa/Untitled28_20250624203543_YNhA6ynz1M.webp",
+                    images: ["images/Branding/Sa/1_NtqvnVum6y.webp", "images/Branding/Sa/2_iabZA5PC8E.webp","images/Branding/Sa/4_GfPbVJRk7O.webp","images/Branding/Sa/5_xheKK6K81L.webp","images/Branding/Sa/6_2PZqglIW4P.webp"]
+                } 
             ]
         },
         "ui-ux": {
