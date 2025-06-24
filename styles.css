@@ -634,6 +634,29 @@ body {
         transform: translateY(-5px);
     }
 }
+/* أضف هذه الكلاسات الجديدة */
+.btn-loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.btn-loading::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid transparent;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
 
 /* Project List Styles */
 .project-list-item {
@@ -781,6 +804,28 @@ body.light-mode .about-text p {
     color: #555;
 }
 
+/* أضف هذا الكود */
+:root {
+    --primary-color: #f4c430;
+    --text-dark: #ffffff;
+    --bg-dark: #0a0a0a;
+    --text-light: #333333;
+    --bg-light: #f5f5f5;
+}
+
+body.light-mode {
+    --text-color: var(--text-light);
+    --bg-color: var(--bg-light);
+    --card-bg: #ffffff;
+    --border-color: #e0e0e0;
+}
+
+body.dark-mode {
+    --text-color: var(--text-dark);
+    --bg-color: var(--bg-dark);
+    --card-bg: #1a1a1a;
+    --border-color: #333;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-menu {
@@ -894,7 +939,31 @@ body.light-mode .about-text p {
         right: 15px;
     }
 }
-/* أنماط الوضع الفاتح الكاملة */
+@media (max-width: 480px) {
+    /* أضف هذه التعديلات */
+    .hero-title {
+        font-size: 2.5rem !important;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+    
+    .card-title {
+        font-size: 1.3rem;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+    }
+}
 
 /* أنماط الوضع الفاتح الشاملة */
 body.light-mode {
