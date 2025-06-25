@@ -119,23 +119,6 @@ function updateContentWithFade(element, newHTML, callback) {
     }, 300); // يتناسب مع مدة الانتقال في CSS
 }
 
-// في الجزء الخاص بـ showProjectDetails، استبدل كود العداد بالكود التالي:
-if (imagesGrid && progressIndicator && project.images?.length > 0) {
-    // تحديث العداد عند التحميل أولاً
-    updateImageCounter();
-    
-    // تحديث العداد عند التمرير
-    imagesGrid.addEventListener('scroll', updateImageCounter);
-    
-    function updateImageCounter() {
-        const scrollPos = imagesGrid.scrollLeft;
-        const imgWidth = imagesGrid.querySelector('.gallery-item')?.offsetWidth || 0;
-        const gap = 15; // يجب أن يتطابق مع الفجوة في CSS
-        const currentImage = Math.round(scrollPos / (imgWidth + gap)) + 1;
-        progressIndicator.textContent = `${currentImage} of ${project.images.length}`;
-    }
-}
-
 // في الجزء الخاص بـ showProjectList، تأكد من إزالة معالج الأحداث القديم قبل إضافة الجديد:
 function showProjectList(category) {
     const data = portfolioData[category];
@@ -372,70 +355,78 @@ function showProjectList(category) {
         });
     }
 
-    function showProjectDetails(category, projectIndex) {
-        const data = portfolioData[category];
-        const project = data.items[projectIndex];
-        if (!project) return;
+   function showProjectDetails(category, projectIndex) {
+    const data = portfolioData[category];
+    const project = data.items[projectIndex];
+    if (!project) return;
 
-        modalTitle.textContent = project.title;
+    modalTitle.textContent = project.title;
 
-        let htmlContent = `
-            <button id="back-to-projects-btn" class="btn btn-primary" style="margin-bottom: 20px;">
-                <i class="fas fa-arrow-left"></i> Back to Projects
-            </button>
-            <p style="color: #ccc; margin-bottom: 10px; font-size: 1rem;">${project.description}</p>
-            <p style="color: #999; margin-bottom: 20px; font-size: 0.9rem;"><strong>Tools:</strong> ${project.tools}</p>
-            <div class="project-images-container">
-                <div class="gallery-progress">1 of ${project.images?.length || 0}</div>
-                <div class="gallery-grid project-images-grid" style="display: flex; overflow-x: auto; gap: 15px; padding-bottom: 10px;">
-                    ${project.images && project.images.length > 0 ?
-                        project.images.map(img => `
-                            <div class="gallery-item" style="flex: 0 0 30%; max-width:400px;min-width:250px;">
-                                <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; height:auto;border-radius:8px;" loading="lazy">
-                            </div>
-                        `).join("") :
-                        "<div class=\"gallery-placeholder\"><i class=\"fas fa-image\"></i> No images available</div>"
-                    }
-                </div>
-                ${project.images && project.images.length > 20 ?
-                    `<button id="show-more-images-btn" class="btn btn-primary" style="margin: 20px auto; display: block;">Show More</button>` : ""
+    let htmlContent = `
+        <button id="back-to-projects-btn" class="btn btn-primary" style="margin-bottom: 20px;">
+            <i class="fas fa-arrow-left"></i> Back to Projects
+        </button>
+        <p style="color: #ccc; margin-bottom: 10px; font-size: 1rem;">${project.description}</p>
+        <p style="color: #999; margin-bottom: 20px; font-size: 0.9rem;"><strong>Tools:</strong> ${project.tools}</p>
+        <div class="project-images-container">
+            <div class="gallery-progress">1 of ${project.images?.length || 0}</div>
+            <div class="gallery-grid project-images-grid" style="display: flex; overflow-x: auto; gap: 15px; padding-bottom: 10px;">
+                ${project.images && project.images.length > 0 ?
+                    project.images.map(img => `
+                        <div class="gallery-item" style="flex: 0 0 30%; max-width:400px;min-width:250px;">
+                            <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; height:auto;border-radius:8px;" loading="lazy">
+                        </div>
+                    `).join("") :
+                    "<div class=\"gallery-placeholder\"><i class=\"fas fa-image\"></i> No images available</div>"
                 }
             </div>
-        `;
-        modal.style.display = "block";
-        void modal.offsetWidth;
-        modal.classList.add("show-modal");
-        updateContentWithFade(modalGallery, htmlContent, () => {
-            const imagesGrid = modalGallery.querySelector(".project-images-grid");
-            const progressIndicator = modalGallery.querySelector(".gallery-progress");
-
-            if (imagesGrid && progressIndicator && project.images?.length > 0) {
-                imagesGrid.addEventListener("scroll", () => {
-                    const scrollPos = imagesGrid.scrollLeft;
-                    const imgWidth = imagesGrid.querySelector(".gallery-item").offsetWidth + 15;
-                    const currentImage = Math.round(scrollPos / imgWidth) + 1;
-                    progressIndicator.textContent = `${currentImage} of ${project.images.length}`;
-                });
+            ${project.images && project.images.length > 20 ?
+                `<button id="show-more-images-btn" class="btn btn-primary" style="margin: 20px auto; display: block;">Show More</button>` : ""
             }
+        </div>
+    `;
+    
+    modal.style.display = "block";
+    void modal.offsetWidth;
+    modal.classList.add("show-modal");
+    
+    updateContentWithFade(modalGallery, htmlContent, () => {
+        const imagesGrid = modalGallery.querySelector(".project-images-grid");
+        const progressIndicator = modalGallery.querySelector(".gallery-progress");
 
-            const showMoreBtn = modalGallery.querySelector("#show-more-images-btn");
-            if (showMoreBtn) {
-                showMoreBtn.addEventListener("click", () => {
-                    imagesGrid.innerHTML = project.images.map(img => `
-                        <div class="gallery-item" style="flex: 0 0 300px;">
-                            <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; border-radius:8px;" loading="lazy">
-                        </div>
-                    `).join("");
-                    showMoreBtn.style.display = "none";
-                });
+        if (imagesGrid && progressIndicator && project.images?.length > 0) {
+            // تحديث العداد عند التحميل أولاً
+            updateImageCounter();
+            
+            // تحديث العداد عند التمرير
+            imagesGrid.addEventListener('scroll', updateImageCounter);
+            
+            function updateImageCounter() {
+                const scrollPos = imagesGrid.scrollLeft;
+                const imgWidth = imagesGrid.querySelector('.gallery-item')?.offsetWidth || 0;
+                const gap = 15; // يجب أن يتطابق مع الفجوة في CSS
+                const currentImage = Math.round(scrollPos / (imgWidth + gap)) + 1;
+                progressIndicator.textContent = `${currentImage} of ${project.images.length}`;
             }
+        }
 
-            document.getElementById("back-to-projects-btn").addEventListener("click", () => {
-                showProjectList(category);
+        const showMoreBtn = modalGallery.querySelector("#show-more-images-btn");
+        if (showMoreBtn) {
+            showMoreBtn.addEventListener("click", () => {
+                imagesGrid.innerHTML = project.images.map(img => `
+                    <div class="gallery-item" style="flex: 0 0 300px;">
+                        <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; border-radius:8px;" loading="lazy">
+                    </div>
+                `).join("");
+                showMoreBtn.style.display = "none";
             });
-        });
-    }
+        }
 
+        document.getElementById("back-to-projects-btn").addEventListener("click", () => {
+            showProjectList(category);
+        });
+    });
+}
     // Close modal
     closeModal.addEventListener("click", () => {
         modal.classList.remove("show-modal");
