@@ -128,39 +128,33 @@ document.addEventListener("DOMContentLoaded", () => {
             title: "Social Media Design",
             items: [
                 {
-                    title: "Baseline Medical - Eid Mubarak Campaign",
-                    description: "Eid greeting social media post for Baseline Medical with mosque imagery",
+                    title: "Baseline Medical",
+                    description: "Social media ads for Baseline Medical page",
                     tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/social/بدون اسم10_20250622164022_keQc5u5Z2b_ZzlwLR8n2o_rGC8gRzR7o.png",
-                    images: ["images/social/1000003401.jpg", "images/social/بدون اسم10_20250622164022_keQc5u5Z2b_ZzlwLR8n2o_rGC8gR2o.png", "images/social/1000003399.jpg", "images/social/1000003398.jpg", "images/social/1000003397.jpg", "images/social/1000003400.jpg"]
+                    previewImage: "images/Social-media/Baseline/Untitled102_20250402071023_HK435gQb2B_UuiM0m0B3k.webp",
+                    images: ["images/Social-media/Baseline/Untitled102_20250402071023_HK435gQb2B_UuiM0m0B3k.webp", "images/Social-media/Baseline/Untitled106_20250405034447_Cl15GOrO8V_CPIHi0WE8y.webp", "images/Social-media/Baseline/Untitled107_20250404064546_vVMow1vi0g_c1Reykj31P.webp", "images/Social-media/Baseline/Untitled115_20250410034107_MG4jGZKc4G_DcqjoRFW50.webp", "images/Social-media/Baseline/Untitled116_20250410122545_UyxJ6Uu43k_BlO2apFk6X.webp", "images/Social-media/Baseline/Untitled120_20250416181851_RLRcqULf7T_Xc6f889q8n.webp", "images/Social-media/Baseline/Untitled141_20250509072843_rNTgZjrw5v_eMvMMrQc2v.webp", "images/Social-media/Baseline/Untitled148_20250519081941_PrFN3uLO5B_pLTSooTW3C.webp", "images/Social-media/Baseline/Untitled148_20250519082112_XYVTTSpm3u_H9cERuBc9Z.webp"]
                 },
                 {
-                    title: "Baseline Medical - Eid Mubarak Campaign",
-                    description: "Eid greeting social media post for Baseline Medical with mosque imagery",
+                    title: "khomra",
+                    description: "Social media ad for local Sudanese perfume",
                     tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/social/بدون اسم10_20250622164022_keQc5u5Z2b_ZzlwLR8n2o_rGC8gR2o.png",
-                    images: ["images/social/1000003401.jpg", "images/social/1000003324.png", "images/social/1000003399.jpg", "images/social/1000003398.jpg", "images/social/1000003397.jpg", "images/social/1000003400.jpg"]
+                    previewImage: "images/Social-media/Khomra/1000004769_A22mea5b06_qG6cn5Fd2r.webp",
+                    images: ["images/Social-media/Khomra/1000004769_A22mea5b06_qG6cn5Fd2r.webp", "images/Social-media/Khomra/1000004767_NtGk94AQ8p.webp", "images/Social-media/Khomra/1000004768_jNCdAheZ0X.webp"]
                 },
                 {
-                    title: "Baseline Medical - Eid Mubarak Campaign",
-                    description: "Eid greeting social media post for Baseline Medical with mosque imagery",
-                    tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/social/بدون اسم10_20250622164022_keQc5u5Z2b_ZzlwLR8n2o_rGC8gR2o.png",
-                    images: ["images/social/1000003401.jpg", "images/social/1000003324.png", "images/social/1000003399.jpg", "images/social/1000003398.jpg", "images/social/1000003397.jpg", "images/social/1000003400.jpg"]
-                },
-                {
-                    title: "Baseline Medical - Eid Mubarak Campaign",
+                    title: "Social media designs",
                     description: "Eid greeting social media post for Baseline Medical with mosque imagery",
                     tools: "Adobe Illustrator, Adobe Photoshop",
                     previewImage: "images/social/بدون اسم10_20250622164022_keQc5u5Z2b_ZzlwLR8n2o_rGC8gR2o.png",
                     images: ["images/social/1000003401.jpg", "images/social/1000003324.png", "images/social/1000003399.jpg", "images/social/1000003398.jpg", "images/social/1000003397.jpg", "images/social/1000003400.jpg"]
                 }
+                
             ]
         },
         "branding": {
             title: "Brand Identity & Logos",
             items: [
-                {
+              /* {
                     title: "تليفوني - متجر للهواتف والاكسسوارات",
                     description: "تصميم هوية بصرية لمتجر هواتف واكسسوارات",
                     tools: "Adobe Illustrator, Adobe Photoshop",
@@ -187,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     tools: "Adobe Illustrator, Adobe Photoshop",
                     previewImage: "images/1000229019.jpg",
                     images: ["images/1000229019.jpg", "images/1000229020.jpg"]
-                },
+                },*/
                 {
                     title: "Ratina - براند سوداني للطرح والمنتجات التجميلية",
                     description: "تصميم هوية بصرية لبراند سوداني للطرح والمنتجات التجميلية",
@@ -207,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "ui-ux": {
             title: "UI/UX Design",
             items: [
-                {
+             /*   {
                     title: "Mobile App Interface",
                     description: "Healthcare mobile application design",
                     tools: "Figma, Adobe XD",
@@ -234,7 +228,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     tools: "Figma, Photoshop",
                     previewImage: "images/placeholder.png",
                     images: []
-                }
+                }*/
             ]
         }
     };
