@@ -1297,3 +1297,10 @@ body.light-mode .form-group textarea::placeholder-shown {
     color: #888 !important;
 }
 
+
+
+body.light-mode .element-2,
+body.light-mode .element-3 {
+    filter: invert(100%); /* لتحويل الألوان إلى معكوسها، مما يجعل الأبيض أسود */
+}
+
