@@ -102,26 +102,93 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalGallery = document.getElementById("modal-gallery");
 
     // دالة لتحديث المحتوى بسلاسة
-    function updateContentWithFade(element, newHTML, callback) {
-        element.classList.remove("show"); // Start fade-out
-
-        // Wait for fade-out to complete
-        const transitionDuration = parseFloat(getComputedStyle(element).transitionDuration) * 1000;
+    // في الجزء الخاص بـ updateContentWithFade، استبدل الدالة بالكود التالي:
+function updateContentWithFade(element, newHTML, callback) {
+    element.style.opacity = 0;
+    element.style.pointerEvents = 'none'; // تعطيل التفاعلات أثناء الانتقال
+    
+    setTimeout(() => {
+        element.innerHTML = newHTML;
+        element.style.opacity = '';
+        element.style.pointerEvents = ''; // إعادة تمكين التفاعلات
+        
+        // إضافة انتقال سلس للظهور
         setTimeout(() => {
-            element.innerHTML = newHTML;
-            // Force reflow to ensure transition applies
-            void element.offsetWidth;
-            element.classList.add("show"); // Start fade-in
-            if (callback) {
-                // Wait for the fade-in transition to complete before executing callback
-                element.addEventListener("transitionend", function handler() {
-                    element.removeEventListener("transitionend", handler);
-                    callback();
-                }, {once: true});
-            }
-        }, transitionDuration);
+            if (callback) callback();
+        }, 50); // تأخير بسيط لضمان تطبيق التغييرات
+    }, 300); // يتناسب مع مدة الانتقال في CSS
+}
+
+// في الجزء الخاص بـ showProjectDetails، استبدل كود العداد بالكود التالي:
+if (imagesGrid && progressIndicator && project.images?.length > 0) {
+    // تحديث العداد عند التحميل أولاً
+    updateImageCounter();
+    
+    // تحديث العداد عند التمرير
+    imagesGrid.addEventListener('scroll', updateImageCounter);
+    
+    function updateImageCounter() {
+        const scrollPos = imagesGrid.scrollLeft;
+        const imgWidth = imagesGrid.querySelector('.gallery-item')?.offsetWidth || 0;
+        const gap = 15; // يجب أن يتطابق مع الفجوة في CSS
+        const currentImage = Math.round(scrollPos / (imgWidth + gap)) + 1;
+        progressIndicator.textContent = `${currentImage} of ${project.images.length}`;
+    }
+}
+
+// في الجزء الخاص بـ showProjectList، تأكد من إزالة معالج الأحداث القديم قبل إضافة الجديد:
+function showProjectList(category) {
+    const data = portfolioData[category];
+    if (!data) return;
+
+    modalTitle.textContent = data.title;
+
+    let htmlContent = "";
+    if (data.items.length === 0) {
+        htmlContent = `
+            <div class="empty-category">
+                <i class="fas fa-folder-open"></i>
+                <h3>No projects yet</h3>
+            </div>
+        `;
+    } else {
+        const gridItems = data.items.map((item, index) => `
+            <div class="project-card" data-category="${category}" data-index="${index}">
+                <div class="image-container">
+                    <img src="${item.previewImage}"
+                         alt="${item.title}"
+                         class="project-image"
+                         onerror="this.src='images/placeholder.png'"
+                         loading="lazy">
+                </div>
+                <div class="project-info">
+                    <h3>${item.title}</h3>
+                    <p>${item.description.substring(0, 60)}...</p>
+                </div>
+            </div>
+        `).join("");
+        htmlContent = `<div class="modal-gallery-grid">${gridItems}</div>`;
     }
 
+    modal.style.display = "block";
+    void modal.offsetWidth;
+    modal.classList.add("show-modal");
+    
+    // إزالة أي معالجات أحداث موجودة مسبقاً
+    const oldGallery = modalGallery.cloneNode(false);
+    modalGallery.parentNode.replaceChild(oldGallery, modalGallery);
+    modalGallery = oldGallery;
+    
+    updateContentWithFade(modalGallery, htmlContent, () => {
+        document.querySelectorAll(".project-card").forEach(card => {
+            card.addEventListener("click", (e) => {
+                const cat = e.currentTarget.dataset.category;
+                const idx = parseInt(e.currentTarget.dataset.index);
+                showProjectDetails(cat, idx);
+            });
+        });
+    });
+}
     // Portfolio data structure
     const portfolioData = {
         "social-media": {
