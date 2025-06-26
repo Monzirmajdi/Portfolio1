@@ -1081,7 +1081,7 @@ body.light-mode .navbar {
 
 body.light-mode .nav-link,
 body.light-mode .hero-title,
-/*body.light-mode .hero-subtitle,*/
+body.light-mode .hero-subtitle,*/
 body.light-mode .section-title,
 body.light-mode .card-title,
 body.light-mode .about-text h2,
@@ -1090,8 +1090,8 @@ body.light-mode .footer-text {
     color: #222 !important;
     }
 
-body.light-mode .hero-subtitle, {    /*;الكتابة تحت العنوان > GOLD كانت مع الفوق */
-    color: #FFD700 !important;
+/*body.light-mode .hero-subtitle, {    /*;الكتابة تحت العنوان > GOLD كانت مع الفوق 
+    color: #FFD700 !important;*/
 }
 body.light-mode .hero-subtitle {
     text-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
