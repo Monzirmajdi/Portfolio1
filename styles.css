@@ -1090,15 +1090,11 @@ body.light-mode .footer-text {
     color: #222 !important;
     }
 
-/*body.light-mode .hero-subtitle, {    /*;الكتابة تحت العنوان > GOLD كانت مع الفوق 
-    color: #B8860B !important;
-}*/
+body.light-mode .hero-subtitle, {    /*;الكتابة تحت العنوان > GOLD كانت مع الفوق */
+    color: #D4AF37 !important;
+}
 body.light-mode .hero-subtitle {
-    background: linear-gradient(45deg, #D4AF37, #F9D423);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
 }
 }
 
