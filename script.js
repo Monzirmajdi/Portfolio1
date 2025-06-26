@@ -206,10 +206,18 @@ function showProjectList(category) {
                 },
                 {
                     title: "Social media designs",
-                    description: "Eid greeting social media post for Baseline Medical with mosque imagery",
+                    description: "Mixed social media Designs for real and imaginary brands",
                     tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/social/بدون اسم10_20250622164022_keQc5u5Z2b_ZzlwLR8n2o_rGC8gR2o.png",
-                    images: ["images/social/1000003401.jpg", "images/social/1000003324.png", "images/social/1000003399.jpg", "images/social/1000003398.jpg", "images/social/1000003397.jpg", "images/social/1000003400.jpg"]
+                    previewImage: "images/Social-media/ADS/c1_20250626_06183977_UzHmudLu4R_r1uXqT7v7x.webp",
+                    images: ["images/Social-media/ADS/c1_20250626_06183977_UzHmudLu4R_r1uXqT7v7x.webp", 
+                             "images/Social-media/ADS/c1_20250626_06184476_DAbNn8O89Y_cOF1rrGA8W.webp", 
+                             "images/Social-media/ADS/c1_20250626_06184529_y5AFcLFz1Q_1ALNxoT55E.webp", 
+                             "images/Social-media/ADS/c1_20250626_06184682_3pQdNzME3u_6IbizTyt6n.webp", 
+                             "images/Social-media/ADS/c1_20250626_06184747_J23thI8M0W_FrIU6tGS2Q.webp", 
+                             "images/Social-media/ADS/c1_20250626_06184790_JVPA1IKB4u.webp", 
+                             "images/Social-media/ADS/c1_20250626_06184819_aTkjp5I22h_PACRYc5s2g.webp", 
+                             "images/Social-media/ADS/c1_20250626_06183730_n0tZuHHu4j_XkXAH8WV3L.webp", 
+                             "images/Social-media/ADS/c1_20250626_06183830_pIuHZwJZ91_B28wVhSp3t.webp" ]
                 }
                 
             ]
@@ -250,14 +258,22 @@ function showProjectList(category) {
                     description: "تصميم هوية بصرية لبراند سوداني للطرح والمنتجات التجميلية",
                     tools: "Adobe Illustrator, Adobe Photoshop",
                     previewImage: "images/Branding/Ratina/Untitled182_20250605061344_CvWhFKhQ4Q.webp",
-                    images: ["images/Branding/Ratina/Untitled182_20250605061344_CvWhFKhQ4Q.webp", "images/Branding/Ratina/Untitled183_a66VRPGx8P.webp","images/Branding/Ratina/Untitled184_20250605062347_cyR4cyNw8B.webp","images/Branding/Ratina/Untitled181_20250605061101_BGUEtEPg0Y.webp","images/Branding/Ratina/Untitled180_20250605060456_vryLtoMw0E.webp"]
+                    images: ["images/Branding/Ratina/Untitled182_20250605061344_CvWhFKhQ4Q.webp", 
+                             "images/Branding/Ratina/Untitled183_a66VRPGx8P.webp", 
+                             "images/Branding/Ratina/Untitled184_20250605062347_cyR4cyNw8B.webp", 
+                             "images/Branding/Ratina/Untitled181_20250605061101_BGUEtEPg0Y.webp", 
+                             "images/Branding/Ratina/Untitled180_20250605060456_vryLtoMw0E.webp"]
                 }, 
                 {
                     title: "Sa Stainless Steel - براند سوداني للاكسسوارات الفضة الاستيل",
                     description: "تصميم هوية بصرية لبراند سوداني للاكسسوارات الفضة",
                     tools: "Adobe Illustrator, Adobe Photoshop",
                     previewImage: "images/Branding/Sa/Untitled28_20250624203543_YNhA6ynz1M.webp",
-                    images: ["images/Branding/Sa/1_NtqvnVum6y.webp", "images/Branding/Sa/2_iabZA5PC8E.webp","images/Branding/Sa/4_GfPbVJRk7O.webp","images/Branding/Sa/5_xheKK6K81L.webp","images/Branding/Sa/6_2PZqglIW4P.webp"]
+                    images: ["images/Branding/Sa/1_NtqvnVum6y.webp", 
+                             "images/Branding/Sa/2_iabZA5PC8E.webp", 
+                             "images/Branding/Sa/4_GfPbVJRk7O.webp", 
+                             "images/Branding/Sa/5_xheKK6K81L.webp", 
+                             "images/Branding/Sa/6_2PZqglIW4P.webp"]
                 } 
             ]
         },
