@@ -144,7 +144,7 @@ body {
 
 .hero-subtitle {
     font-family: 'Allura', cursive;
-    font-size: 2rem;
+    font-size: 4rem;
     color: #f4c430;
     margin-bottom: 40px;
     opacity: 0;
@@ -1042,7 +1042,7 @@ body.light-mode .bar {
     }
 
     .hero-subtitle {
-        font-size: 2rem; /*غيرتها ١.٢*/
+        font-size: 4rem; /*غيرتها ١.٢*/
     }
 
     .btn {
