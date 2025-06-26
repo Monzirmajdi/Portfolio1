@@ -144,7 +144,7 @@ body {
 
 .hero-subtitle {
     font-family: 'Allura', cursive;   
-    font-size: 2.5rem;     /*WAS 1.5*/
+    font-size: 2rem;     /*WAS 1.5*/
     color: #f4c430;
     margin-bottom: 40px;
     opacity: 0;
