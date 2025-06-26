@@ -1042,7 +1042,7 @@ body.light-mode .bar {
     }
 
     .hero-subtitle {
-        font-size: 1.2rem;
+        font-size: 2rem; /*غيرتها ١.٢*/
     }
 
     .btn {
@@ -1081,13 +1081,18 @@ body.light-mode .navbar {
 
 body.light-mode .nav-link,
 body.light-mode .hero-title,
-body.light-mode .hero-subtitle,
+/*body.light-mode .hero-subtitle,*/
 body.light-mode .section-title,
 body.light-mode .card-title,
 body.light-mode .about-text h2,
 body.light-mode .contact-details h4,
 body.light-mode .footer-text {
     color: #222 !important;
+    }
+
+body.light-mode .hero-subtitle, {    /*;الكتابة تحت العنوان > GOLD كانت مع الفوق */
+    color: #FCD20E !important;
+}
 }
 
 body.light-mode .hero {
