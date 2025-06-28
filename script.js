@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     title: "khomra",
                     description: "Social media ad for local Sudanese perfume",
                     tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/Social-media/Khomra/1000004769_A22mea5b06_qG6cn5Fd2r.webp",
+                    previewImage: "images/Social-media/Khomra/1000004769_A22mea5b06_qG6cn5Fd2r.webp", 
                     images: ["images/Social-media/Khomra/1000004769_A22mea5b06_qG6cn5Fd2r.webp", 
                              "images/Social-media/Khomra/1000004767_NtGk94AQ8p.webp", 
                              "images/Social-media/Khomra/1000004768_jNCdAheZ0X.webp"]
