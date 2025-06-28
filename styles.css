@@ -1000,6 +1000,21 @@ body.light-mode .bar {
 body.light-mode .progress-bar {
     background: rgba(0, 0, 0, 0.1) !important;
 }
+body.light-mode .element {
+    filter: brightness(0.8) contrast(1.2) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+body.light-mode .element-1 {
+    filter: brightness(0.9) contrast(1.1);
+}
+
+body.light-mode .element-2 {
+    filter: brightness(0.7) contrast(1.3);
+}
+
+body.light-mode .element-3 {
+    filter: brightness(0.8) contrast(1.2);
+}
 
 /* ---------------------- الرسوم المتحركة ---------------------- */
 @keyframes slideUp {
