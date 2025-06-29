@@ -498,13 +498,13 @@ section.visible {
     margin-bottom: 30px;
 }
 
-.preview-item {
+/*.preview-item {
     width: 60px;
     height: 60px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     transition: var(--transition);
-}
+}*/
 
 .preview-item:hover {
     background: rgba(244, 196, 48, 0.2);
