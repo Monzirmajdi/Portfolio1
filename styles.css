@@ -1001,6 +1001,10 @@ body.light-mode .progress-bar {
     background: rgba(0, 0, 0, 0.1) !important;
 }
 
+body.light-mode .element-2,
+body.light-mode .element-3 {
+    filter: brightness(0) contrast(1.5) !important;
+}
 /* ---------------------- الرسوم المتحركة ---------------------- */
 @keyframes slideUp {
     to {
