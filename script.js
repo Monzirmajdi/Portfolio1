@@ -1,20 +1,6 @@
-// جميع الأحداث المتعلقة بتحميل الصفحة
+// Hamburger menu functionality & all other DOMContentLoaded related scripts
 document.addEventListener("DOMContentLoaded", () => {
-    // دالة Throttle لتحسين الأداء
-    function throttle(func, limit) {
-        let inThrottle;
-        return function() {
-            const context = this;
-            const args = arguments;
-            if (!inThrottle) {
-                func.apply(context, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
-            }
-        };
-    }
-
-    // قائمة الهامبرجر
+    // Hamburger menu
     const hamburger = document.querySelector(".hamburger");
     const navMenu = document.querySelector(".nav-menu");
 
@@ -22,23 +8,17 @@ document.addEventListener("DOMContentLoaded", () => {
         hamburger.addEventListener("click", () => {
             hamburger.classList.toggle("active");
             navMenu.classList.toggle("active");
-            
-            // تحسينات للوصولية
-            const isExpanded = navMenu.classList.contains("active");
-            hamburger.setAttribute("aria-expanded", isExpanded);
         });
 
         document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
             hamburger.classList.remove("active");
             navMenu.classList.remove("active");
-            hamburger.setAttribute("aria-expanded", "false");
         }));
     }
 
-    // تغيير عنوان النافبار عند التمرير
+    // Dynamic Navbar Title on Scroll (تم نقل هذا الجزء هنا)
     const navLogoSpan = document.querySelector(".nav-logo span");
     const sections = document.querySelectorAll("section[id]");
-    const sectionPositions = [];
 
     const sectionTitles = {
         "home": "Home",
@@ -47,52 +27,37 @@ document.addEventListener("DOMContentLoaded", () => {
         "contact": "Contact"
     };
 
-    // حساب مواقع الأقسام مرة واحدة
-    function calculateSectionPositions() {
-        sectionPositions.length = 0; // إفراغ المصفوفة أولاً
-        sections.forEach(section => {
-            sectionPositions.push({
-                id: section.id,
-                top: section.offsetTop,
-                height: section.clientHeight
-            });
-        });
-    }
-
-    // تحديث عنوان الشريط بناء على المواقع المحفوظة
     function updateNavLogoTitle() {
-        let currentSectionId = "home";
-        const scrollPosition = window.scrollY + 100;
+        let currentSectionId = "home"; // Default to home
 
-        sectionPositions.forEach(section => {
-            if (scrollPosition >= section.top && scrollPosition < section.top + section.height) {
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
                 currentSectionId = section.id;
             }
         });
 
-        if (navLogoSpan) {
+        if (navLogoSpan) { // تأكد من وجود العنصر قبل التعديل
             navLogoSpan.textContent = sectionTitles[currentSectionId];
         }
     }
 
-    // حساب المواقع أول مرة وعند تغيير حجم النافذة
-    calculateSectionPositions();
-    window.addEventListener('resize', throttle(calculateSectionPositions, 200));
-
-    // استدعاء الدالة عند التحميل والتمرير مع تطبيق Throttle
+    // استدعاء الدالة عند تحميل الصفحة لتحديد العنوان الأولي
     updateNavLogoTitle();
-    window.addEventListener("scroll", throttle(updateNavLogoTitle, 100));
+    // استدعاء الدالة عند التمرير
+    window.addEventListener("scroll", updateNavLogoTitle);
 
-    // تأثير الكتابة في قسم البطل
+    // Typing effect for Hero Subtitle (تم إضافة هذا الجزء هنا)
     const heroSubtitle = document.querySelector(".hero-subtitle");
     const textToType = "Graphic Designer & Visual Artist";
     let charIndex = 0;
     let isTypingComplete = false;
 
     if (heroSubtitle) {
-        heroSubtitle.textContent = "";
-        heroSubtitle.style.opacity = 1;
-        heroSubtitle.style.animation = 'none';
+        heroSubtitle.textContent = ""; // ابدأ بنص فارغ
+        heroSubtitle.style.opacity = 1; // اجعله مرئياً
+        heroSubtitle.style.animation = 'none'; // أوقف الـ fadeInUp إذا كان يتعارض
         typeWriter();
     }
 
@@ -100,127 +65,114 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!isTypingComplete && charIndex < textToType.length) {
             heroSubtitle.textContent += textToType.charAt(charIndex);
             charIndex++;
-            setTimeout(typeWriter, 70);
+            setTimeout(typeWriter, 70); // سرعة الكتابة (مللي ثانية)
         } else {
             isTypingComplete = true;
         }
     }
 
-    // تبديل الوضع الليلي والنهاري
+    // Theme toggle functionality (تم دمجها هنا)
     const themeToggle = document.querySelector(".theme-toggle");
     const body = document.body;
 
     if (themeToggle) {
-        const updateThemeIcon = () => {
+        themeToggle.addEventListener("click", () => {
             const icon = themeToggle.querySelector("i");
+            body.classList.toggle('light-mode');
             if (body.classList.contains('light-mode')) {
                 icon.classList.replace('fa-moon', 'fa-sun');
-                icon.setAttribute('aria-label', 'Switch to dark mode');
-            } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
-                icon.setAttribute('aria-label', 'Switch to light mode');
-            }
-        };
-
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-            body.classList.add('light-mode');
-            localStorage.setItem('page-theme', 'light');
-        }
-
-        if (localStorage.getItem('page-theme') === 'light') {
-            body.classList.add('light-mode');
-        }
-
-        updateThemeIcon();
-
-        themeToggle.addEventListener("click", () => {
-            body.classList.toggle('light-mode');
-            const theme = body.classList.contains('light-mode') ? 'light' : 'dark';
-            localStorage.setItem('page-theme', theme);
-            updateThemeIcon();
-            
-            // تحسين انتقال تغيير الثيم
-            document.documentElement.style.transition = 'background-color 0.5s ease, color 0.3s ease';
-            setTimeout(() => {
-                document.documentElement.style.transition = '';
-            }, 500);
-        });
-
-        window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
-            if (e.matches) {
-                body.classList.add('light-mode');
                 localStorage.setItem('page-theme', 'light');
             } else {
-                body.classList.remove('light-mode');
+                icon.classList.replace('fa-sun', 'fa-moon');
                 localStorage.setItem('page-theme', 'dark');
             }
-            updateThemeIcon();
         });
+
+        // تحميل التفضيل المحفوظ عند بدء التشغيل
+        if (localStorage.getItem('page-theme') === 'light') {
+            body.classList.add('light-mode');
+            themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+        }
     }
 
-    // Intersection Observer لتحميل العناصر عند الظهور
-    const lazyLoadObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.add('loaded');
-                lazyLoadObserver.unobserve(img);
-            }
-        });
-    }, { threshold: 0.1 });
+    // Portfolio Modal Functionality (هذا الجزء كان موجوداً بالفعل وتم الاحتفاظ به)
+    const modal = document.getElementById("portfolio-modal");
+    const closeModal = document.querySelector(".modal .close");
+    const modalTitle = document.getElementById("modal-title");
+    const modalGallery = document.getElementById("modal-gallery");
 
-    // تفعيل Lazy Loading للصور
-    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-        img.dataset.src = img.src;
-        img.src = '';
-        lazyLoadObserver.observe(img);
+    // دالة لتحديث المحتوى بسلاسة
+    // في الجزء الخاص بـ updateContentWithFade، استبدل الدالة بالكود التالي:
+function updateContentWithFade(element, newHTML, callback) {
+    element.style.opacity = 0;
+    element.style.pointerEvents = 'none'; // تعطيل التفاعلات أثناء الانتقال
+    
+    setTimeout(() => {
+        element.innerHTML = newHTML;
+        element.style.opacity = '';
+        element.style.pointerEvents = ''; // إعادة تمكين التفاعلات
         
-        img.addEventListener('load', () => {
-            img.classList.add('loaded');
-        });
-    });
+        // إضافة انتقال سلس للظهور
+        setTimeout(() => {
+            if (callback) callback();
+        }, 50); // تأخير بسيط لضمان تطبيق التغييرات
+    }, 300); // يتناسب مع مدة الانتقال في CSS
+}
 
-    // Observer لأشرطة تقدم المهارات
-    const skillsProgress = document.querySelector('.skills-progress');
-    if (skillsProgress) {
-        const skillsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    document.querySelectorAll('.progress').forEach(bar => {
-                        const width = bar.parentElement.previousElementSibling.querySelector('span').textContent;
-                        bar.style.width = width;
-                    });
-                    skillsObserver.unobserve(entry.target);
-                }
+// في الجزء الخاص بـ showProjectList، تأكد من إزالة معالج الأحداث القديم قبل إضافة الجديد:
+function showProjectList(category) {
+    const data = portfolioData[category];
+    if (!data) return;
+
+    modalTitle.textContent = data.title;
+
+    let htmlContent = "";
+    if (data.items.length === 0) {
+        htmlContent = `
+            <div class="empty-category">
+                <i class="fas fa-folder-open"></i>
+                <h3>No projects yet</h3>
+            </div>
+        `;
+    } else {
+        const gridItems = data.items.map((item, index) => `
+            <div class="project-card" data-category="${category}" data-index="${index}">
+                <div class="image-container">
+                    <img src="${item.previewImage}"
+                         alt="${item.title}"
+                         class="project-image"
+                         onerror="this.src='images/placeholder.png'"
+                         loading="lazy">
+                </div>
+                <div class="project-info">
+                    <h3>${item.title}</h3>
+                    <p>${item.description.substring(0, 60)}...</p>
+                </div>
+            </div>
+        `).join("");
+        htmlContent = `<div class="modal-gallery-grid">${gridItems}</div>`;
+    }
+
+    modal.style.display = "block";
+    void modal.offsetWidth;
+    modal.classList.add("show-modal");
+    
+    // إزالة أي معالجات أحداث موجودة مسبقاً
+    const oldGallery = modalGallery.cloneNode(false);
+    modalGallery.parentNode.replaceChild(oldGallery, modalGallery);
+    modalGallery = oldGallery;
+    
+    updateContentWithFade(modalGallery, htmlContent, () => {
+        document.querySelectorAll(".project-card").forEach(card => {
+            card.addEventListener("click", (e) => {
+                const cat = e.currentTarget.dataset.category;
+                const idx = parseInt(e.currentTarget.dataset.index);
+                showProjectDetails(cat, idx);
             });
-        }, { threshold: 0.5 });
-
-        skillsObserver.observe(skillsProgress);
-    }
-
-    // Observer للعناصر العامة
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
         });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('section').forEach(section => {
-        sectionObserver.observe(section);
     });
-
-    // Preload لصور المعرض
-    function preloadGalleryImages(images) {
-        images.forEach(imgSrc => {
-            const img = new Image();
-            img.src = imgSrc;
-        });
-    }
-
-    // بيانات المشاريع
+}
+    // Portfolio data structure
     const portfolioData = {
         "social-media": {
             title: "Social Media Design",
@@ -267,11 +219,40 @@ document.addEventListener("DOMContentLoaded", () => {
                              "images/Social-media/ADS/c1_20250626_06183730_n0tZuHHu4j_XkXAH8WV3L.webp", 
                              "images/Social-media/ADS/c1_20250626_06183830_pIuHZwJZ91_B28wVhSp3t.webp" ]
                 }
+                
             ]
         },
         "branding": {
             title: "Brand Identity & Logos",
             items: [
+              /* {
+                    title: "تليفوني - متجر للهواتف والاكسسوارات",
+                    description: "تصميم هوية بصرية لمتجر هواتف واكسسوارات",
+                    tools: "Adobe Illustrator, Adobe Photoshop",
+                    previewImage: "images/1000229017.jpg",
+                    images: ["images/1000229017.jpg", "images/1000229016.jpg", "images/1000229023.jpg"]
+                },
+                {
+                    title: "مؤسسة د/أبو ذر الكودة - مؤسسة تعليمية",
+                    description: "تصميم شعار لمؤسسة تعليمية",
+                    tools: "Adobe Illustrator, Adobe Photoshop",
+                    previewImage: "images/1000229023.jpg",
+                    images: ["images/1000229023.jpg", "images/1000229024.jpg"]
+                },
+                {
+                    title: "Nook Nest - محل لبيع الأثاث المنزلي والمكتبي",
+                    description: "تصميم هوية بصرية لمحل أثاث منزلي ومكتبي",
+                    tools: "Adobe Illustrator, Adobe Photoshop",
+                    previewImage: "images/1000229008.jpg",
+                    images: ["images/1000229008.jpg", "images/1000229009.jpg"]
+                },
+                {
+                    title: "JK Arts - شعار لمنشئ محتوى فني",
+                    description: "تصميم شعار لمنشئ محتوى فني",
+                    tools: "Adobe Illustrator, Adobe Photoshop",
+                    previewImage: "images/1000229019.jpg",
+                    images: ["images/1000229019.jpg", "images/1000229020.jpg"]
+                },*/
                 {
                     title: "Ratina - براند سوداني للطرح والمنتجات التجميلية",
                     description: "تصميم هوية بصرية لبراند سوداني للطرح والمنتجات التجميلية",
@@ -298,40 +279,67 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         "ui-ux": {
             title: "UI/UX Design",
-            items: []
+            items: [
+             /*   {
+                    title: "Mobile App Interface",
+                    description: "Healthcare mobile application design",
+                    tools: "Figma, Adobe XD",
+                    previewImage: "images/placeholder.png",
+                    images: []
+                },
+                {
+                    title: "E-commerce Website",
+                    description: "Complete website design and user experience",
+                    tools: "Figma, Sketch",
+                    previewImage: "images/placeholder.png",
+                    images: []
+                },
+                {
+                    title: "Dashboard Design",
+                    description: "Admin dashboard for business management",
+                    tools: "Adobe XD, Figma",
+                    previewImage: "images/placeholder.png",
+                    images: []
+                },
+                {
+                    title: "Landing Page Design",
+                    description: "High-converting landing page layouts",
+                    tools: "Figma, Photoshop",
+                    previewImage: "images/placeholder.png",
+                    images: []
+                }*/
+            ]
         }
     };
 
-    // وظائف نافذة المشاريع
-    const modal = document.getElementById("portfolio-modal");
-    const closeModal = document.querySelector(".modal .close");
-    const modalTitle = document.getElementById("modal-title");
-    const modalGallery = document.getElementById("modal-gallery");
-
-    function updateContentWithFade(element, newHTML, callback) {
-        element.style.opacity = 0;
-        element.style.pointerEvents = 'none';
-        
-        setTimeout(() => {
-            element.innerHTML = newHTML;
-            element.style.opacity = '';
-            element.style.pointerEvents = '';
-            
-            setTimeout(() => {
-                if (callback) callback();
-            }, 50);
-        }, 300);
+    // Function to populate card previews
+    function populateCardPreviews() {
+        document.querySelectorAll(".portfolio-category").forEach(categoryDiv => {
+            const previewContainer = categoryDiv.querySelector(".card-preview");
+            previewContainer.innerHTML = "";
+            for (let i = 0; i < 3; i++) {
+                const placeholder = document.createElement("div");
+                placeholder.className = "preview-item";
+                previewContainer.appendChild(placeholder);
+            }
+        });
     }
 
-    // عرض قائمة المشاريع
+    window.addEventListener("load", populateCardPreviews);
+
+    // Open modal when portfolio category is clicked
+    document.querySelectorAll(".card-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            const category = e.target.closest(".portfolio-category").dataset.category;
+            showProjectList(category);
+        });
+    });
+
+    let currentCategory = null;
+
     function showProjectList(category) {
         const data = portfolioData[category];
         if (!data) return;
-
-        // Preload الصور قبل العرض
-        data.items.forEach(item => {
-            preloadGalleryImages(item.images);
-        });
 
         modalTitle.textContent = data.title;
 
@@ -350,7 +358,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <img src="${item.previewImage}"
                              alt="${item.title}"
                              class="project-image"
-                             onerror="this.src='images/placeholder.png'"
+                             onerror="this.src=\'images/placeholder.png\'"
                              loading="lazy">
                     </div>
                     <div class="project-info">
@@ -376,81 +384,79 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // عرض تفاصيل المشروع
-    function showProjectDetails(category, projectIndex) {
-        const data = portfolioData[category];
-        const project = data.items[projectIndex];
-        if (!project) return;
+   function showProjectDetails(category, projectIndex) {
+    const data = portfolioData[category];
+    const project = data.items[projectIndex];
+    if (!project) return;
 
-        // Preload جميع صور المشروع
-        preloadGalleryImages(project.images);
+    modalTitle.textContent = project.title;
 
-        modalTitle.textContent = project.title;
-
-        let htmlContent = `
-            <button id="back-to-projects-btn" class="btn btn-primary" style="margin-bottom: 20px;">
-                <i class="fas fa-arrow-left"></i> Back to Projects
-            </button>
-            <p style="color: #ccc; margin-bottom: 10px; font-size: 1rem;">${project.description}</p>
-            <p style="color: #999; margin-bottom: 20px; font-size: 0.9rem;"><strong>Tools:</strong> ${project.tools}</p>
-            <div class="project-images-container">
-                <div class="gallery-progress">1 of ${project.images?.length || 0}</div>
-                <div class="gallery-grid project-images-grid" style="display: flex; overflow-x: auto; gap: 15px; padding-bottom: 10px;">
-                    ${project.images && project.images.length > 0 ?
-                        project.images.map(img => `
-                            <div class="gallery-item" style="flex: 0 0 30%; max-width:400px;min-width:250px;">
-                                <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; height:auto;border-radius:8px;" loading="lazy">
-                            </div>
-                        `).join("") :
-                        "<div class=\"gallery-placeholder\"><i class=\"fas fa-image\"></i> No images available</div>"
-                    }
-                </div>
-                ${project.images && project.images.length > 20 ?
-                    `<button id="show-more-images-btn" class="btn btn-primary" style="margin: 20px auto; display: block;">Show More</button>` : ""
+    let htmlContent = `
+        <button id="back-to-projects-btn" class="btn btn-primary" style="margin-bottom: 20px;">
+            <i class="fas fa-arrow-left"></i> Back to Projects
+        </button>
+        <p style="color: #ccc; margin-bottom: 10px; font-size: 1rem;">${project.description}</p>
+        <p style="color: #999; margin-bottom: 20px; font-size: 0.9rem;"><strong>Tools:</strong> ${project.tools}</p>
+        <div class="project-images-container">
+            <div class="gallery-progress">1 of ${project.images?.length || 0}</div>
+            <div class="gallery-grid project-images-grid" style="display: flex; overflow-x: auto; gap: 15px; padding-bottom: 10px;">
+                ${project.images && project.images.length > 0 ?
+                    project.images.map(img => `
+                        <div class="gallery-item" style="flex: 0 0 30%; max-width:400px;min-width:250px;">
+                            <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; height:auto;border-radius:8px;" loading="lazy">
+                        </div>
+                    `).join("") :
+                    "<div class=\"gallery-placeholder\"><i class=\"fas fa-image\"></i> No images available</div>"
                 }
             </div>
-        `;
-        
-        modal.style.display = "block";
-        void modal.offsetWidth;
-        modal.classList.add("show-modal");
-        
-        updateContentWithFade(modalGallery, htmlContent, () => {
-            const imagesGrid = modalGallery.querySelector(".project-images-grid");
-            const progressIndicator = modalGallery.querySelector(".gallery-progress");
-
-            if (imagesGrid && progressIndicator && project.images?.length > 0) {
-                updateImageCounter();
-                imagesGrid.addEventListener('scroll', throttle(updateImageCounter, 100));
-                
-                function updateImageCounter() {
-                    const scrollPos = imagesGrid.scrollLeft;
-                    const imgWidth = imagesGrid.querySelector('.gallery-item')?.offsetWidth || 0;
-                    const gap = 15;
-                    const currentImage = Math.round(scrollPos / (imgWidth + gap)) + 1;
-                    progressIndicator.textContent = `${currentImage} of ${project.images.length}`;
-                }
+            ${project.images && project.images.length > 20 ?
+                `<button id="show-more-images-btn" class="btn btn-primary" style="margin: 20px auto; display: block;">Show More</button>` : ""
             }
+        </div>
+    `;
+    
+    modal.style.display = "block";
+    void modal.offsetWidth;
+    modal.classList.add("show-modal");
+    
+    updateContentWithFade(modalGallery, htmlContent, () => {
+        const imagesGrid = modalGallery.querySelector(".project-images-grid");
+        const progressIndicator = modalGallery.querySelector(".gallery-progress");
 
-            const showMoreBtn = modalGallery.querySelector("#show-more-images-btn");
-            if (showMoreBtn) {
-                showMoreBtn.addEventListener("click", () => {
-                    imagesGrid.innerHTML = project.images.map(img => `
-                        <div class="gallery-item" style="flex: 0 0 300px;">
-                            <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; border-radius:8px;" loading="lazy">
-                        </div>
-                    `).join("");
-                    showMoreBtn.style.display = "none";
-                });
+        if (imagesGrid && progressIndicator && project.images?.length > 0) {
+            // تحديث العداد عند التحميل أولاً
+            updateImageCounter();
+            
+            // تحديث العداد عند التمرير
+            imagesGrid.addEventListener('scroll', updateImageCounter);
+            
+            function updateImageCounter() {
+                const scrollPos = imagesGrid.scrollLeft;
+                const imgWidth = imagesGrid.querySelector('.gallery-item')?.offsetWidth || 0;
+                const gap = 15; // يجب أن يتطابق مع الفجوة في CSS
+                const currentImage = Math.round(scrollPos / (imgWidth + gap)) + 1;
+                progressIndicator.textContent = `${currentImage} of ${project.images.length}`;
             }
+        }
 
-            document.getElementById("back-to-projects-btn").addEventListener("click", () => {
-                showProjectList(category);
+        const showMoreBtn = modalGallery.querySelector("#show-more-images-btn");
+        if (showMoreBtn) {
+            showMoreBtn.addEventListener("click", () => {
+                imagesGrid.innerHTML = project.images.map(img => `
+                    <div class="gallery-item" style="flex: 0 0 300px;">
+                        <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; border-radius:8px;" loading="lazy">
+                    </div>
+                `).join("");
+                showMoreBtn.style.display = "none";
             });
-        });
-    }
+        }
 
-    // إغلاق النافذة
+        document.getElementById("back-to-projects-btn").addEventListener("click", () => {
+            showProjectList(category);
+        });
+    });
+}
+    // Close modal
     closeModal.addEventListener("click", () => {
         modal.classList.remove("show-modal");
         const modalTransitionDuration = parseFloat(getComputedStyle(modal).transitionDuration) * 1000;
@@ -469,32 +475,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // عرض معاينات البطاقات
-    function populateCardPreviews() {
-        document.querySelectorAll(".portfolio-category").forEach(categoryDiv => {
-            const previewContainer = categoryDiv.querySelector(".card-preview");
-            previewContainer.innerHTML = "";
-            for (let i = 0; i < 3; i++) {
-                const placeholder = document.createElement("div");
-                placeholder.className = "preview-item";
-                previewContainer.appendChild(placeholder);
-            }
-        });
-    }
-
-    window.addEventListener("load", populateCardPreviews);
-
-    // فتح نافذة المشاريع عند النقر
-    document.querySelectorAll(".card-btn").forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            const category = e.target.closest(".portfolio-category").dataset.category;
-            showProjectList(category);
-        });
-    });
+    // إضافة الوظائف التي كانت خارج DOMContentLoaded هنا
+    // Navbar background on scroll - هذا الجزء كان موجوداً بالفعل ولكن خارج الـ DOMContentLoaded الرئيسي
+    // تم نقله إلى بداية الملف (بالتحديد، سيتم استبداله بالـ window.addEventListener("scroll") الذي بالأسفل)
 });
 
-// تأثير التمرير على النافبار
-window.addEventListener("scroll", throttle(() => {
+// هذا الجزء سيتم إزالته أو دمجه
+// Navbar background on scroll (هذا كان موجوداً ككتلة منفصلة)
+window.addEventListener("scroll", () => {
     const navbar = document.querySelector(".navbar");
     if (window.scrollY > 100) {
         navbar.style.background = "rgba(10, 10, 10, 0.8)";
@@ -503,4 +491,4 @@ window.addEventListener("scroll", throttle(() => {
         navbar.style.background = "rgba(10, 10, 10, 0.6)";
         navbar.style.backdropFilter = "blur(8px)";
     }
-}, 100));
+});
