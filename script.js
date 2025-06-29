@@ -506,17 +506,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("load", populateCardPreviews);
 
-    // فتح نافذة المشاريع عند النقر
+        // فتح نافذة المشاريع عند النقر
     document.querySelectorAll(".card-btn").forEach(btn => {
         btn.addEventListener("click", (e) => {
             const category = e.target.closest(".portfolio-category").dataset.category;
             showProjectList(category);
         });
     });
-});
 
-loadImages();
-});
+    // دالة معالجة أخطاء الصور
+    function handleImageError(img) {
+        img.src = 'images/placeholder.png';
+        img.alt = 'Image not available';
+        img.classList.add('loaded');
+    }
+
+    // تحميل الصور الأولي
+    loadImages();
+}); // نهاية DOMContentLoaded هنا فقط
 
 // تأثير التمرير على النافبار
 window.addEventListener("scroll", throttle(() => {
@@ -529,4 +536,3 @@ window.addEventListener("scroll", throttle(() => {
         navbar.style.backdropFilter = "blur(8px)";
     }
 }, 100));
-```
