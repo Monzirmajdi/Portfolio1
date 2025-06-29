@@ -14,6 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     }
 
+    // معالجة أخطاء الصور
+    function handleImageError(img) {
+        img.src = 'images/placeholder.png';
+        img.alt = 'Image not available';
+        img.classList.add('loaded');
+        console.error('Failed to load image:', img.dataset.src);
+    }
+
     // قائمة الهامبرجر
     const hamburger = document.querySelector(".hamburger");
     const navMenu = document.querySelector(".nav-menu");
@@ -163,22 +171,28 @@ document.addEventListener("DOMContentLoaded", () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.add('loaded');
-                lazyLoadObserver.unobserve(img);
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.onload = () => {
+                        img.classList.add('loaded');
+                    };
+                    img.onerror = () => {
+                        handleImageError(img);
+                    };
+                    lazyLoadObserver.unobserve(img);
+                }
             }
         });
     }, { threshold: 0.1 });
 
     // تفعيل Lazy Loading للصور
     document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-        img.dataset.src = img.src;
-        img.src = '';
-        lazyLoadObserver.observe(img);
-        
-        img.addEventListener('load', () => {
-            img.classList.add('loaded');
-        });
+        if (!img.src && img.dataset.src) {
+            lazyLoadObserver.observe(img);
+        }
+        img.onerror = () => {
+            handleImageError(img);
+        };
     });
 
     // Observer لأشرطة تقدم المهارات
@@ -217,6 +231,9 @@ document.addEventListener("DOMContentLoaded", () => {
         images.forEach(imgSrc => {
             const img = new Image();
             img.src = imgSrc;
+            img.onerror = () => {
+                console.warn('Failed to preload image:', imgSrc);
+            };
         });
     }
 
@@ -229,7 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     title: "Baseline Medical",
                     description: "Social media ads for Baseline Medical page",
                     tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage:"images/Social-media/Baseline/Untitled102_20250402071023_HK435gQb2B_UuiM0m0B3k.webp",
+                    previewImage: "images/Social-media/Baseline/Untitled102_20250402071023_HK435gQb2B_UuiM0m0B3k.webp",
                     images: ["images/Social-media/Baseline/Untitled102_20250402071023_HK435gQb2B_UuiM0m0B3k.webp", 
                              "images/Social-media/Baseline/Untitled106_20250405034447_Cl15GOrO8V_CPIHi0WE8y.webp", 
                              "images/Social-media/Baseline/Untitled107_20250404064546_vVMow1vi0g_c1Reykj31P.webp", 
@@ -350,7 +367,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <img src="${item.previewImage}"
                              alt="${item.title}"
                              class="project-image"
-                             onerror="this.src='images/placeholder.png'"
+                             onerror="handleImageError(this)"
                              loading="lazy">
                     </div>
                     <div class="project-info">
@@ -399,7 +416,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     ${project.images && project.images.length > 0 ?
                         project.images.map(img => `
                             <div class="gallery-item" style="flex: 0 0 30%; max-width:400px;min-width:250px;">
-                                <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; height:auto;border-radius:8px;" loading="lazy">
+                                <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; height:auto;border-radius:8px;" loading="lazy" onerror="handleImageError(this)">
                             </div>
                         `).join("") :
                         "<div class=\"gallery-placeholder\"><i class=\"fas fa-image\"></i> No images available</div>"
@@ -437,7 +454,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 showMoreBtn.addEventListener("click", () => {
                     imagesGrid.innerHTML = project.images.map(img => `
                         <div class="gallery-item" style="flex: 0 0 300px;">
-                            <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; border-radius:8px;" loading="lazy">
+                            <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; border-radius:8px;" loading="lazy" onerror="handleImageError(this)">
                         </div>
                     `).join("");
                     showMoreBtn.style.display = "none";
