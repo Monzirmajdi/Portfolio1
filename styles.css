@@ -1312,3 +1312,55 @@ body.light-mode .element-3 {
     filter: invert(100%); /* لتحويل الألوان إلى معكوسها، مما يجعل الأبيض أسود */
 }
 
+/* أضف هذا في ملف styles.css */
+
+.skills-section {
+    margin: 40px 0;
+}
+
+.skills-section h3 {
+    color: #f4c430;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.skill-bar {
+    margin-bottom: 20px;
+}
+
+.skill-name {
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.skill-level {
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #f4c430, #ffd700);
+    border-radius: 5px;
+    transition: width 1.5s ease-in-out;
+}
+
+/* أنماط الوضع الفاتح */
+body.light-mode .skill-name {
+    color: #333;
+}
+
+body.light-mode .skill-level {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* تصميم متجاوب */
+@media (max-width: 768px) {
+    .skill-bar {
+        margin-bottom: 15px;
+    }
+}
