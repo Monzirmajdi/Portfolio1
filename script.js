@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     title: "Baseline Medical",
                     description: "Social media ads for Baseline Medical page",
                     tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/Social-media/Baseline/Untitled102_20250402071023_HK435gQb2B_UuiM0m0B3k.webp",
+                    previewImage:"images/Social-media/Baseline/Untitled102_20250402071023_HK435gQb2B_UuiM0m0B3k.webp",
                     images: ["images/Social-media/Baseline/Untitled102_20250402071023_HK435gQb2B_UuiM0m0B3k.webp", 
                              "images/Social-media/Baseline/Untitled106_20250405034447_Cl15GOrO8V_CPIHi0WE8y.webp", 
                              "images/Social-media/Baseline/Untitled107_20250404064546_vVMow1vi0g_c1Reykj31P.webp", 
