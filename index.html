@@ -1,43 +1,27 @@
 <!DOCTYPE html>
 <html lang="ar" dir="ltr">
 <head>
-    <!-- إعدادات أساسية للصفحة -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MonzirGraphix - Graphic Designer Portfolio</title>
-    
-    <!-- Preload للموارد الحرجة -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Allura&display=swap" as="style">
-    <link rel="preload" href="styles.css" as="style">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
-    
-    <!-- روابط خطوط الويب -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Allura&display=swap" rel="stylesheet">
-    
-    <!-- ملفات CSS -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- إعدادات الوضع الفاتح والداكن -->
-    <meta name="color-scheme" content="light dark">
-    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
-    <meta name="theme-color" content="#f5f5f5" media="(prefers-color-scheme: light)">
 </head>
 <body>
-    <!-- شريط التنقل الرئيسي -->
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <!-- شعار الموقع -->
             <div class="nav-logo">
                 <span>Portfolio</span>
             </div>
             
-            <!-- زر تبديل الوضع الفاتح/الداكن -->
+            <!-- NEW: زر تبديل الوضع الفاتح/الداكن -->
             <div class="theme-toggle">
                 <i class="fas fa-moon"></i>
             </div>
+            <!-- /NEW -->
             
-            <!-- قائمة التنقل الرئيسية -->
             <ul class="nav-menu">
                 <li class="nav-item">
                     <a href="#home" class="nav-link">Home</a>
@@ -52,8 +36,6 @@
                     <a href="#contact" class="nav-link">Contact</a>
                 </li>
             </ul>
-            
-            <!-- أيقونة القائمة المتنقلة للهواتف -->
             <div class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -62,10 +44,9 @@
         </div>
     </nav>
 
-    <!-- قسم البطل (القسم الرئيسي الظاهر أولاً) -->
+    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-container">
-            <!-- محتوى النصوص والأزرار -->
             <div class="hero-content">
                 <h1 class="hero-title">
                     <span class="title-line">MONZIR</span>
@@ -77,50 +58,38 @@
                     <a href="#contact" class="btn btn-secondary">Get In Touch</a>
                 </div>
             </div>
-            
-            <!-- العناصر المرئية العائمة -->
             <div class="hero-visual">
                 <div class="floating-elements">
-                    <img src="images/Untitled24_20250624195444_BrobfRFK7c.png" alt="Floating Element 1" class="element element-1" loading="lazy">
-                    <img src="images/Untitled24_20250624194320_Xc8ml8Vk2q.png" alt="Floating Element 2" class="element element-2" loading="lazy">
-                    <img src="images/Untitled23_20250624194118_XFkCbgG27i.png" alt="Floating Element 3" class="element element-3" loading="lazy">
+                    <img src="images/Untitled24_20250624195444_BrobfRFK7c.png" alt="Floating Element 1" class="element element-1">
+                    <img src="images/Untitled24_20250624194320_Xc8ml8Vk2q.png" alt="Floating Element 2" class="element element-2">
+                    <img src="images/Untitled23_20250624194118_XFkCbgG27i.png" alt="Floating Element 3" class="element element-3">
                 </div>
             </div>
         </div>
-        
-        <!-- مؤشر التمرير للأسفل -->
         <div class="scroll-indicator">
             <div class="scroll-arrow"></div>
         </div>
     </section>
 
-    <!-- قسم "نبذة عني" -->
+    <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <!-- عنوان القسم والخط التحتي -->
             <div class="section-header">
                 <h2 class="section-title">About Me</h2>
                 <div class="section-line"></div>
             </div>
-            
-            <!-- محتوى القسم -->
             <div class="about-content">
                 <div class="about-text">
                     <p>I'm Monzir Majdi, a graphic designer with 1+ year of experience in branding, logo design, and visual identity, and over 5 years of experience in the broader visual arts, including both digital and traditional illustration.</p>
-                    <p>I'm a final-year Aeronautical Engineering student at Sudan University of Science and Technology, based in Sudan and currently residing in Egypt.</p>
-                    
-                    <!-- قائمة المهارات -->
+                    <p>I’m a final-year Aeronautical Engineering student at Sudan University of Science and Technology, based in Sudan and currently residing in Egypt.</p>
                     <p>Skilled in:</p>
                     <ul>
                         <li>Adobe Illustrator, Photoshop, InDesign</li>
                         <li>Presentations and AI design tools</li>
                     </ul>
-                    
                     <p>Certified by Coursera in Graphic Design and Adobe tools.</p>
                     <p>Currently working remotely with Baseline Medical.</p>
-                    <p>Let's bring your vision to life.</p>
-                    
-                    <!-- شبكة المهارات المصورة -->
+                    <p>Let’s bring your vision to life.</p>
                     <div class="skills-grid">
                         <div class="skill-item">
                             <i class="fab fa-adobe"></i>
@@ -139,51 +108,19 @@
                             <span>Social Media Design</span>
                         </div>
                     </div>
-
-                    <!-- أشرطة تقدم المهارات الجديدة -->
-                    <div class="skills-progress">
-                        <div class="skill">
-                            <h4>Adobe Illustrator <span>90%</span></h4>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <h4>Photoshop <span>85%</span></h4>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <h4>Brand Identity <span>80%</span></h4>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <h4>UI/UX Design <span>75%</span></h4>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 0%"></div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- قسم الأعمال (البورتفوليو) -->
+    <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
         <div class="container">
-            <!-- عنوان القسم والخط التحتي -->
             <div class="section-header">
                 <h2 class="section-title">Portfolio</h2>
                 <div class="section-line"></div>
             </div>
-            
-            <!-- شبكة أعمال البورتفوليو -->
             <div class="portfolio-grid">
-                <!-- فئة تصميم وسائل التواصل -->
                 <div class="portfolio-category" data-category="social-media">
                     <div class="category-card">
                         <div class="card-icon">
@@ -200,7 +137,6 @@
                     </div>
                 </div>
                 
-                <!-- فئة الهوية البصرية والشعارات -->
                 <div class="portfolio-category" data-category="branding">
                     <div class="category-card">
                         <div class="card-icon">
@@ -217,7 +153,6 @@
                     </div>
                 </div>
                 
-                <!-- فئة واجهات المستخدم -->
                 <div class="portfolio-category" data-category="ui-ux">
                     <div class="category-card">
                         <div class="card-icon">
@@ -237,7 +172,7 @@
         </div>
     </section>
 
-    <!-- نافذة معرض الأعمال المنبثقة -->
+    <!-- Portfolio Modal -->
     <div id="portfolio-modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -246,24 +181,20 @@
             </div>
             <div class="modal-body">
                 <div id="modal-gallery" class="gallery-grid">
-                    <!-- سيتم إضافة محتوى المعرض هنا ديناميكيًا باستخدام JavaScript -->
+                    <!-- سيتم تحميل عناصر البورتفوليو هنا ديناميكيًا -->
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- قسم الاتصال -->
+    <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <!-- عنوان القسم والخط التحتي -->
             <div class="section-header">
                 <h2 class="section-title">Get In Touch</h2>
                 <div class="section-line"></div>
             </div>
-            
-            <!-- محتوى قسم الاتصال -->
             <div class="contact-content">
-                <!-- معلومات الاتصال -->
                 <div class="contact-info">
                     <div class="contact-item">
                         <div class="contact-icon">
@@ -302,24 +233,18 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- نموذج الاتصال -->
                 <div class="contact-form">
                     <form id="contact-form">
                         <div class="form-group">
-                            <label for="name" class="sr-only">Your Name</label>
                             <input type="text" id="name" name="name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email" class="sr-only">Your Email</label>
                             <input type="email" id="email" name="email" placeholder="Your Email" required>
                         </div>
                         <div class="form-group">
-                            <label for="subject" class="sr-only">Subject</label>
                             <input type="text" id="subject" name="subject" placeholder="Subject" required>
                         </div>
                         <div class="form-group">
-                            <label for="message" class="sr-only">Your Message</label>
                             <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Send Message</button>
@@ -329,27 +254,24 @@
         </div>
     </section>
 
-    <!-- تذييل الصفحة -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <!-- حقوق النشر -->
                 <div class="footer-text">
                     <p>&copy; 2025 MonzirGraphix. All rights reserved.</p>
                 </div>
-                
-                <!-- روابط وسائل التواصل الاجتماعي -->
                 <div class="footer-social">
-                    <a href="https://linkedin.com/in/monzirgraphix" target="_blank" class="social-link" aria-label="LinkedIn">
+                    <a href="https://linkedin.com/in/monzirgraphix" target="_blank" class="social-link">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="https://www.facebook.com/share/15ss3pWBjG/?mibextid=qi2Omg" target="_blank" class="social-link" aria-label="Facebook">
+                    <a href="https://www.facebook.com/share/15ss3pWBjG/?mibextid=qi2Omg" target="_blank" class="social-link">
                         <i class="fab fa-facebook"></i>
                     </a>
-                    <a href="https://www.instagram.com/monzir_magdi?igsh=Z25paDEybHVzeWM=" target="_blank" class="social-link" aria-label="Instagram">
+                    <a href="https://www.instagram.com/monzir_magdi?igsh=Z25paDEybHVzeWM=" target="_blank" class="social-link">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="mailto:monzir121953@gmail.com" class="social-link" aria-label="Email">
+                    <a href="mailto:monzir121953@gmail.com" class="social-link">
                         <i class="fas fa-envelope"></i>
                     </a>
                 </div>
@@ -357,7 +279,6 @@
         </div>
     </footer>
 
-    <!-- ملف JavaScript -->
     <script src="script.js"></script>
 </body>
-</html>
+                    </html>
