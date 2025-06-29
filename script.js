@@ -1,4 +1,3 @@
-
 // جميع الأحداث المتعلقة بتحميل الصفحة
 document.addEventListener("DOMContentLoaded", () => {
     // دالة Throttle لتحسين الأداء
@@ -15,25 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     }
 
-    // تحميل الصور المحسّن
-    function loadImages() {
-        document.querySelectorAll('.project-image').forEach(img => {
-            const realSrc = img.dataset.src;
-            if (realSrc) {
-                const image = new Image();
-                image.src = realSrc;
-                image.onload = () => {
-                    img.src = realSrc;
-                    img.classList.add('loaded');
-                };
-                image.onerror = () => {
-                    img.src = 'images/placeholder.png';
-                    img.classList.add('loaded');
-                };
-            }
-        });
-    }
-
     // قائمة الهامبرجر
     const hamburger = document.querySelector(".hamburger");
     const navMenu = document.querySelector(".nav-menu");
@@ -43,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             hamburger.classList.toggle("active");
             navMenu.classList.toggle("active");
             
+            // تحسينات للوصولية
             const isExpanded = navMenu.classList.contains("active");
             hamburger.setAttribute("aria-expanded", isExpanded);
         });
@@ -182,28 +163,22 @@ document.addEventListener("DOMContentLoaded", () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const img = entry.target;
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                    img.onload = () => {
-                        img.classList.add('loaded');
-                    };
-                    img.onerror = () => {
-                        handleImageError(img);
-                    };
-                    lazyLoadObserver.unobserve(img);
-                }
+                img.src = img.dataset.src;
+                img.classList.add('loaded');
+                lazyLoadObserver.unobserve(img);
             }
         });
     }, { threshold: 0.1 });
 
     // تفعيل Lazy Loading للصور
     document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-        if (!img.src && img.dataset.src) {
-            lazyLoadObserver.observe(img);
-        }
-        img.onerror = () => {
-            handleImageError(img);
-        };
+        img.dataset.src = img.src;
+        img.src = '';
+        lazyLoadObserver.observe(img);
+        
+        img.addEventListener('load', () => {
+            img.classList.add('loaded');
+        });
     });
 
     // Observer لأشرطة تقدم المهارات
@@ -242,9 +217,6 @@ document.addEventListener("DOMContentLoaded", () => {
         images.forEach(imgSrc => {
             const img = new Image();
             img.src = imgSrc;
-            img.onerror = () => {
-                console.warn('Failed to preload image:', imgSrc);
-            };
         });
     }
 
@@ -353,51 +325,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // عرض قائمة المشاريع
     function showProjectList(category) {
-    const data = portfolioData[category];
-    if (!data) return;
+        const data = portfolioData[category];
+        if (!data) return;
 
-    modalTitle.textContent = data.title;
+        // Preload الصور قبل العرض
+        data.items.forEach(item => {
+            preloadGalleryImages(item.images);
+        });
 
-    let htmlContent = "";
-    if (data.items.length === 0) {
-        htmlContent = `
-            <div class="empty-category">
-                <i class="fas fa-folder-open"></i>
-                <h3>No projects yet</h3>
-            </div>
-        `;
-    } else {
-        const gridItems = data.items.map((item, index) => `
-            <div class="project-card" data-category="${category}" data-index="${index}">
-                <div class="image-container">
-                    <img data-src="${item.previewImage}"
-                         alt="${item.title}"
-                         class="project-image"
-                         loading="lazy">
+        modalTitle.textContent = data.title;
+
+        let htmlContent = "";
+        if (data.items.length === 0) {
+            htmlContent = `
+                <div class="empty-category">
+                    <i class="fas fa-folder-open"></i>
+                    <h3>No projects yet</h3>
                 </div>
-                <div class="project-info">
-                    <h3>${item.title}</h3>
-                    <p>${item.description.substring(0, 60)}...</p>
+            `;
+        } else {
+            const gridItems = data.items.map((item, index) => `
+                <div class="project-card" data-category="${category}" data-index="${index}">
+                    <div class="image-container">
+                        <img src="${item.previewImage}"
+                             alt="${item.title}"
+                             class="project-image"
+                             onerror="this.src='images/placeholder.png'"
+                             loading="lazy">
+                    </div>
+                    <div class="project-info">
+                        <h3>${item.title}</h3>
+                        <p>${item.description.substring(0, 60)}...</p>
+                    </div>
                 </div>
-            </div>
-        `).join("");
-        htmlContent = `<div class="modal-gallery-grid">${gridItems}</div>`;
-    }
+            `).join("");
+            htmlContent = `<div class="modal-gallery-grid">${gridItems}</div>`;
+        }
 
-    modal.style.display = "block";
-    void modal.offsetWidth;
-    modal.classList.add("show-modal");
-    updateContentWithFade(modalGallery, htmlContent, () => {
-        loadImages(); // تحميل الصور بعد فتح المودال
-        document.querySelectorAll(".project-card").forEach(card => {
-            card.addEventListener("click", (e) => {
-                const cat = e.currentTarget.dataset.category;
-                const idx = parseInt(e.currentTarget.dataset.index);
-                showProjectDetails(cat, idx);
+        modal.style.display = "block";
+        void modal.offsetWidth;
+        modal.classList.add("show-modal");
+        updateContentWithFade(modalGallery, htmlContent, () => {
+            document.querySelectorAll(".project-card").forEach(card => {
+                card.addEventListener("click", (e) => {
+                    const cat = e.currentTarget.dataset.category;
+                    const idx = parseInt(e.currentTarget.dataset.index);
+                    showProjectDetails(cat, idx);
+                });
             });
         });
-    });
-}
+    }
+
     // عرض تفاصيل المشروع
     function showProjectDetails(category, projectIndex) {
         const data = portfolioData[category];
@@ -421,7 +399,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     ${project.images && project.images.length > 0 ?
                         project.images.map(img => `
                             <div class="gallery-item" style="flex: 0 0 30%; max-width:400px;min-width:250px;">
-                                <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; height:auto;border-radius:8px;" loading="lazy" onerror="handleImageError(this)">
+                                <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; height:auto;border-radius:8px;" loading="lazy">
                             </div>
                         `).join("") :
                         "<div class=\"gallery-placeholder\"><i class=\"fas fa-image\"></i> No images available</div>"
@@ -459,7 +437,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 showMoreBtn.addEventListener("click", () => {
                     imagesGrid.innerHTML = project.images.map(img => `
                         <div class="gallery-item" style="flex: 0 0 300px;">
-                            <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; border-radius:8px;" loading="lazy" onerror="handleImageError(this)">
+                            <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; border-radius:8px;" loading="lazy">
                         </div>
                     `).join("");
                     showMoreBtn.style.display = "none";
@@ -506,24 +484,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("load", populateCardPreviews);
 
-        // فتح نافذة المشاريع عند النقر
+    // فتح نافذة المشاريع عند النقر
     document.querySelectorAll(".card-btn").forEach(btn => {
         btn.addEventListener("click", (e) => {
             const category = e.target.closest(".portfolio-category").dataset.category;
             showProjectList(category);
         });
     });
-
-    // دالة معالجة أخطاء الصور
-    function handleImageError(img) {
-        img.src = 'images/placeholder.png';
-        img.alt = 'Image not available';
-        img.classList.add('loaded');
-    }
-
-    // تحميل الصور الأولي
-    loadImages();
-}); // نهاية DOMContentLoaded هنا فقط
+});
 
 // تأثير التمرير على النافبار
 window.addEventListener("scroll", throttle(() => {
