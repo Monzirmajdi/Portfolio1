@@ -1,3 +1,4 @@
+
 // جميع الأحداث المتعلقة بتحميل الصفحة
 document.addEventListener("DOMContentLoaded", () => {
     // دالة Throttle لتحسين الأداء
@@ -14,12 +15,23 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     }
 
-    // معالجة أخطاء الصور
-    function handleImageError(img) {
-        img.src = 'images/placeholder.png';
-        img.alt = 'Image not available';
-        img.classList.add('loaded');
-        console.error('Failed to load image:', img.dataset.src);
+    // تحميل الصور المحسّن
+    function loadImages() {
+        document.querySelectorAll('.project-image').forEach(img => {
+            const realSrc = img.dataset.src;
+            if (realSrc) {
+                const image = new Image();
+                image.src = realSrc;
+                image.onload = () => {
+                    img.src = realSrc;
+                    img.classList.add('loaded');
+                };
+                image.onerror = () => {
+                    img.src = 'images/placeholder.png';
+                    img.classList.add('loaded');
+                };
+            }
+        });
     }
 
     // قائمة الهامبرجر
@@ -31,7 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
             hamburger.classList.toggle("active");
             navMenu.classList.toggle("active");
             
-            // تحسينات للوصولية
             const isExpanded = navMenu.classList.contains("active");
             hamburger.setAttribute("aria-expanded", isExpanded);
         });
@@ -342,57 +353,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // عرض قائمة المشاريع
     function showProjectList(category) {
-        const data = portfolioData[category];
-        if (!data) return;
+    const data = portfolioData[category];
+    if (!data) return;
 
-        // Preload الصور قبل العرض
-        data.items.forEach(item => {
-            preloadGalleryImages(item.images);
-        });
+    modalTitle.textContent = data.title;
 
-        modalTitle.textContent = data.title;
-
-        let htmlContent = "";
-        if (data.items.length === 0) {
-            htmlContent = `
-                <div class="empty-category">
-                    <i class="fas fa-folder-open"></i>
-                    <h3>No projects yet</h3>
+    let htmlContent = "";
+    if (data.items.length === 0) {
+        htmlContent = `
+            <div class="empty-category">
+                <i class="fas fa-folder-open"></i>
+                <h3>No projects yet</h3>
+            </div>
+        `;
+    } else {
+        const gridItems = data.items.map((item, index) => `
+            <div class="project-card" data-category="${category}" data-index="${index}">
+                <div class="image-container">
+                    <img data-src="${item.previewImage}"
+                         alt="${item.title}"
+                         class="project-image"
+                         loading="lazy">
                 </div>
-            `;
-        } else {
-            const gridItems = data.items.map((item, index) => `
-                <div class="project-card" data-category="${category}" data-index="${index}">
-                    <div class="image-container">
-                        <img src="${item.previewImage}"
-                             alt="${item.title}"
-                             class="project-image"
-                             onerror="handleImageError(this)"
-                             loading="lazy">
-                    </div>
-                    <div class="project-info">
-                        <h3>${item.title}</h3>
-                        <p>${item.description.substring(0, 60)}...</p>
-                    </div>
+                <div class="project-info">
+                    <h3>${item.title}</h3>
+                    <p>${item.description.substring(0, 60)}...</p>
                 </div>
-            `).join("");
-            htmlContent = `<div class="modal-gallery-grid">${gridItems}</div>`;
-        }
-
-        modal.style.display = "block";
-        void modal.offsetWidth;
-        modal.classList.add("show-modal");
-        updateContentWithFade(modalGallery, htmlContent, () => {
-            document.querySelectorAll(".project-card").forEach(card => {
-                card.addEventListener("click", (e) => {
-                    const cat = e.currentTarget.dataset.category;
-                    const idx = parseInt(e.currentTarget.dataset.index);
-                    showProjectDetails(cat, idx);
-                });
-            });
-        });
+            </div>
+        `).join("");
+        htmlContent = `<div class="modal-gallery-grid">${gridItems}</div>`;
     }
 
+    modal.style.display = "block";
+    void modal.offsetWidth;
+    modal.classList.add("show-modal");
+    updateContentWithFade(modalGallery, htmlContent, () => {
+        loadImages(); // تحميل الصور بعد فتح المودال
+        document.querySelectorAll(".project-card").forEach(card => {
+            card.addEventListener("click", (e) => {
+                const cat = e.currentTarget.dataset.category;
+                const idx = parseInt(e.currentTarget.dataset.index);
+                showProjectDetails(cat, idx);
+            });
+        });
+    });
+}
     // عرض تفاصيل المشروع
     function showProjectDetails(category, projectIndex) {
         const data = portfolioData[category];
@@ -510,6 +515,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+loadImages();
+});
+
 // تأثير التمرير على النافبار
 window.addEventListener("scroll", throttle(() => {
     const navbar = document.querySelector(".navbar");
@@ -521,3 +529,4 @@ window.addEventListener("scroll", throttle(() => {
         navbar.style.backdropFilter = "blur(8px)";
     }
 }, 100));
+```
