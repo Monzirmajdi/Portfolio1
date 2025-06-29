@@ -14,6 +14,32 @@ document.addEventListener("DOMContentLoaded", () => {
             hamburger.classList.remove("active");
             navMenu.classList.remove("active");
         }));
+        // أضف هذا الكود في ملف script.js داخل event listener لـ DOMContentLoaded
+
+// Animation for skill bars
+const skillBars = document.querySelectorAll('.skill-level');
+if (skillBars.length > 0) {
+    const animateSkillBars = () => {
+        skillBars.forEach(bar => {
+            const progress = bar.querySelector('.skill-progress');
+            const level = bar.getAttribute('data-level');
+            progress.style.width = level;
+        });
+    };
+
+    // Trigger animation when section is in view
+    const aboutSection = document.querySelector('#about');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateSkillBars();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    observer.observe(aboutSection);
+}
     }
 
     // Dynamic Navbar Title on Scroll (تم نقل هذا الجزء هنا)
