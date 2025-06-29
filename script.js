@@ -170,8 +170,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }, { threshold: 0.1 });
 
-    // تفعيل Lazy Loading للصور (استثناء الصور المعاينة)
-    document.querySelectorAll('img[loading="lazy"]:not(.project-image)').forEach(img => {
+    // تفعيل Lazy Loading للصور
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
         img.dataset.src = img.src;
         img.src = '';
         lazyLoadObserver.observe(img);
@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     title: "khomra",
                     description: "Social media ad for local Sudanese perfume",
                     tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/Social-media/Khomra/1000004769_A22mea5b06_qG6cn5Fd2r.webp", 
+                    previewImage: "images/Social-media/Khomra/1000004769_A22mea5b06_qG6cn5Fd2r.webp",
                     images: ["images/Social-media/Khomra/1000004769_A22mea5b06_qG6cn5Fd2r.webp", 
                              "images/Social-media/Khomra/1000004767_NtGk94AQ8p.webp", 
                              "images/Social-media/Khomra/1000004768_jNCdAheZ0X.webp"]
@@ -330,11 +330,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Preload الصور قبل العرض
         data.items.forEach(item => {
-            // Preload صورة المعاينة أولاً
-            const previewImg = new Image();
-            previewImg.src = item.previewImage;
-            
-            // ثم باقي الصور
             preloadGalleryImages(item.images);
         });
 
@@ -355,7 +350,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         <img src="${item.previewImage}"
                              alt="${item.title}"
                              class="project-image"
-                             onerror="console.error('Failed to load preview image:', this.src); this.src='images/placeholder.png'">
+                             onerror="this.src='images/placeholder.png'"
+                             loading="lazy">
                     </div>
                     <div class="project-info">
                         <h3>${item.title}</h3>
