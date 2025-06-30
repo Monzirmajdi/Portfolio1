@@ -1,6 +1,6 @@
-// Hamburger menu functionality & all other DOMContentLoaded related scripts
+// وظيفة قائمة الهامبرغر وجميع السكريبتات الأخرى المتعلقة بتحميل DOM
 document.addEventListener("DOMContentLoaded", () => {
-    // Hamburger menu
+    // قائمة الهامبرغر
     const hamburger = document.querySelector(".hamburger");
     const navMenu = document.querySelector(".nav-menu");
 
@@ -14,35 +14,33 @@ document.addEventListener("DOMContentLoaded", () => {
             hamburger.classList.remove("active");
             navMenu.classList.remove("active");
         }));
-        // أضف هذا الكود في ملف script.js داخل event listener لـ DOMContentLoaded
-
-// Animation for skill bars
-const skillBars = document.querySelectorAll('.skill-level');
-if (skillBars.length > 0) {
-    const animateSkillBars = () => {
-        skillBars.forEach(bar => {
-            const progress = bar.querySelector('.skill-progress');
-            const level = bar.getAttribute('data-level');
-            progress.style.width = level;
-        });
-    };
-
-    // Trigger animation when section is in view
-    const aboutSection = document.querySelector('#about');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateSkillBars();
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.2 });
-
-    observer.observe(aboutSection);
-}
     }
 
-    // Dynamic Navbar Title on Scroll (تم نقل هذا الجزء هنا)
+    // وظيفة تبديل الوضع (فاتح/داكن)
+    const themeToggle = document.querySelector(".theme-toggle");
+    const body = document.body;
+
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            const icon = themeToggle.querySelector("i");
+            body.classList.toggle("light-mode");
+            if (body.classList.contains("light-mode")) {
+                icon.classList.replace("fa-moon", "fa-sun");
+                localStorage.setItem("page-theme", "light");
+            } else {
+                icon.classList.replace("fa-sun", "fa-moon");
+                localStorage.setItem("page-theme", "dark");
+            }
+        });
+
+        // تحميل التفضيل المحفوظ عند بدء التشغيل
+        if (localStorage.getItem("page-theme") === "light") {
+            body.classList.add("light-mode");
+            themeToggle.querySelector("i").classList.replace("fa-moon", "fa-sun");
+        }
+    }
+
+    // عنوان شريط التنقل الديناميكي عند التمرير
     const navLogoSpan = document.querySelector(".nav-logo span");
     const sections = document.querySelectorAll("section[id]");
 
@@ -54,7 +52,7 @@ if (skillBars.length > 0) {
     };
 
     function updateNavLogoTitle() {
-        let currentSectionId = "home"; // Default to home
+        let currentSectionId = "home"; // الافتراضي هو الصفحة الرئيسية
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -74,7 +72,7 @@ if (skillBars.length > 0) {
     // استدعاء الدالة عند التمرير
     window.addEventListener("scroll", updateNavLogoTitle);
 
-    // Typing effect for Hero Subtitle (تم إضافة هذا الجزء هنا)
+    // تأثير الكتابة لعنوان البطل الفرعي
     const heroSubtitle = document.querySelector(".hero-subtitle");
     const textToType = "Graphic Designer & Visual Artist";
     let charIndex = 0;
@@ -83,7 +81,7 @@ if (skillBars.length > 0) {
     if (heroSubtitle) {
         heroSubtitle.textContent = ""; // ابدأ بنص فارغ
         heroSubtitle.style.opacity = 1; // اجعله مرئياً
-        heroSubtitle.style.animation = 'none'; // أوقف الـ fadeInUp إذا كان يتعارض
+        heroSubtitle.style.animation = "none"; // أوقف الـ fadeInUp إذا كان يتعارض
         typeWriter();
     }
 
@@ -97,115 +95,39 @@ if (skillBars.length > 0) {
         }
     }
 
-    // Theme toggle functionality (تم دمجها هنا)
-    const themeToggle = document.querySelector(".theme-toggle");
-    const body = document.body;
-
-    if (themeToggle) {
-        themeToggle.addEventListener("click", () => {
-            const icon = themeToggle.querySelector("i");
-            body.classList.toggle('light-mode');
-            if (body.classList.contains('light-mode')) {
-                icon.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('page-theme', 'light');
-            } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
-                localStorage.setItem('page-theme', 'dark');
-            }
-        });
-
-        // تحميل التفضيل المحفوظ عند بدء التشغيل
-        if (localStorage.getItem('page-theme') === 'light') {
-            body.classList.add('light-mode');
-            themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
-        }
-    }
-
-    // Portfolio Modal Functionality (هذا الجزء كان موجوداً بالفعل وتم الاحتفاظ به)
-    const modal = document.getElementById("portfolio-modal");
-    const closeModal = document.querySelector(".modal .close");
-    const modalTitle = document.getElementById("modal-title");
-    const modalGallery = document.getElementById("modal-gallery");
-
-    // دالة لتحديث المحتوى بسلاسة
-    // في الجزء الخاص بـ updateContentWithFade، استبدل الدالة بالكود التالي:
-function updateContentWithFade(element, newHTML, callback) {
-    element.style.opacity = 0;
-    element.style.pointerEvents = 'none'; // تعطيل التفاعلات أثناء الانتقال
-    
-    setTimeout(() => {
-        element.innerHTML = newHTML;
-        element.style.opacity = '';
-        element.style.pointerEvents = ''; // إعادة تمكين التفاعلات
-        
-        // إضافة انتقال سلس للظهور
-        setTimeout(() => {
-            if (callback) callback();
-        }, 50); // تأخير بسيط لضمان تطبيق التغييرات
-    }, 300); // يتناسب مع مدة الانتقال في CSS
-}
-
-// في الجزء الخاص بـ showProjectList، تأكد من إزالة معالج الأحداث القديم قبل إضافة الجديد:
-function showProjectList(category) {
-    const data = portfolioData[category];
-    if (!data) return;
-
-    modalTitle.textContent = data.title;
-
-    let htmlContent = "";
-    if (data.items.length === 0) {
-        htmlContent = `
-            <div class="empty-category">
-                <i class="fas fa-folder-open"></i>
-                <h3>No projects yet</h3>
-            </div>
-        `;
-    } else {
-        const gridItems = data.items.map((item, index) => `
-            <div class="project-card" data-category="${category}" data-index="${index}">
-                <div class="image-container">
-                    <img src="${item.previewImage}"
-                         alt="${item.title}"
-                         class="project-image"
-                         onerror="this.src='images/placeholder.png'"
-                         loading="lazy">
-                </div>
-                <div class="project-info">
-                    <h3>${item.title}</h3>
-                    <p>${item.description.substring(0, 60)}...</p>
-                </div>
-            </div>
-        `).join("");
-        htmlContent = `<div class="modal-gallery-grid">${gridItems}</div>`;
-    }
-
-    modal.style.display = "block";
-    void modal.offsetWidth;
-    modal.classList.add("show-modal");
-    
-    // إزالة أي معالجات أحداث موجودة مسبقاً
-    const oldGallery = modalGallery.cloneNode(false);
-    modalGallery.parentNode.replaceChild(oldGallery, modalGallery);
-    modalGallery = oldGallery;
-    
-    updateContentWithFade(modalGallery, htmlContent, () => {
-        document.querySelectorAll(".project-card").forEach(card => {
-            card.addEventListener("click", (e) => {
-                const cat = e.currentTarget.dataset.category;
-                const idx = parseInt(e.currentTarget.dataset.index);
-                showProjectDetails(cat, idx);
+    // تحريك أشرطة المهارات
+    const skillBars = document.querySelectorAll(".skill-level");
+    if (skillBars.length > 0) {
+        const animateSkillBars = () => {
+            skillBars.forEach(bar => {
+                const progress = bar.querySelector(".skill-progress");
+                const level = bar.getAttribute("data-level");
+                progress.style.width = level;
             });
-        });
-    });
-}
-    // Portfolio data structure
+        };
+
+        // تشغيل التحريك عندما يكون القسم مرئيًا
+        const aboutSection = document.querySelector("#about");
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkillBars();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        observer.observe(aboutSection);
+    }
+
+    // بيانات الأعمال
     const portfolioData = {
         "social-media": {
-            title: "Social Media Design",
+            title: "تصميم وسائل التواصل الاجتماعي",
             items: [
                 {
                     title: "Baseline Medical",
-                    description: "Social media ads for Baseline Medical page",
+                    description: "إعلانات وسائل التواصل الاجتماعي لصفحة Baseline Medical",
                     tools: "Adobe Illustrator, Adobe Photoshop",
                     previewImage: "images/Social-media/Baseline/Untitled102_20250402071023_HK435gQb2B_UuiM0m0B3k.webp",
                     images: ["images/Social-media/Baseline/Untitled102_20250402071023_HK435gQb2B_UuiM0m0B3k.webp", 
@@ -222,8 +144,8 @@ function showProjectList(category) {
                              "images/Social-media/Baseline/Untitled169 (1)_CNyjEGoT8O_6IYibalO29.webp"]
                 },
                 {
-                    title: "khomra",
-                    description: "Social media ad for local Sudanese perfume",
+                    title: "خمرة",
+                    description: "إعلان وسائل التواصل الاجتماعي لعطر سوداني محلي",
                     tools: "Adobe Illustrator, Adobe Photoshop",
                     previewImage: "images/Social-media/Khomra/1000004769_A22mea5b06_qG6cn5Fd2r.webp",
                     images: ["images/Social-media/Khomra/1000004769_A22mea5b06_qG6cn5Fd2r.webp", 
@@ -231,8 +153,8 @@ function showProjectList(category) {
                              "images/Social-media/Khomra/1000004768_jNCdAheZ0X.webp"]
                 },
                 {
-                    title: "Social media designs",
-                    description: "Mixed social media Designs for real and imaginary brands",
+                    title: "تصاميم وسائل التواصل الاجتماعي",
+                    description: "تصاميم وسائل التواصل الاجتماعي مختلطة لعلامات تجارية حقيقية وخيالية",
                     tools: "Adobe Illustrator, Adobe Photoshop",
                     previewImage: "images/Social-media/ADS/c1_20250626_06183977_UzHmudLu4R_r1uXqT7v7x.webp",
                     images: ["images/Social-media/ADS/c1_20250626_06183977_UzHmudLu4R_r1uXqT7v7x.webp", 
@@ -245,43 +167,14 @@ function showProjectList(category) {
                              "images/Social-media/ADS/c1_20250626_06183730_n0tZuHHu4j_XkXAH8WV3L.webp", 
                              "images/Social-media/ADS/c1_20250626_06183830_pIuHZwJZ91_B28wVhSp3t.webp" ]
                 }
-                
             ]
         },
         "branding": {
-            title: "Brand Identity & Logos",
+            title: "هوية العلامة التجارية والشعارات",
             items: [
-              /* {
-                    title: "تليفوني - متجر للهواتف والاكسسوارات",
-                    description: "تصميم هوية بصرية لمتجر هواتف واكسسوارات",
-                    tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/1000229017.jpg",
-                    images: ["images/1000229017.jpg", "images/1000229016.jpg", "images/1000229023.jpg"]
-                },
                 {
-                    title: "مؤسسة د/أبو ذر الكودة - مؤسسة تعليمية",
-                    description: "تصميم شعار لمؤسسة تعليمية",
-                    tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/1000229023.jpg",
-                    images: ["images/1000229023.jpg", "images/1000229024.jpg"]
-                },
-                {
-                    title: "Nook Nest - محل لبيع الأثاث المنزلي والمكتبي",
-                    description: "تصميم هوية بصرية لمحل أثاث منزلي ومكتبي",
-                    tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/1000229008.jpg",
-                    images: ["images/1000229008.jpg", "images/1000229009.jpg"]
-                },
-                {
-                    title: "JK Arts - شعار لمنشئ محتوى فني",
-                    description: "تصميم شعار لمنشئ محتوى فني",
-                    tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/1000229019.jpg",
-                    images: ["images/1000229019.jpg", "images/1000229020.jpg"]
-                },*/
-                {
-                    title: "Ratina - براند سوداني للطرح والمنتجات التجميلية",
-                    description: "تصميم هوية بصرية لبراند سوداني للطرح والمنتجات التجميلية",
+                    title: "راتينا - علامة تجارية سودانية للطرح ومنتجات التجميل",
+                    description: "تصميم هوية بصرية لعلامة تجارية سودانية للطرح ومنتجات التجميل",
                     tools: "Adobe Illustrator, Adobe Photoshop",
                     previewImage: "images/Branding/Ratina/Untitled182_20250605061344_CvWhFKhQ4Q.webp",
                     images: ["images/Branding/Ratina/Untitled182_20250605061344_CvWhFKhQ4Q.webp", 
@@ -291,8 +184,8 @@ function showProjectList(category) {
                              "images/Branding/Ratina/Untitled180_20250605060456_vryLtoMw0E.webp"]
                 }, 
                 {
-                    title: "Sa Stainless Steel - براند سوداني للاكسسوارات الفضة الاستيل",
-                    description: "تصميم هوية بصرية لبراند سوداني للاكسسوارات الفضة",
+                    title: "Sa Stainless Steel - علامة تجارية سودانية لإكسسوارات الفضة والستانلس ستيل",
+                    description: "تصميم هوية بصرية لعلامة تجارية سودانية لإكسسوارات الفضة",
                     tools: "Adobe Illustrator, Adobe Photoshop",
                     previewImage: "images/Branding/Sa/Untitled28_20250624203543_YNhA6ynz1M.webp",
                     images: ["images/Branding/Sa/1_NtqvnVum6y.webp", 
@@ -304,65 +197,72 @@ function showProjectList(category) {
             ]
         },
         "ui-ux": {
-            title: "UI/UX Design",
+            title: "تصميم واجهة المستخدم/تجربة المستخدم",
             items: [
-             /*   {
-                    title: "Mobile App Interface",
-                    description: "Healthcare mobile application design",
-                    tools: "Figma, Adobe XD",
-                    previewImage: "images/placeholder.png",
-                    images: []
-                },
-                {
-                    title: "E-commerce Website",
-                    description: "Complete website design and user experience",
-                    tools: "Figma, Sketch",
-                    previewImage: "images/placeholder.png",
-                    images: []
-                },
-                {
-                    title: "Dashboard Design",
-                    description: "Admin dashboard for business management",
-                    tools: "Adobe XD, Figma",
-                    previewImage: "images/placeholder.png",
-                    images: []
-                },
-                {
-                    title: "Landing Page Design",
-                    description: "High-converting landing page layouts",
-                    tools: "Figma, Photoshop",
-                    previewImage: "images/placeholder.png",
-                    images: []
-                }*/
+                // يمكن إضافة عناصر هنا لاحقًا
             ]
         }
     };
 
-    // Function to populate card previews
+    // دالة لملء معاينات البطاقات
     function populateCardPreviews() {
         document.querySelectorAll(".portfolio-category").forEach(categoryDiv => {
             const previewContainer = categoryDiv.querySelector(".card-preview");
-            previewContainer.innerHTML = "";
-            for (let i = 0; i < 3; i++) {
-                const placeholder = document.createElement("div");
-                placeholder.className = "preview-item";
-                previewContainer.appendChild(placeholder);
+            previewContainer.innerHTML = ""; // مسح المحتوى الحالي
+
+            const category = categoryDiv.dataset.category;
+            const data = portfolioData[category];
+
+            if (data && data.items.length > 0) {
+                // عرض أول 3 صور معاينة أو أقل إذا كانت المشاريع أقل
+                for (let i = 0; i < Math.min(3, data.items.length); i++) {
+                    const item = data.items[i];
+                    const img = document.createElement("img");
+                    img.src = item.previewImage;
+                    img.alt = item.title;
+                    img.classList.add("preview-item");
+                    previewContainer.appendChild(img);
+                }
+            } else {
+                // عرض عناصر نائبة إذا لم تكن هناك مشاريع
+                for (let i = 0; i < 3; i++) {
+                    const placeholder = document.createElement("div");
+                    placeholder.classList.add("preview-item", "gallery-placeholder");
+                    placeholder.innerHTML = 
+                        `<i class="fas fa-image"></i>`;
+                    previewContainer.appendChild(placeholder);
+                }
             }
         });
     }
 
-    window.addEventListener("load", populateCardPreviews);
+    // استدعاء الدالة عند تحميل الصفحة
+    populateCardPreviews();
 
-    // Open modal when portfolio category is clicked
-    document.querySelectorAll(".card-btn").forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            const category = e.target.closest(".portfolio-category").dataset.category;
-            showProjectList(category);
-        });
-    });
+    // وظيفة نافذة الأعمال المنبثقة
+    const modal = document.getElementById("portfolio-modal");
+    const closeModal = document.querySelector(".modal .close");
+    const modalTitle = document.getElementById("modal-title");
+    let modalGallery = document.getElementById("modal-gallery");
 
-    let currentCategory = null;
+    // دالة لتحديث المحتوى بسلاسة
+    function updateContentWithFade(element, newHTML, callback) {
+        element.style.opacity = 0;
+        element.style.pointerEvents = "none"; // تعطيل التفاعلات أثناء الانتقال
+        
+        setTimeout(() => {
+            element.innerHTML = newHTML;
+            element.style.opacity = "";
+            element.style.pointerEvents = ""; // إعادة تمكين التفاعلات
+            
+            // إضافة انتقال سلس للظهور
+            setTimeout(() => {
+                if (callback) callback();
+            }, 50); // تأخير بسيط لضمان تطبيق التغييرات
+        }, 300); // يتناسب مع مدة الانتقال في CSS
+    }
 
+    // عرض قائمة المشاريع
     function showProjectList(category) {
         const data = portfolioData[category];
         if (!data) return;
@@ -374,7 +274,7 @@ function showProjectList(category) {
             htmlContent = `
                 <div class="empty-category">
                     <i class="fas fa-folder-open"></i>
-                    <h3>No projects yet</h3>
+                    <h3>لا توجد مشاريع بعد</h3>
                 </div>
             `;
         } else {
@@ -399,6 +299,12 @@ function showProjectList(category) {
         modal.style.display = "block";
         void modal.offsetWidth;
         modal.classList.add("show-modal");
+        
+        // إزالة أي معالجات أحداث موجودة مسبقاً
+        const oldGallery = modalGallery.cloneNode(false);
+        modalGallery.parentNode.replaceChild(oldGallery, modalGallery);
+        modalGallery = oldGallery;
+        
         updateContentWithFade(modalGallery, htmlContent, () => {
             document.querySelectorAll(".project-card").forEach(card => {
                 card.addEventListener("click", (e) => {
@@ -410,111 +316,87 @@ function showProjectList(category) {
         });
     }
 
-   function showProjectDetails(category, projectIndex) {
-    const data = portfolioData[category];
-    const project = data.items[projectIndex];
-    if (!project) return;
+    // عرض تفاصيل المشروع
+    function showProjectDetails(category, index) {
+        const item = portfolioData[category].items[index];
+        if (!item) return;
 
-    modalTitle.textContent = project.title;
+        modalTitle.textContent = item.title;
 
-    let htmlContent = `
-        <button id="back-to-projects-btn" class="btn btn-primary" style="margin-bottom: 20px;">
-            <i class="fas fa-arrow-left"></i> Back to Projects
-        </button>
-        <p style="color: #ccc; margin-bottom: 10px; font-size: 1rem;">${project.description}</p>
-        <p style="color: #999; margin-bottom: 20px; font-size: 0.9rem;"><strong>Tools:</strong> ${project.tools}</p>
-        <div class="project-images-container">
-            <div class="gallery-progress">1 of ${project.images?.length || 0}</div>
-            <div class="gallery-grid project-images-grid" style="display: flex; overflow-x: auto; gap: 15px; padding-bottom: 10px;">
-                ${project.images && project.images.length > 0 ?
-                    project.images.map(img => `
-                        <div class="gallery-item" style="flex: 0 0 30%; max-width:400px;min-width:250px;">
-                            <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; height:auto;border-radius:8px;" loading="lazy">
-                        </div>
-                    `).join("") :
-                    "<div class=\"gallery-placeholder\"><i class=\"fas fa-image\"></i> No images available</div>"
-                }
-            </div>
-            ${project.images && project.images.length > 20 ?
-                `<button id="show-more-images-btn" class="btn btn-primary" style="margin: 20px auto; display: block;">Show More</button>` : ""
-            }
-        </div>
-    `;
-    
-    modal.style.display = "block";
-    void modal.offsetWidth;
-    modal.classList.add("show-modal");
-    
-    updateContentWithFade(modalGallery, htmlContent, () => {
-        const imagesGrid = modalGallery.querySelector(".project-images-grid");
-        const progressIndicator = modalGallery.querySelector(".gallery-progress");
-
-        if (imagesGrid && progressIndicator && project.images?.length > 0) {
-            // تحديث العداد عند التحميل أولاً
-            updateImageCounter();
-            
-            // تحديث العداد عند التمرير
-            imagesGrid.addEventListener('scroll', updateImageCounter);
-            
-            function updateImageCounter() {
-                const scrollPos = imagesGrid.scrollLeft;
-                const imgWidth = imagesGrid.querySelector('.gallery-item')?.offsetWidth || 0;
-                const gap = 15; // يجب أن يتطابق مع الفجوة في CSS
-                const currentImage = Math.round(scrollPos / (imgWidth + gap)) + 1;
-                progressIndicator.textContent = `${currentImage} of ${project.images.length}`;
-            }
+        let imagesHtml = "";
+        if (item.images && item.images.length > 0) {
+            imagesHtml = item.images.map(imgSrc => `
+                <div class="gallery-item">
+                    <img src="${imgSrc}" alt="${item.title}" class="gallery-image" loading="lazy">
+                </div>
+            `).join("");
+        } else {
+            imagesHtml = `
+                <div class="gallery-placeholder">
+                    <i class="fas fa-image"></i>
+                    <h3>لا توجد صور لهذا المشروع</h3>
+                </div>
+            `;
         }
 
-        const showMoreBtn = modalGallery.querySelector("#show-more-images-btn");
-        if (showMoreBtn) {
-            showMoreBtn.addEventListener("click", () => {
-                imagesGrid.innerHTML = project.images.map(img => `
-                    <div class="gallery-item" style="flex: 0 0 300px;">
-                        <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; border-radius:8px;" loading="lazy">
+        const detailsHtml = `
+            <div class="project-details">
+                <p><strong>الوصف:</strong> ${item.description}</p>
+                <p><strong>الأدوات:</strong> ${item.tools}</p>
+                <div class="project-images-container">
+                    <h4>الصور:</h4>
+                    <div class="project-images-grid">
+                        ${imagesHtml}
                     </div>
-                `).join("");
-                showMoreBtn.style.display = "none";
-            });
-        }
+                </div>
+                <button id="back-to-projects-btn">العودة إلى المشاريع</button>
+            </div>
+        `;
 
-        document.getElementById("back-to-projects-btn").addEventListener("click", () => {
+        updateContentWithFade(modalGallery, detailsHtml, () => {
+            const backButton = document.getElementById("back-to-projects-btn");
+            if (backButton) {
+                backButton.addEventListener("click", () => showProjectList(category));
+            }
+        });
+    }
+
+    // فتح النافذة المنبثقة عند النقر على بطاقة الفئة
+    document.querySelectorAll(".portfolio-category .card-btn").forEach(button => {
+        button.addEventListener("click", (e) => {
+            const category = e.currentTarget.closest(".portfolio-category").dataset.category;
             showProjectList(category);
         });
     });
-}
-    // Close modal
-    closeModal.addEventListener("click", () => {
-        modal.classList.remove("show-modal");
-        const modalTransitionDuration = parseFloat(getComputedStyle(modal).transitionDuration) * 1000;
-        setTimeout(() => {
-            modal.style.display = "none";
-        }, modalTransitionDuration);
-    });
+
+    // إغلاق النافذة المنبثقة
+    if (closeModal) {
+        closeModal.addEventListener("click", () => {
+            modal.classList.remove("show-modal");
+            setTimeout(() => {
+                modal.style.display = "none";
+            }, 300); // يتناسب مع مدة الانتقال في CSS
+        });
+    }
 
     window.addEventListener("click", (event) => {
         if (event.target == modal) {
             modal.classList.remove("show-modal");
-            const modalTransitionDuration = parseFloat(getComputedStyle(modal).transitionDuration) * 1000;
             setTimeout(() => {
                 modal.style.display = "none";
-            }, modalTransitionDuration);
+            }, 300); // يتناسب مع مدة الانتقال في CSS
         }
     });
 
-    // إضافة الوظائف التي كانت خارج DOMContentLoaded هنا
-    // Navbar background on scroll - هذا الجزء كان موجوداً بالفعل ولكن خارج الـ DOMContentLoaded الرئيسي
-    // تم نقله إلى بداية الملف (بالتحديد، سيتم استبداله بالـ window.addEventListener("scroll") الذي بالأسفل)
-});
-
-// هذا الجزء سيتم إزالته أو دمجه
-// Navbar background on scroll (هذا كان موجوداً ككتلة منفصلة)
-window.addEventListener("scroll", () => {
-    const navbar = document.querySelector(".navbar");
-    if (window.scrollY > 100) {
-        navbar.style.background = "rgba(10, 10, 10, 0.8)";
-        navbar.style.backdropFilter = "blur(12px)";
-    } else {
-        navbar.style.background = "rgba(10, 10, 10, 0.6)";
-        navbar.style.backdropFilter = "blur(8px)";
+    // معالجة إرسال نموذج الاتصال
+    const contactForm = document.getElementById("contact-form");
+    if (contactForm) {
+        contactForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("تم إرسال رسالتك بنجاح!"); // يمكن استبدال هذا بمعالجة AJAX حقيقية
+            contactForm.reset();
+        });
     }
 });
+
+
