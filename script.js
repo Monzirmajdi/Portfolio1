@@ -1,6 +1,6 @@
-// وظائف الصفحة الرئيسية
+// Hamburger menu functionality & all other DOMContentLoaded related scripts
 document.addEventListener("DOMContentLoaded", () => {
-    // ------ القائمة المتنقلة ------
+    // Hamburger menu
     const hamburger = document.querySelector(".hamburger");
     const navMenu = document.querySelector(".nav-menu");
 
@@ -14,99 +14,190 @@ document.addEventListener("DOMContentLoaded", () => {
             hamburger.classList.remove("active");
             navMenu.classList.remove("active");
         }));
+        // أضف هذا الكود في ملف script.js داخل event listener لـ DOMContentLoaded
+
+// Animation for skill bars
+const skillBars = document.querySelectorAll('.skill-level');
+if (skillBars.length > 0) {
+    const animateSkillBars = () => {
+        skillBars.forEach(bar => {
+            const progress = bar.querySelector('.skill-progress');
+            const level = bar.getAttribute('data-level');
+            progress.style.width = level;
+        });
+    };
+
+    // Trigger animation when section is in view
+    const aboutSection = document.querySelector('#about');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateSkillBars();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    observer.observe(aboutSection);
+}
     }
 
-    // ------ شريط المهارات المتحرك ------
-    const skillBars = document.querySelectorAll('.skill-level');
-    if (skillBars.length > 0) {
-        const animateSkillBars = () => {
-            skillBars.forEach(bar => {
-                const progress = bar.querySelector('.skill-progress');
-                progress.style.width = bar.getAttribute('data-level');
-            });
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateSkillBars();
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-
-        observer.observe(document.querySelector('#about'));
-    }
-
-    // ------ تغيير عنوان الشريط العلوي ------
+    // Dynamic Navbar Title on Scroll (تم نقل هذا الجزء هنا)
     const navLogoSpan = document.querySelector(".nav-logo span");
     const sections = document.querySelectorAll("section[id]");
+
     const sectionTitles = {
         "home": "Home",
         "about": "About",
-        "portfolio": "Portfolio", 
+        "portfolio": "Portfolio",
         "contact": "Contact"
     };
 
     function updateNavLogoTitle() {
-        let currentSectionId = "home";
+        let currentSectionId = "home"; // Default to home
+
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            if (window.scrollY >= sectionTop - 100 && 
-                window.scrollY < sectionTop + section.clientHeight - 100) {
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
                 currentSectionId = section.id;
             }
         });
-        if (navLogoSpan) navLogoSpan.textContent = sectionTitles[currentSectionId];
+
+        if (navLogoSpan) { // تأكد من وجود العنصر قبل التعديل
+            navLogoSpan.textContent = sectionTitles[currentSectionId];
+        }
     }
 
+    // استدعاء الدالة عند تحميل الصفحة لتحديد العنوان الأولي
     updateNavLogoTitle();
+    // استدعاء الدالة عند التمرير
     window.addEventListener("scroll", updateNavLogoTitle);
 
-    // ------ تأثير الكتابة التلقائي ------
+    // Typing effect for Hero Subtitle (تم إضافة هذا الجزء هنا)
     const heroSubtitle = document.querySelector(".hero-subtitle");
+    const textToType = "Graphic Designer & Visual Artist";
+    let charIndex = 0;
+    let isTypingComplete = false;
+
     if (heroSubtitle) {
-        heroSubtitle.textContent = "";
-        heroSubtitle.style.opacity = 1;
-        
-        const textToType = "Graphic Designer & Visual Artist";
-        let charIndex = 0;
-        
-        function typeWriter() {
-            if (charIndex < textToType.length) {
-                heroSubtitle.textContent += textToType.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeWriter, 70);
-            }
-        }
+        heroSubtitle.textContent = ""; // ابدأ بنص فارغ
+        heroSubtitle.style.opacity = 1; // اجعله مرئياً
+        heroSubtitle.style.animation = 'none'; // أوقف الـ fadeInUp إذا كان يتعارض
         typeWriter();
     }
 
-    // ------ تبديل الوضع الليلي/النهاري ------
-    const themeToggle = document.querySelector(".theme-toggle");
-    if (themeToggle) {
-        themeToggle.addEventListener("click", () => {
-            document.body.classList.toggle('light-mode');
-            const icon = themeToggle.querySelector("i");
-            const isLight = document.body.classList.contains('light-mode');
-            
-            icon.classList.replace(isLight ? 'fa-moon' : 'fa-sun', 
-                                 isLight ? 'fa-sun' : 'fa-moon');
-            localStorage.setItem('page-theme', isLight ? 'light' : 'dark');
-        });
-
-        if (localStorage.getItem('page-theme') === 'light') {
-            document.body.classList.add('light-mode');
-            themeToggle.querySelector("i").classList.replace('fa-moon', 'fa-sun');
+    function typeWriter() {
+        if (!isTypingComplete && charIndex < textToType.length) {
+            heroSubtitle.textContent += textToType.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeWriter, 70); // سرعة الكتابة (مللي ثانية)
+        } else {
+            isTypingComplete = true;
         }
     }
 
-    // ------ معرض الأعمال ------
+    // Theme toggle functionality (تم دمجها هنا)
+    const themeToggle = document.querySelector(".theme-toggle");
+    const body = document.body;
+
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            const icon = themeToggle.querySelector("i");
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('page-theme', 'light');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('page-theme', 'dark');
+            }
+        });
+
+        // تحميل التفضيل المحفوظ عند بدء التشغيل
+        if (localStorage.getItem('page-theme') === 'light') {
+            body.classList.add('light-mode');
+            themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+        }
+    }
+
+    // Portfolio Modal Functionality (هذا الجزء كان موجوداً بالفعل وتم الاحتفاظ به)
     const modal = document.getElementById("portfolio-modal");
     const closeModal = document.querySelector(".modal .close");
     const modalTitle = document.getElementById("modal-title");
     const modalGallery = document.getElementById("modal-gallery");
 
+    // دالة لتحديث المحتوى بسلاسة
+    // في الجزء الخاص بـ updateContentWithFade، استبدل الدالة بالكود التالي:
+function updateContentWithFade(element, newHTML, callback) {
+    element.style.opacity = 0;
+    element.style.pointerEvents = 'none'; // تعطيل التفاعلات أثناء الانتقال
+    
+    setTimeout(() => {
+        element.innerHTML = newHTML;
+        element.style.opacity = '';
+        element.style.pointerEvents = ''; // إعادة تمكين التفاعلات
+        
+        // إضافة انتقال سلس للظهور
+        setTimeout(() => {
+            if (callback) callback();
+        }, 50); // تأخير بسيط لضمان تطبيق التغييرات
+    }, 300); // يتناسب مع مدة الانتقال في CSS
+}
+
+// في الجزء الخاص بـ showProjectList، تأكد من إزالة معالج الأحداث القديم قبل إضافة الجديد:
+function showProjectList(category) {
+    const data = portfolioData[category];
+    if (!data) return;
+
+    modalTitle.textContent = data.title;
+
+    let htmlContent = "";
+    if (data.items.length === 0) {
+        htmlContent = `
+            <div class="empty-category">
+                <i class="fas fa-folder-open"></i>
+                <h3>No projects yet</h3>
+            </div>
+        `;
+    } else {
+        const gridItems = data.items.map((item, index) => `
+            <div class="project-card" data-category="${category}" data-index="${index}">
+                <div class="image-container">
+                    <img src="${item.previewImage}"
+                         alt="${item.title}"
+                         class="project-image"
+                         onerror="this.src='images/placeholder.png'"
+                         loading="lazy">
+                </div>
+                <div class="project-info">
+                    <h3>${item.title}</h3>
+                    <p>${item.description.substring(0, 60)}...</p>
+                </div>
+            </div>
+        `).join("");
+        htmlContent = `<div class="modal-gallery-grid">${gridItems}</div>`;
+    }
+
+    modal.style.display = "block";
+    void modal.offsetWidth;
+    modal.classList.add("show-modal");
+    
+    // إزالة أي معالجات أحداث موجودة مسبقاً
+    const oldGallery = modalGallery.cloneNode(false);
+    modalGallery.parentNode.replaceChild(oldGallery, modalGallery);
+    modalGallery = oldGallery;
+    
+    updateContentWithFade(modalGallery, htmlContent, () => {
+        document.querySelectorAll(".project-card").forEach(card => {
+            card.addEventListener("click", (e) => {
+                const cat = e.currentTarget.dataset.category;
+                const idx = parseInt(e.currentTarget.dataset.index);
+                showProjectDetails(cat, idx);
+            });
+        });
+    });
+}
     // Portfolio data structure
     const portfolioData = {
         "social-media": {
@@ -235,118 +326,195 @@ document.addEventListener("DOMContentLoaded", () => {
                     tools: "Adobe XD, Figma",
                     previewImage: "images/placeholder.png",
                     images: []
-               
+                },
+                {
+                    title: "Landing Page Design",
+                    description: "High-converting landing page layouts",
+                    tools: "Figma, Photoshop",
+                    previewImage: "images/placeholder.png",
+                    images: []
+                }*/
+            ]
+        }
+    };
 
-    function updateContentWithFade(element, newHTML, callback) {
-        element.style.opacity = 0;
-        setTimeout(() => {
-            element.innerHTML = newHTML;
-            element.style.opacity = 1;
-            if (callback) callback();
-        }, 300);
+    // Function to populate card previews
+    function populateCardPreviews() {
+        document.querySelectorAll(".portfolio-category").forEach(categoryDiv => {
+            const previewContainer = categoryDiv.querySelector(".card-preview");
+            previewContainer.innerHTML = "";
+            for (let i = 0; i < 3; i++) {
+                const placeholder = document.createElement("div");
+                placeholder.className = "preview-item";
+                previewContainer.appendChild(placeholder);
+            }
+        });
     }
+
+    window.addEventListener("load", populateCardPreviews);
+
+    // Open modal when portfolio category is clicked
+    document.querySelectorAll(".card-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            const category = e.target.closest(".portfolio-category").dataset.category;
+            showProjectList(category);
+        });
+    });
+
+    let currentCategory = null;
 
     function showProjectList(category) {
         const data = portfolioData[category];
         if (!data) return;
 
-        let htmlContent = data.items.length === 0 ? `
-            <div class="empty-category">
-                <i class="fas fa-folder-open"></i>
-                <h3>No projects yet</h3>
-            </div>
-        ` : `
-            <div class="modal-gallery-grid">
-                ${data.items.map((item, index) => `
-                    <div class="project-card" data-category="${category}" data-index="${index}">
-                        <div class="image-container">
-                            <img src="${item.previewImage}" alt="${item.title}" loading="lazy">
-                        </div>
-                        <div class="project-info">
-                            <h3>${item.title}</h3>
-                            <p>${item.description.substring(0, 60)}...</p>
-                        </div>
-                    </div>
-                `).join('')}
-            </div>
-        `;
-
         modalTitle.textContent = data.title;
+
+        let htmlContent = "";
+        if (data.items.length === 0) {
+            htmlContent = `
+                <div class="empty-category">
+                    <i class="fas fa-folder-open"></i>
+                    <h3>No projects yet</h3>
+                </div>
+            `;
+        } else {
+            const gridItems = data.items.map((item, index) => `
+                <div class="project-card" data-category="${category}" data-index="${index}">
+                    <div class="image-container">
+                        <img src="${item.previewImage}"
+                             alt="${item.title}"
+                             class="project-image"
+                             onerror="this.src=\'images/placeholder.png\'"
+                             loading="lazy">
+                    </div>
+                    <div class="project-info">
+                        <h3>${item.title}</h3>
+                        <p>${item.description.substring(0, 60)}...</p>
+                    </div>
+                </div>
+            `).join("");
+            htmlContent = `<div class="modal-gallery-grid">${gridItems}</div>`;
+        }
+
         modal.style.display = "block";
+        void modal.offsetWidth;
+        modal.classList.add("show-modal");
         updateContentWithFade(modalGallery, htmlContent, () => {
             document.querySelectorAll(".project-card").forEach(card => {
-                card.addEventListener("click", () => {
-                    showProjectDetails(
-                        card.dataset.category, 
-                        parseInt(card.dataset.index)
-                    );
+                card.addEventListener("click", (e) => {
+                    const cat = e.currentTarget.dataset.category;
+                    const idx = parseInt(e.currentTarget.dataset.index);
+                    showProjectDetails(cat, idx);
                 });
             });
         });
     }
 
-    function showProjectDetails(category, projectIndex) {
-        const project = portfolioData[category]?.items[projectIndex];
-        if (!project) return;
+   function showProjectDetails(category, projectIndex) {
+    const data = portfolioData[category];
+    const project = data.items[projectIndex];
+    if (!project) return;
 
-        const htmlContent = `
-            <button id="back-to-projects-btn" class="btn btn-primary">
-                <i class="fas fa-arrow-left"></i> Back to Projects
-            </button>
-            <p>${project.description}</p>
-            <p><strong>Tools:</strong> ${project.tools}</p>
-            <div class="project-images-container">
-                ${project.images?.length ? `
-                    <div class="gallery-grid">
-                        ${project.images.map(img => `
-                            <div class="gallery-item">
-                                <img src="${img}" alt="${project.title}" loading="lazy">
-                            </div>
-                        `).join('')}
-                    </div>
-                ` : `
-                    <div class="gallery-placeholder">
-                        <i class="fas fa-image"></i> No images available
-                    </div>
-                `}
+    modalTitle.textContent = project.title;
+
+    let htmlContent = `
+        <button id="back-to-projects-btn" class="btn btn-primary" style="margin-bottom: 20px;">
+            <i class="fas fa-arrow-left"></i> Back to Projects
+        </button>
+        <p style="color: #ccc; margin-bottom: 10px; font-size: 1rem;">${project.description}</p>
+        <p style="color: #999; margin-bottom: 20px; font-size: 0.9rem;"><strong>Tools:</strong> ${project.tools}</p>
+        <div class="project-images-container">
+            <div class="gallery-progress">1 of ${project.images?.length || 0}</div>
+            <div class="gallery-grid project-images-grid" style="display: flex; overflow-x: auto; gap: 15px; padding-bottom: 10px;">
+                ${project.images && project.images.length > 0 ?
+                    project.images.map(img => `
+                        <div class="gallery-item" style="flex: 0 0 30%; max-width:400px;min-width:250px;">
+                            <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; height:auto;border-radius:8px;" loading="lazy">
+                        </div>
+                    `).join("") :
+                    "<div class=\"gallery-placeholder\"><i class=\"fas fa-image\"></i> No images available</div>"
+                }
             </div>
-        `;
+            ${project.images && project.images.length > 20 ?
+                `<button id="show-more-images-btn" class="btn btn-primary" style="margin: 20px auto; display: block;">Show More</button>` : ""
+            }
+        </div>
+    `;
+    
+    modal.style.display = "block";
+    void modal.offsetWidth;
+    modal.classList.add("show-modal");
+    
+    updateContentWithFade(modalGallery, htmlContent, () => {
+        const imagesGrid = modalGallery.querySelector(".project-images-grid");
+        const progressIndicator = modalGallery.querySelector(".gallery-progress");
 
-        modalTitle.textContent = project.title;
-        updateContentWithFade(modalGallery, htmlContent, () => {
-            document.getElementById("back-to-projects-btn").addEventListener("click", () => {
-                showProjectList(category);
+        if (imagesGrid && progressIndicator && project.images?.length > 0) {
+            // تحديث العداد عند التحميل أولاً
+            updateImageCounter();
+            
+            // تحديث العداد عند التمرير
+            imagesGrid.addEventListener('scroll', updateImageCounter);
+            
+            function updateImageCounter() {
+                const scrollPos = imagesGrid.scrollLeft;
+                const imgWidth = imagesGrid.querySelector('.gallery-item')?.offsetWidth || 0;
+                const gap = 15; // يجب أن يتطابق مع الفجوة في CSS
+                const currentImage = Math.round(scrollPos / (imgWidth + gap)) + 1;
+                progressIndicator.textContent = `${currentImage} of ${project.images.length}`;
+            }
+        }
+
+        const showMoreBtn = modalGallery.querySelector("#show-more-images-btn");
+        if (showMoreBtn) {
+            showMoreBtn.addEventListener("click", () => {
+                imagesGrid.innerHTML = project.images.map(img => `
+                    <div class="gallery-item" style="flex: 0 0 300px;">
+                        <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; border-radius:8px;" loading="lazy">
+                    </div>
+                `).join("");
+                showMoreBtn.style.display = "none";
             });
-        });
-    }
+        }
 
-    // أحداث النوافذ المنبثقة
+        document.getElementById("back-to-projects-btn").addEventListener("click", () => {
+            showProjectList(category);
+        });
+    });
+}
+    // Close modal
     closeModal.addEventListener("click", () => {
-        modal.style.opacity = 0;
-        setTimeout(() => modal.style.display = "none", 300);
+        modal.classList.remove("show-modal");
+        const modalTransitionDuration = parseFloat(getComputedStyle(modal).transitionDuration) * 1000;
+        setTimeout(() => {
+            modal.style.display = "none";
+        }, modalTransitionDuration);
     });
 
-    window.addEventListener("click", (e) => {
-        if (e.target === modal) {
-            modal.style.opacity = 0;
-            setTimeout(() => modal.style.display = "none", 300);
+    window.addEventListener("click", (event) => {
+        if (event.target == modal) {
+            modal.classList.remove("show-modal");
+            const modalTransitionDuration = parseFloat(getComputedStyle(modal).transitionDuration) * 1000;
+            setTimeout(() => {
+                modal.style.display = "none";
+            }, modalTransitionDuration);
         }
     });
 
-    document.querySelectorAll(".card-btn").forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            showProjectList(e.target.closest(".portfolio-category").dataset.category);
-        });
-    });
+    // إضافة الوظائف التي كانت خارج DOMContentLoaded هنا
+    // Navbar background on scroll - هذا الجزء كان موجوداً بالفعل ولكن خارج الـ DOMContentLoaded الرئيسي
+    // تم نقله إلى بداية الملف (بالتحديد، سيتم استبداله بالـ window.addEventListener("scroll") الذي بالأسفل)
 });
 
-// تأثير الشريط العلوي عند التمرير
+// هذا الجزء سيتم إزالته أو دمجه
+// Navbar background on scroll (هذا كان موجوداً ككتلة منفصلة)
 window.addEventListener("scroll", () => {
     const navbar = document.querySelector(".navbar");
-    navbar.style.background = window.scrollY > 100 
-        ? "rgba(10, 10, 10, 0.8)" 
-        : "rgba(10, 10, 10, 0.6)";
-    navbar.style.backdropFilter = window.scrollY > 100 
-        ? "blur(12px)" 
-        : "blur(8px)";
+    if (window.scrollY > 100) {
+        navbar.style.background = "rgba(10, 10, 10, 0.8)";
+        navbar.style.backdropFilter = "blur(12px)";
+    } else {
+        navbar.style.background = "rgba(10, 10, 10, 0.6)";
+        navbar.style.backdropFilter = "blur(8px)";
+    }
 });
