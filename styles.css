@@ -1,4 +1,4 @@
-/* Reset and Base Styles */
+/* إعادة الضبط والأنماط الأساسية */
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +6,7 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /* تمرير سلس للصفحة */
 }
 
 body {
@@ -24,7 +24,7 @@ body {
     padding: 0 20px;
 }
 
-/* Navigation */
+/* شريط التنقل */
 .navbar {
     position: fixed;
     top: 0;
@@ -99,7 +99,7 @@ body {
     transition: 0.3s;
 }
 
-/* Hero Section */
+/* قسم البطل الرئيسي */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -144,7 +144,7 @@ body {
 
 .hero-subtitle {
     font-family: 'Allura', cursive;   
-    font-size: 2.3rem;     /*WAS 1.5*/
+    font-size: 2.3rem;
     color: #f4c430;
     margin-bottom: 40px;
     opacity: 0;
@@ -262,7 +262,7 @@ body {
     transform: rotate(45deg);
 }
 
-/* Section Styles */
+/* أنماط الأقسام */
 .section-header {
     text-align: center;
     margin-bottom: 80px;
@@ -283,7 +283,7 @@ body {
     border-radius: 2px;
 }
 
-/* About Section */
+/* قسم عني */
 .about {
     padding: 120px 0;
     background: #111111;
@@ -331,7 +331,7 @@ body {
     font-weight: 500;
 }
 
-/* Portfolio Section */
+/* قسم الأعمال */
 .portfolio {
     padding: 120px 0;
     background: #0a0a0a;
@@ -429,7 +429,7 @@ body {
     color: #0a0a0a;
 }
 
-/* Modal Styles */
+/* أنماط النافذة المنبثقة */
 .modal {
     display: none;
     position: fixed;
@@ -443,7 +443,6 @@ body {
 }
 
 .modal-content {
-    
     margin: 5% auto;
     padding: 40px;
     border-radius: 20px;
@@ -453,22 +452,17 @@ body {
     overflow-y: auto;
     position: relative;
 }
-/* New: Smooth fade for the entire modal */
+
 #portfolio-modal {
     opacity: 0;
-    /* ابدأ بشفافية كاملة */
     visibility: hidden;
-    /* اخفيها تماماً من العرض */
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    /* أضف انتقال للشفافية والرؤية */
 }
 
 #portfolio-modal.show-modal {
     opacity: 1;
-    /* اجعلها مرئية بالكامل */
-    visibility: visible; /* اجعلها ظاهرة */
+    visibility: visible;
 }
-
 
 .close {
     color: #aaa;
@@ -485,7 +479,7 @@ body {
     color: #f4c430;
 }
 
-/* Contact Section */
+/* قسم الاتصال */
 .contact {
     padding: 120px 0;
     background: #111111;
@@ -561,7 +555,7 @@ body {
     box-shadow: 0 0 0 2px rgba(244, 196, 48, 0.2);
 }
 
-/* Footer */
+/* تذييل الصفحة */
 .footer {
     background: #0a0a0a;
     padding: 40px 0;
@@ -602,7 +596,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* Animations */
+/* الرسوم المتحركة */
 @keyframes slideUp {
     to {
         transform: translateY(0);
@@ -643,7 +637,7 @@ body {
     }
 }
 
-/* Project List Styles */
+/* أنماط قائمة المشاريع */
 .project-list-item {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
@@ -761,75 +755,32 @@ body {
     color: #f4c430;
 }
 
-/* أنماط الوضع الفاتح */
-body.light-mode {
-    background-color: #f5f5f5;
-    color: #333;
-}
-
-body.light-mode .navbar {
-    background: rgba(245, 245, 245, 0.9) !important;
-}
-
-body.light-mode .nav-link {
-    color: #333;
-}
-
-body.light-mode .hero {
-    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
-}
-
-body.light-mode .section-title,
-body.light-mode .card-title {
-    color: #222;
-}
-
-body.light-mode .card-description,
-body.light-mode .about-text p {
-    color: #555;
-}
-/* ------ إضافة جديدة - بداية ------ */
-/* أنماط الـ Grid في المودال */
+/* أنماط الشبكة في النافذة المنبثقة */
 .modal-gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
     padding: 20px;
 }
-/* أنماط العنصر النائب للصور المفقودة في المعرض */
+
 .gallery-placeholder {
     width: 100%;
-    min-height: 200px; /* **مهم جداً:** اجعل الارتفاع هذا مشابهاً لارتفاع صور المعرض */
+    min-height: 200px;
     display: flex;
-    /* استخدم flexbox لتوسيط المحتوى */
-    align-items: center; /* توسيط عمودي */
+    align-items: center;
     justify-content: center;
-    /* توسيط أفقي */
     text-align: center;
     color: #666;
-    /* لون النص الافتراضي */
     background-color: #222;
-    /* خلفية خفيفة للعنصر النائب */
     border-radius: 8px;
-    /* نفس حواف الصور */
-    font-size: 1.2em; /* حجم خط مناسب */
+    font-size: 1.2em;
     flex-direction: column;
-    /* لجعل الأيقونة والنص فوق بعض */
     gap: 10px;
-    /* مسافة بين الأيقونة والنص */
 }
 
 .gallery-placeholder i {
     font-size: 2em;
-    /* حجم أكبر للأيقونة */
     margin-bottom: 5px;
-    /* مسافة تحت الأيقونة */
-}
-
-/* لأنماط الوضع الفاتح */
-body.light-mode .gallery-placeholder {
-    background-color: #f0f0f0;
-    color: #999;
 }
 
 .project-card {
@@ -844,7 +795,7 @@ body.light-mode .gallery-placeholder {
     height: 180px;
     object-fit: contain;
 }
-/* أنماط الـ Grid الجديدة */
+
 .modal-gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -852,24 +803,6 @@ body.light-mode .gallery-placeholder {
     padding: 20px;
     max-height: 70vh;
     overflow-y: auto;
-}
-/* أنماط إضافية لتحسين عرض الصور ومنع الوميض */
-.modal-gallery-grid img {
-    display: block;
-    /* يضمن أن الصورة تأخذ كامل المساحة المتاحة */
-    width: 100%;
-    /* يضمن أن الصورة تملأ عرض الحاوية */
-    height: auto;
-    /* يحافظ على نسبة العرض إلى الارتفاع */
-    object-fit: cover;
-    /* لضمان تغطية الصورة للمساحة المحددة */
-    transition: opacity 0.3s ease-in-out;
-    /* إضافة انتقال لظهور الصورة */
-}
-
-/* هذا سيخفي الصورة مبدئياً ويظهرها تدريجياً بعد التحميل */
-.modal-gallery-grid img:not([src]):not([srcset]) {
-    opacity: 0;
 }
 
 .project-card {
@@ -908,8 +841,204 @@ body.light-mode .gallery-placeholder {
     font-size: 0.9rem;
     line-height: 1.4;
 }
-/* ------ إضافة جديدة - نهاية ------ */
-/* Responsive Design */
+
+/* قسم المهارات */
+.skills-section {
+    margin: 40px 0;
+}
+
+.skills-section h3 {
+    color: #f4c430;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.skill-bar {
+    margin-bottom: 20px;
+}
+
+.skill-name {
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.skill-level {
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #f4c430, #ffd700);
+    border-radius: 5px;
+    transition: width 1.5s ease-in-out;
+}
+
+/* ======= أنماط الوضع الفاتح الشاملة (مجمعة في مكان واحد) ======= */
+body.light-mode {
+    background-color: #f8f9fa !important;
+    color: #333 !important;
+}
+
+body.light-mode .navbar {
+    background: rgba(248, 249, 250, 0.95) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light-mode .nav-link {
+    color: #333 !important;
+}
+
+body.light-mode .hero {
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%) !important;
+}
+
+body.light-mode .section-title,
+body.light-mode .card-title {
+    color: #222 !important;
+}
+
+body.light-mode .card-description,
+body.light-mode .about-text p {
+    color: #555 !important;
+}
+
+body.light-mode .hero-subtitle {
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+}
+
+body.light-mode .btn-secondary {
+    border-color: #333 !important;
+    color: #333 !important;
+}
+
+body.light-mode .btn-secondary:hover {
+    background: #333 !important;
+    color: #fff !important;
+}
+
+body.light-mode .about,
+body.light-mode .portfolio,
+body.light-mode .contact,
+body.light-mode .footer {
+    background-color: #f0f0f0 !important;
+    border-color: #ddd !important;
+}
+
+body.light-mode .skill-item,
+body.light-mode .category-card,
+body.light-mode .contact-form,
+body.light-mode .project-list-item {
+    background: rgba(255, 255, 255, 0.7) !important;
+    border-color: #ddd !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light-mode .social-link {
+    background: rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-mode .social-link:hover {
+    background: #f4c430 !important;
+}
+
+body.light-mode .project-list-item {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid #e0e0e0 !important;
+    color: #333 !important;
+}
+
+body.light-mode .project-list-item h4 {
+    color: #d4a017 !important;
+}
+
+body.light-mode .project-list-item p {
+    color: #555 !important;
+}
+
+body.light-mode .view-project-btn {
+    background: #d4a017 !important;
+    color: #fff !important;
+}
+
+body.light-mode .project-details-container {
+    background: #f9f9f9 !important;
+    color: #333 !important;
+}
+
+body.light-mode .project-details-title {
+    color: #222 !important;
+}
+
+body.light-mode .project-details-description {
+    color: #555 !important;
+}
+
+body.light-mode .gallery-item {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid #ddd !important;
+}
+
+body.light-mode .modal {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(5px) !important;
+}
+
+body.light-mode .modal-content {
+    background-color: #f9f9f9 !important;
+    color: #333 !important;
+}
+
+body.light-mode .project-card {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid #e0e0e0 !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08) !important;
+}
+
+body.light-mode .project-info h4 {
+    color: #222 !important;
+}
+
+body.light-mode .project-info p {
+    color: #555 !important;
+}
+
+body.light-mode .form-group input,
+body.light-mode .form-group textarea {
+    background: #fff !important;
+    border: 1px solid #ddd !important;
+    color: #333 !important;
+}
+
+body.light-mode .form-group input::placeholder,
+body.light-mode .form-group textarea::placeholder {
+    color: #888 !important;
+    opacity: 1 !important;
+}
+
+body.light-mode .element-2,
+body.light-mode .element-3 {
+    filter: invert(100%);
+}
+
+body.light-mode .skill-name {
+    color: #333;
+}
+
+body.light-mode .skill-level {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .gallery-placeholder {
+    background-color: #f0f0f0;
+    color: #999;
+}
+
+/* التصميم المتجاوب */
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
@@ -923,42 +1052,18 @@ body.light-mode .gallery-placeholder {
         transition: 0.3s;
         padding-top: 50px;
     }
-/* أنماط الوضع الفاتح للمودال ومحتوياتها */
-body.light-mode .modal {
-    background-color: rgba(255, 255, 255, 0.8) !important; /* خلفية مودال فاتحة شفافة */
-}
 
-body.light-mode .modal-content {
-    background-color: #f9f9f9 !important; /* خلفية محتوى المودال فاتحة */
-    color: #333 !important; /* لون النص داخل المودال يصبح داكناً */
-}
-    /* أنماط الوضع الفاتح للمودال ومحتوياتها */
-body.light-mode .modal {
-    background-color: rgba(255, 255, 255, 0.8) !important; /* خلفية مودال فاتحة شفافة */
-}
-
-body.light-mode .modal-content {
-    background-color: #f9f9f9 !important; /* خلفية محتوى المودال فاتحة */
-    color: #333 !important; /* لون النص داخل المودال يصبح داكناً */
-}
-/* التعديلات لضمان ظهور القائمة الجانبية وزر الإغلاق في الوضع الفاتح على الشاشات الصغيرة */
-
-/* أنماط القائمة الجانبية (side menu) في الوضع الفاتح */
-@media (max-width: 768px) {
     body.light-mode .nav-menu {
-        background-color: rgba(248, 249, 250, 0.95) !important; /* خلفية فاتحة للقائمة */
-        /* تأكد من أن لون الروابط داخل القائمة مناسب للخلفية الفاتحة */
+        background-color: rgba(248, 249, 250, 0.95) !important;
     }
+    
     body.light-mode .nav-menu .nav-link {
-        color: #333 !important; /* لون داكن للروابط داخل القائمة */
+        color: #333 !important;
     }
-}
 
-/* أنماط أشرطة أيقونة الهامبرغر/الكروس في الوضع الفاتح */
-body.light-mode .bar {
-    background: #333 !important; /* لون داكن لأشرطة الأيقونة */
-}
-
+    body.light-mode .bar {
+        background: #333 !important;
+    }
 
     .nav-menu.active {
         left: 0;
@@ -1026,6 +1131,10 @@ body.light-mode .bar {
         flex-direction: column;
         gap: 20px;
     }
+
+    .skill-bar {
+        margin-bottom: 15px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1034,7 +1143,7 @@ body.light-mode .bar {
     }
 
     .hero-subtitle {
-        font-size: 2.5rem; /*غيرتها 1.5*/
+        font-size: 2.5rem;
     }
 
     .btn {
@@ -1057,302 +1166,4 @@ body.light-mode .bar {
         top: 10px;
         right: 15px;
     }
-}
-/* أنماط الوضع الفاتح الكاملة */
-
-/* أنماط الوضع الفاتح الشاملة */
-body.light-mode {
-    background-color: #f5f5f5;
-    color: #333;
-}
-
-body.light-mode .navbar {
-    background: rgba(245, 245, 245, 0.9) !important;
-    backdrop-filter: blur(12px);
-}
-
-body.light-mode .nav-link,
-body.light-mode .hero-title,
-body.light-mode .hero-subtitle,*/
-body.light-mode .section-title,
-body.light-mode .card-title,
-body.light-mode .about-text h2,
-body.light-mode .contact-details h4,
-body.light-mode .footer-text {
-    color: #222 !important;
     }
-
-/*body.light-mode .hero-subtitle, {    /*;الكتابة تحت العنوان > GOLD كانت مع الفوق 
-    color: #FFD700 !important;*/
-}
-body.light-mode .hero-subtitle {
-    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
-}
-}
-
-body.light-mode .hero {
-    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%) !important;
-}
-
-body.light-mode .btn-secondary {
-    border-color: #333 !important;
-    color: #333 !important;
-}
-
-body.light-mode .btn-secondary:hover {
-    background: #333 !important;
-    color: #fff !important;
-}
-
-body.light-mode .card-description,
-body.light-mode .about-text p,
-body.light-mode .contact-details p,
-body.light-mode .footer-text p {
-    color: #555 !important;
-}
-
-body.light-mode .about,
-body.light-mode .portfolio,
-body.light-mode .contact,
-body.light-mode .footer {
-    background-color: #f0f0f0 !important;
-    border-color: #ddd !important;
-}
-
-body.light-mode .skill-item,
-body.light-mode .category-card,
-body.light-mode .contact-form,
-body.light-mode .project-list-item {
-    background: rgba(255, 255, 255, 0.7) !important;
-    border-color: #ddd !important;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
-}
-
-body.light-mode .social-link {
-    background: rgba(0, 0, 0, 0.05) !important;
-}
-
-body.light-mode .social-link:hover {
-    background: #f4c430 !important;
-}
-/* أنماط الوضع الفاتح لصفحة المشاريع */
-body.light-mode .project-list-item {
-    background: rgba(255, 255, 255, 0.9) !important;
-    border: 1px solid #e0e0e0 !important;
-    color: #333 !important;
-}
-
-body.light-mode .project-list-item h4 {
-    color: #d4a017 !important;
-    /* لون ذهبي للعناوين */
-}
-
-body.light-mode .project-list-item p {
-    color: #555 !important;
-}
-
-body.light-mode .view-project-btn {
-    background: #d4a017 !important;
-    color: #fff !important;
-}
-
-/* أنماط الوضع الفاتح لصفحة تفاصيل المشروع */
-body.light-mode .project-details-container {
-    background: #f9f9f9 !important;
-    color: #333 !important;
-}
-
-body.light-mode .project-details-title {
-    color: #222 !important;
-}
-
-body.light-mode .project-details-description {
-    color: #555 !important;
-}
-
-body.light-mode .gallery-item {
-    background: rgba(255, 255, 255, 0.8) !important;
-    border: 1px solid #ddd !important;
-}
-/* ======= أنماط الوضع الفاتح الشاملة ======= */
-body.light-mode {
-    background-color: #f8f9fa !important;
-    color: #333 !important;
-}
-
-/* أنماط الشريط العلوي */
-body.light-mode .navbar {
-    background: rgba(248, 249, 250, 0.95) !important;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
-}
-
-/* أنماط الروابط */
-body.light-mode .nav-link {
-    color: #333 !important;
-}
-
-/* أنماط الأقسام الرئيسية */
-body.light-mode .about,
-body.light-mode .portfolio,
-body.light-mode .contact {
-    background-color: #f1f1f1 !important;
-}
-
-/* أنماط بطاقات المشاريع */
-body.light...
-/* أنماط الوضع الفاتح للمودال ومحتوياتها */
-body.light-mode .modal {
-    background-color: rgba(255, 255, 255, 0.8) !important; /* خلفية مودال فاتحة شفافة */
-}
-
-body.light-mode .modal-content {
-    background-color: #f9f9f9 !important; /* خلفية محتوى المودال فاتحة */
-    color: #333 !important; /* لون النص داخل المودال يصبح داكناً */
-}
-/* التعديلات لضمان ظهور القائمة الجانبية وزر الإغلاق في الوضع الفاتح على الشاشات الصغيرة */
-
-/* أنماط القائمة الجانبية (side menu) في الوضع الفاتح */
-@media (max-width: 768px) {
-    body.light-mode .nav-menu {
-        background-color: rgba(248, 249, 250, 0.95) !important; /* خلفية فاتحة للقائمة */
-        /* تأكد من أن لون الروابط داخل القائمة مناسب للخلفية الفاتحة */
-    }
-    body.light-mode .nav-menu .nav-link {
-        color: #333 !important; /* لون داكن للروابط داخل القائمة */
-    }
-}
-
-/* أنماط أشرطة أيقونة الهامبرغر/الكروس في الوضع الفاتح */
-body.light-mode .bar {
-    background: #333 !important; /* لون داكن لأشرطة الأيقونة */
-}
-
-body.light-mode .modal {
-    background-color: rgba(255, 255, 255, 0.8) !important; /* يجعل الخلفية بيضاء شفافة */
-    backdrop-filter: blur(5px) !important; /* للحفاظ على تأثير التمويه */
-}
-
-/* وأيضاً تأكد من وجود هذه القواعد لمحتوى المودال نفسه */
-body.light-mode .modal-content {
-    background-color: #f9f9f9 !important; /* خلفية محتوى المودال فاتحة */
-    color: #333 !important; /* لون النص داخل المودال يصبح داكناً */
-}
-/* أنماط الوضع الفاتح لبطاقات المشاريع داخل المودال */
-body.light-mode .project-card {
-    background: rgba(255, 255, 255, 0.9) !important; /* خلفية بيضاء شبه شفافة للبطاقة */
-    border: 1px solid #e0e0e0 !important; /* حدود فاتحة */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08) !important; /* ظل خفيف */
-}
-
-body.light-mode .project-info h4 {
-    color: #222 !important; /* لون عنوان المشروع داكن */
-}
-
-body.light-mode .project-info p {
-    color: #555 !important; /* لون وصف المشروع داكن */
-}
-/* أنماط أيقونات التواصل الاجتماعي في الوضع الفاتح */
-body.light-mode .social-link {
-    background: rgba(0, 0, 0, 0.08) !important; /* خلفية داكنة خفيفة للأيقونة */
-    color: #333 !important; /* لون الأيقونة نفسها يصبح داكناً */
-}
-
-body.light-mode .social-link:hover {
-    background: #f4c430 !important; /* لون الخلفية عند التحويم */
-    color: #0a0a0a !important; /* لون الأيقونة عند التحويم */
-}
-/* أنماط حقول إدخال بيانات الاتصال في الوضع الفاتح */
-body.light-mode .form-group input,
-body.light-mode .form-group textarea {
-    background: #fff !important; /* خلفية بيضاء للحقول */
-    border: 1px solid #ddd !important; /* حدود فاتحة */
-    color: #333 !important; /* لون النص المدخل يصبح داكناً */
-}
-
-/* أنماط لون النص الافتراضي (Placeholder) في الوضع الفاتح */
-body.light-mode .form-group input::placeholder,
-body.light-mode .form-group textarea::placeholder {
-    color: #888 !important; /* لون النص الافتراضي يصبح رمادياً داكناً */
-    opacity: 1 !important; /* ضمان أن النص الافتراضي لا يكون شفافاً جداً */
-}
-
-/* لأنماط متصفحات معينة (للتوافق) */
-body.light-mode .form-group input::-webkit-input-placeholder,
-body.light-mode .form-group textarea::-webkit-input-placeholder {
-    color: #888 !important;
-}
-
-body.light-mode .form-group input::-moz-placeholder,
-body.light-mode .form-group textarea::-moz-placeholder {
-    color: #888 !important;
-}
-
-body.light-mode .form-group input:-ms-input-placeholder,
-body.light-mode .form-group textarea:-ms-input-placeholder {
-    color: #888 !important;
-}
-
-body.light-mode .form-group input::placeholder-shown,
-body.light-mode .form-group textarea::placeholder-shown {
-    color: #888 !important;
-}
-
-
-
-body.light-mode .element-2,
-body.light-mode .element-3 {
-    filter: invert(100%); /* لتحويل الألوان إلى معكوسها، مما يجعل الأبيض أسود */
-}
-
-/* أضف هذا في ملف styles.css */
-
-.skills-section {
-    margin: 40px 0;
-}
-
-.skills-section h3 {
-    color: #f4c430;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-}
-
-.skill-bar {
-    margin-bottom: 20px;
-}
-
-.skill-name {
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #ffffff;
-}
-
-.skill-level {
-    height: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    overflow: hidden;
-    position: relative;
-}
-
-.skill-progress {
-    height: 100%;
-    background: linear-gradient(90deg, #f4c430, #ffd700);
-    border-radius: 5px;
-    transition: width 1.5s ease-in-out;
-}
-
-/* أنماط الوضع الفاتح */
-body.light-mode .skill-name {
-    color: #333;
-}
-
-body.light-mode .skill-level {
-    background: rgba(0, 0, 0, 0.1);
-}
-
-/* تصميم متجاوب */
-@media (max-width: 768px) {
-    .skill-bar {
-        margin-bottom: 15px;
-    }
-}
