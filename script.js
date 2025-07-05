@@ -279,6 +279,17 @@ function showProjectList(category) {
                     previewImage: "images/1000229019.jpg",
                     images: ["images/1000229019.jpg", "images/1000229020.jpg"]
                 },*/
+                {
+                    title: "Caas - متجر لبيع القهوة العربية",
+                    description: "تصميم هوية بصرية لمتجر يبيع القهوة العربية",
+                    tools: "Adobe Illustrator, Adobe Photoshop",
+                    previewImage: "images/Branding/Marvelous/Untitled7_y1HeEYCB7D.webp",
+                    images: ["images/Branding/Marvelous/Untitled7_y1HeEYCB7D.webp",
+                             "images/Branding/Marvelous/Untitled8_20250702201307_gwea46en8g.webp", 
+                             "images/Branding/Marvelous/Untitled8_20250702211253_5o2WqqIi2d.webp", 
+                             "images/Branding/Marvelous/Untitled8_20250702211306_BJWkteGY31.webp", 
+                             "images/Branding/Marvelous/Untitled8_20250702230753_NE3qjYQv06.webp"]
+                }, 
                  {
                     title: "Caas - متجر لبيع القهوة العربية",
                     description: "تصميم هوية بصرية لمتجر يبيع القهوة العربية",
