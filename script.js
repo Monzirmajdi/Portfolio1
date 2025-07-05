@@ -280,8 +280,8 @@ function showProjectList(category) {
                     images: ["images/1000229019.jpg", "images/1000229020.jpg"]
                 },*/
                 {
-                    title: "Caas - متجر لبيع القهوة العربية",
-                    description: "تصميم هوية بصرية لمتجر يبيع القهوة العربية",
+                    title: "Caas - متجر لبيع  لعب مارفل و ديزني",
+                    description: "تصميم هوية بصرية لمتجر يبيع لعب مارفل و ديزني",
                     tools: "Adobe Illustrator, Adobe Photoshop",
                     previewImage: "images/Branding/Marvelous/Untitled7_y1HeEYCB7D.webp",
                     images: ["images/Branding/Marvelous/Untitled7_y1HeEYCB7D.webp",
