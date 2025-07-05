@@ -279,6 +279,16 @@ function showProjectList(category) {
                     previewImage: "images/1000229019.jpg",
                     images: ["images/1000229019.jpg", "images/1000229020.jpg"]
                 },*/
+                 {
+                    title: "Caas - متجر لبيع القهوة العربية",
+                    description: "تصميم هوية بصرية لمتجر يبيع القهوة العربية",
+                    tools: "Adobe Illustrator, Adobe Photoshop",
+                    previewImage: "images/Branding/Caas/Untitled2_20250702084526_9rtchvyA9d.webp",
+                    images: ["images/Branding/Caas/Untitled5_20250702105625_uCrZhYLv2v.webp", 
+                             "images/Branding/Caas/Untitled5_20250702105921_Setop8uB0A.webp", 
+                             "images/Branding/Caas/Untitled5_20250702111204_nsmXkLnY4k.webp", 
+                             "images/Branding/Caas/Untitled5_20250702121104_N3GYM81b3F.webp"]
+                }, 
                 {
                     title: "Ratina - براند سوداني للطرح والمنتجات التجميلية",
                     description: "تصميم هوية بصرية لبراند سوداني للطرح والمنتجات التجميلية",
