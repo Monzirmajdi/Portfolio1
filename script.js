@@ -300,6 +300,16 @@ function showProjectList(category) {
                              "images/Branding/Unilab/_storage_emulated_0_Android_data_com.adobe.reader_files_Pictures_Adobe Acrobat Exports_unilab Brand Identity presentation_8.webp",
                              "images/Branding/Unilab/_storage_emulated_0_Android_data_com.adobe.reader_files_Pictures_Adobe Acrobat Exports_unilab Brand Identity presentation_9.webp"]
                 }, */
+                 {
+                    title: "Khubza - فرن لبناني",
+                    description: "تصميم هوية بصرية لفرن لبناني يبيع منتجات عالية الجودة",
+                    tools: "Adobe Illustrator, Adobe Photoshop",
+                    previewImage: "images/Branding/Khobza/Untitled17 (2).webp",
+                    images: ["images/Branding/Khobza/Untitled17 (2).webp",
+                             "images/Branding/Khobza/Untitled18_20250706230541 (2).webp", 
+                             "images/Branding/Khobza/Untitled18_20250706230723 (2).webp",  
+                             "images/Branding/Khobza/Untitled18_20250706231107 (2).webp"]
+                }, 
                 {
                     title: "MARVELOUS - متجر لبيع  لعب مارفل و ديزني",
                     description: "تصميم هوية بصرية لمتجر يبيع لعب مارفل و ديزني",
