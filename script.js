@@ -279,7 +279,7 @@ function showProjectList(category) {
                     previewImage: "images/1000229019.jpg",
                     images: ["images/1000229019.jpg", "images/1000229020.jpg"]
                 },*/
-                {
+               /* {
                     title: "Unilab - شركة تبيع المستلزمات و الأجهزة الطبية",
                     description: " تصميم هوية بصرية لشركة يوني لاب للأجهزة و المعدات الطبية ",
                     tools: "Adobe Illustrator, Adobe Photoshop",
@@ -299,7 +299,7 @@ function showProjectList(category) {
                              "images/Branding/Unilab/_storage_emulated_0_Android_data_com.adobe.reader_files_Pictures_Adobe Acrobat Exports_unilab Brand Identity presentation_7.webp",
                              "images/Branding/Unilab/_storage_emulated_0_Android_data_com.adobe.reader_files_Pictures_Adobe Acrobat Exports_unilab Brand Identity presentation_8.webp",
                              "images/Branding/Unilab/_storage_emulated_0_Android_data_com.adobe.reader_files_Pictures_Adobe Acrobat Exports_unilab Brand Identity presentation_9.webp"]
-                }, 
+                }, */
                 {
                     title: "MARVELOUS - متجر لبيع  لعب مارفل و ديزني",
                     description: "تصميم هوية بصرية لمتجر يبيع لعب مارفل و ديزني",
