@@ -1423,7 +1423,7 @@ body.light-mode .skill-level {
 }
 
 .slide-item {
-    margin-bottom: 1px; /*غيرتا هنا كانت ٥ */
+    margin-bottom: 0.5px; /*غيرتا هنا كانت ٥ */
     text-align: center;
 }
 
