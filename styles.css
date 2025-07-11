@@ -1613,4 +1613,11 @@ body.light-mode .slides-container::-webkit-scrollbar-thumb {
 .slides-container {
     scroll-padding-top: 20px;
 }
+/* تعديل المسافة بين الشرائح */
+.brand-presentation-modal .slide-item {
+    margin-bottom: 10px !important; /* غير القيمة كما تريد */
+}
 
+.brand-presentation-modal .slides-container {
+    gap: 10px !important; /* مسافة بين الشرائح */
+}
