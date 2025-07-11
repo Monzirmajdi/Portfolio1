@@ -1423,19 +1423,19 @@ body.light-mode .skill-level {
 }
 
 .slide-item {
-    margin-bottom: 5px;
+    margin-bottom: 30px;
     text-align: center;
-    opacity: 1;
-    transform: translateY(0);
-    animation: none;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideInUp 0.6s ease-out forwards;
 }
 
 .slide-item:nth-child(even) {
-    animation: none;
+    animation-delay: 0.1s;
 }
 
 .slide-item:nth-child(odd) {
-    animation: none;
+    animation-delay: 0.2s;
 }
 
 .slide-image {
@@ -1455,18 +1455,18 @@ body.light-mode .skill-level {
 
 /* عداد الشرائح */
 .slide-counter {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.7);
-    color: #ffffff;
-    padding: 10px 15px;
-    border-radius: 20px;
-    font-weight: 500;
-    font-size: 0.9rem;
-    box-shadow: none;
-    backdrop-filter: none;
+    position: fixed;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    background: rgba(244, 196, 48, 0.9);
+    color: #0a0a0a;
+    padding: 15px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 10px 25px rgba(244, 196, 48, 0.3);
+    backdrop-filter: blur(10px);
     z-index: 3000;
 }
 
@@ -1483,13 +1483,16 @@ body.light-mode .skill-level {
 }
 
 .presentation-title {
-    display: none;
+    color: #f4c430;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
 }
 
 .presentation-close {
-    background: transparent;
-    border: 2px solid #ffffff;
-    color: #ffffff;
+    background: rgba(244, 196, 48, 0.1);
+    border: 2px solid #f4c430;
+    color: #f4c430;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -1502,15 +1505,15 @@ body.light-mode .skill-level {
 }
 
 .presentation-close:hover {
-    background: #ffffff;
+    background: #f4c430;
     color: #0a0a0a;
     transform: rotate(90deg);
 }
 
 .back-to-projects-presentation {
-    background: transparent;
-    color: #ffffff;
-    border: 2px solid #ffffff;
+    background: linear-gradient(45deg, #f4c430, #ffd700);
+    color: #0a0a0a;
+    border: none;
     padding: 12px 25px;
     border-radius: 25px;
     font-weight: 600;
@@ -1522,9 +1525,8 @@ body.light-mode .skill-level {
 }
 
 .back-to-projects-presentation:hover {
-    background: #ffffff;
-    color: #0a0a0a;
     transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(244, 196, 48, 0.4);
 }
 
 /* أنماط الوضع الفاتح للقسم الجديد */
@@ -1543,25 +1545,24 @@ body.light-mode .presentation-title {
 }
 
 body.light-mode .presentation-close {
-    background: transparent !important;
-    border-color: #333 !important;
-    color: #333 !important;
+    background: rgba(212, 160, 23, 0.1) !important;
+    border-color: #d4a017 !important;
+    color: #d4a017 !important;
 }
 
 body.light-mode .presentation-close:hover {
-    background: #333 !important;
+    background: #d4a017 !important;
     color: #fff !important;
 }
 
 body.light-mode .back-to-projects-presentation {
-    background: transparent !important;
-    color: #333 !important;
-    border-color: #333 !important;
+    background: linear-gradient(45deg, #d4a017, #f4c430) !important;
+    color: #fff !important;
 }
 
 body.light-mode .slide-counter {
-    background: rgba(0, 0, 0, 0.1) !important;
-    color: #333 !important;
+    background: rgba(212, 160, 23, 0.9) !important;
+    color: #fff !important;
 }
 
 body.light-mode .slide-image {
@@ -1656,4 +1657,30 @@ body.light-mode .slides-container::-webkit-scrollbar-thumb {
     scroll-padding-top: 20px;
 }
 
+/* تأثيرات تفاعلية إضافية */
+.slide-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.slide-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(244, 196, 48, 0.1), transparent);
+    transition: left 0.6s ease;
+    z-index: 1;
+}
+
+.slide-item:hover::before {
+    left: 100%;
+}
+
+.slide-image {
+    position: relative;
+    z-index: 2;
+}
 

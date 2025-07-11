@@ -279,7 +279,27 @@ function showProjectList(category) {
                     previewImage: "images/1000229019.jpg",
                     images: ["images/1000229019.jpg", "images/1000229020.jpg"]
                 },*/
-               
+               /* {
+                    title: "Unilab - شركة تبيع المستلزمات و الأجهزة الطبية",
+                    description: " تصميم هوية بصرية لشركة يوني لاب للأجهزة و المعدات الطبية ",
+                    tools: "Adobe Illustrator, Adobe Photoshop",
+                    previewImage: "images/Branding/Unilab/_storage_emulated_0_Android_data_com.adobe.reader_files_Pictures_Adobe Acrobat Exports_unilab Brand Identity presentation_0.webp",
+                    images: ["images/Branding/Unilab/_storage_emulated_0_Android_data_com.adobe.reader_files_Pictures_Adobe Acrobat Exports_unilab Brand Identity presentation_0.webp",
+                             "images/Branding/Unilab/_storage_emulated_0_Android_data_com.adobe.reader_files_Pictures_Adobe Acrobat Exports_unilab Brand Identity presentation_1.webp", 
+                             "images/Branding/Unilab/_storage_emulated_0_Android_data_com.adobe.reader_files_Pictures_Adobe Acrobat Exports_unilab Brand Identity presentation_10.webp", 
+                             "images/Branding/Unilab/_storage_emulated_0_Android_data_com.adobe.reader_files_Pictures_Adobe Acrobat Exports_unilab Brand Identity presentation_11.webp",
+                             "images/Branding/Unilab/_storage_emulated_0_Android_data_com.adobe.reader_files_Pictures_Adobe Acrobat Exports_unilab Brand Identity presentation_12.webp", 
+                             "images/Branding/Unilab/_storage_emulated_0_Android_data_com.adobe.reader_files_Pictures_Adobe Acrobat Exports_unilab Brand Identity presentation_13.webp", 
+                             "images/Branding/Unilab/_storage_emulated_0_Android_data_com.adobe.reader_files_Pictures_Adobe Acrobat Exports_unilab Brand Identity presentation_14.webp", 
+                             "images/Branding/Unilab/_storage_emulated_0_Android_data_com.adobe.reader_files_Pictures_Adobe Acrobat Exports_unilab Brand Identity presentation_2.webp", 
+                             "images/Branding/Unilab/_storage_emulated_0_Android_data_com.adobe.reader_files_Pictures_Adobe Acrobat Exports_unilab Brand Identity presentation_3.webp", 
+                             "images/Branding/Unilab/_storage_emulated_0_Android_data_com.adobe.reader_files_Pictures_Adobe Acrobat Exports_unilab Brand Identity presentation_4.webp", 
+                             "images/Branding/Unilab/_storage_emulated_0_Android_data_com.adobe.reader_files_Pictures_Adobe Acrobat Exports_unilab Brand Identity presentation_5.webp",
+                             "images/Branding/Unilab/_storage_emulated_0_Android_data_com.adobe.reader_files_Pictures_Adobe Acrobat Exports_unilab Brand Identity presentation_6.webp",
+                             "images/Branding/Unilab/_storage_emulated_0_Android_data_com.adobe.reader_files_Pictures_Adobe Acrobat Exports_unilab Brand Identity presentation_7.webp",
+                             "images/Branding/Unilab/_storage_emulated_0_Android_data_com.adobe.reader_files_Pictures_Adobe Acrobat Exports_unilab Brand Identity presentation_8.webp",
+                             "images/Branding/Unilab/_storage_emulated_0_Android_data_com.adobe.reader_files_Pictures_Adobe Acrobat Exports_unilab Brand Identity presentation_9.webp"]
+                }, */
                  {
                     title: "Khubza - فرن لبناني",
                     description: "تصميم هوية بصرية لفرن لبناني يبيع منتجات عالية الجودة",
@@ -369,33 +389,7 @@ function showProjectList(category) {
                 }*/
             ]
         }
-    }, 
-        "brand-presentation": {
-    title: "Brand Presentations",
-    items: [{
-        title: "Client Deck",
-        description: "Brand strategy presentation",
-        tools: "PowerPoint, Illustrator",
-        previewImage: "images/Branding/Unilab/unilab00.png",
-        slides: [
-            "images/Branding/Unilab/unilab00.png",
-            "images/Branding/Unilab/unilab01.png",
-            "images/Branding/Unilab/unilab02.png",
-            "images/Branding/Unilab/unilab03.png",
-            "images/Branding/Unilab/unilab04.png",
-            "images/Branding/Unilab/unilab05.png",
-            "images/Branding/Unilab/unilab06.png",
-            "images/Branding/Unilab/unilab07.png",
-            "images/Branding/Unilab/unilab08.png",
-            "images/Branding/Unilab/unilab09.png",
-            "images/Branding/Unilab/unilab10.png",
-            "images/Branding/Unilab/unilab11.png",
-            "images/Branding/Unilab/unilab12.png",
-            "images/Branding/Unilab/unilab13.png",
-            "images/Branding/Unilab/unilab14.png"
-        ]
-    }]
-};
+    };
 
     // Function to populate card previews
     function populateCardPreviews() {
@@ -484,10 +478,10 @@ function showProjectList(category) {
         <p style="color: #999; margin-bottom: 20px; font-size: 0.9rem;"><strong>Tools:</strong> ${project.tools}</p>
         <div class="project-images-container">
             <div class="gallery-progress">1 of ${project.images?.length || 0}</div>
-            <div class="gallery-grid project-images-grid" style="display: block; overflow-y: auto; height: calc(100vh - 300px); padding-bottom: 10px;">
+            <div class="gallery-grid project-images-grid" style="display: flex; overflow-x: auto; gap: 15px; padding-bottom: 10px;">
                 ${project.images && project.images.length > 0 ?
                     project.images.map(img => `
-                    <div class="gallery-item" style="width: 100%; margin-bottom: 15px;">
+                        <div class="gallery-item" style="flex: 0 0 30%; max-width:400px;min-width:250px;">
                             <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; height:auto;border-radius:8px;" loading="lazy">
                         </div>
                     `).join("") :
@@ -516,10 +510,10 @@ function showProjectList(category) {
             imagesGrid.addEventListener('scroll', updateImageCounter);
             
             function updateImageCounter() {
-                const scrollPos = imagesGrid.scrollTop;
-                const imgHeight = imagesGrid.querySelector(".gallery-item")?.offsetHeight || 0;
+                const scrollPos = imagesGrid.scrollLeft;
+                const imgWidth = imagesGrid.querySelector('.gallery-item')?.offsetWidth || 0;
                 const gap = 15; // يجب أن يتطابق مع الفجوة في CSS
-                const currentImage = Math.round(scrollPos / (imgHeight + gap)) + 1;
+                const currentImage = Math.round(scrollPos / (imgWidth + gap)) + 1;
                 progressIndicator.textContent = `${currentImage} of ${project.images.length}`;
             }
         }
