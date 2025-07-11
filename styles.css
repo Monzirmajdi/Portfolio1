@@ -1423,34 +1423,17 @@ body.light-mode .skill-level {
 }
 
 .slide-item {
-    margin-bottom: 30px;
+    margin-bottom: 5px;
     text-align: center;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: slideInUp 0.6s ease-out forwards;
-}
-
-.slide-item:nth-child(even) {
-    animation-delay: 0.1s;
-}
-
-.slide-item:nth-child(odd) {
-    animation-delay: 0.2s;
 }
 
 .slide-image {
     width: 100%;
     max-width: 1080px;
     height: auto;
-    border-radius: 15px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 2px solid rgba(244, 196, 48, 0.1);
-}
-
-.slide-image:hover {
-    transform: scale(1.02);
-    box-shadow: 0 20px 45px rgba(244, 196, 48, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(244, 196, 48, 0.1);
 }
 
 /* عداد الشرائح */
@@ -1459,14 +1442,13 @@ body.light-mode .skill-level {
     top: 50%;
     right: 30px;
     transform: translateY(-50%);
-    background: rgba(244, 196, 48, 0.9);
+    background: #f4c430;
     color: #0a0a0a;
-    padding: 15px 20px;
+    padding: 12px 20px;
     border-radius: 25px;
     font-weight: 600;
     font-size: 1rem;
-    box-shadow: 0 10px 25px rgba(244, 196, 48, 0.3);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(244, 196, 48, 0.3);
     z-index: 3000;
 }
 
@@ -1482,36 +1464,22 @@ body.light-mode .skill-level {
     z-index: 2600;
 }
 
-.presentation-title {
-    color: #f4c430;
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin: 0;
-}
-
 .presentation-close {
-    background: rgba(244, 196, 48, 0.1);
-    border: 2px solid #f4c430;
-    color: #f4c430;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1.5rem;
+    background: none;
+    border: none;
+    transition: color 0.3s ease;
 }
 
 .presentation-close:hover {
-    background: #f4c430;
-    color: #0a0a0a;
-    transform: rotate(90deg);
+    color: #f4c430;
 }
 
 .back-to-projects-presentation {
-    background: linear-gradient(45deg, #f4c430, #ffd700);
+    background: #f4c430;
     color: #0a0a0a;
     border: none;
     padding: 12px 25px;
@@ -1540,38 +1508,27 @@ body.light-mode .brand-presentation-content {
     color: #333 !important;
 }
 
-body.light-mode .presentation-title {
-    color: #d4a017 !important;
-}
-
 body.light-mode .presentation-close {
-    background: rgba(212, 160, 23, 0.1) !important;
-    border-color: #d4a017 !important;
-    color: #d4a017 !important;
+    color: #999 !important;
 }
 
 body.light-mode .presentation-close:hover {
+    color: #d4a017 !important;
+}
+
+body.light-mode .back-to-projects-presentation {
     background: #d4a017 !important;
     color: #fff !important;
 }
 
-body.light-mode .back-to-projects-presentation {
-    background: linear-gradient(45deg, #d4a017, #f4c430) !important;
-    color: #fff !important;
-}
-
 body.light-mode .slide-counter {
-    background: rgba(212, 160, 23, 0.9) !important;
+    background: #d4a017 !important;
     color: #fff !important;
 }
 
 body.light-mode .slide-image {
     border-color: rgba(212, 160, 23, 0.2) !important;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
-}
-
-body.light-mode .slide-image:hover {
-    box-shadow: 0 20px 45px rgba(212, 160, 23, 0.3) !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
 }
 
 body.light-mode .slides-container {
@@ -1655,32 +1612,5 @@ body.light-mode .slides-container::-webkit-scrollbar-thumb {
 /* تحسينات إضافية للتمرير الناعم */
 .slides-container {
     scroll-padding-top: 20px;
-}
-
-/* تأثيرات تفاعلية إضافية */
-.slide-item {
-    position: relative;
-    overflow: hidden;
-}
-
-.slide-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(244, 196, 48, 0.1), transparent);
-    transition: left 0.6s ease;
-    z-index: 1;
-}
-
-.slide-item:hover::before {
-    left: 100%;
-}
-
-.slide-image {
-    position: relative;
-    z-index: 2;
 }
 
