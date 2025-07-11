@@ -1619,5 +1619,5 @@ body.light-mode .slides-container::-webkit-scrollbar-thumb {
 }
 
 .brand-presentation-modal .slides-container {
-    gap: 10px !important; /* مسافة بين الشرائح */
+    gap: 1px !important; /* مسافة بين الشرائح */
 }
