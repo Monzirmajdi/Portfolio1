@@ -1608,16 +1608,3 @@ body.light-mode .slides-container::-webkit-scrollbar-thumb {
         transform: translateY(0);
     }
 }
-
-/* تحسينات إضافية للتمرير الناعم */
-.slides-container {
-    scroll-padding-top: 20px;
-}
-/* تعديل المسافة بين الشرائح */
-.brand-presentation-modal .slide-item {
-    margin-bottom: 0.05px !important; /* غير القيمة كما تريد */
-}
-
-.brand-presentation-modal .slides-container {
-    gap: 1px !important; /* مسافة بين الشرائح */
-}
