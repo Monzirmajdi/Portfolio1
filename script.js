@@ -388,34 +388,6 @@ function showProjectList(category) {
                     images: []
                 }*/
             ]
-        },
-        "brand-presentation": {
-            title: "Brand Presentation",
-            items: [
-                {
-                    title: "Unilab Medical Equipment",
-                    description: "Complete brand identity presentation for medical equipment company showcasing logo design, color palette, typography, and brand applications",
-                    tools: "Adobe Illustrator, Adobe InDesign, Adobe Photoshop",
-                    previewImage: "images/Branding/Unilab/unilab00.png",
-                    slides: [
-                        "images/Branding/Unilab/unilab00.png",
-                        "images/Branding/Unilab/unilab01.png",
-                        "images/Branding/Unilab/unilab02.png",
-                        "images/Branding/Unilab/unilab03.png",
-                        "images/Branding/Unilab/unilab04.png",
-                        "images/Branding/Unilab/unilab05.png",
-                        "images/Branding/Unilab/unilab06.png",
-                        "images/Branding/Unilab/unilab07.png",
-                        "images/Branding/Unilab/unilab08.png",
-                        "images/Branding/Unilab/unilab09.png",
-                        "images/Branding/Unilab/unilab10.png",
-                        "images/Branding/Unilab/unilab11.png",
-                        "images/Branding/Unilab/unilab12.png",
-                        "images/Branding/Unilab/unilab13.png",
-                        "images/Branding/Unilab/unilab14.png"
-                    ]
-                }
-            ]
         }
     };
 
@@ -485,132 +457,9 @@ function showProjectList(category) {
                 card.addEventListener("click", (e) => {
                     const cat = e.currentTarget.dataset.category;
                     const idx = parseInt(e.currentTarget.dataset.index);
-                    
-                    // التحقق من نوع القسم لتحديد طريقة العرض
-                    if (cat === "brand-presentation") {
-                        showBrandPresentationDetails(cat, idx);
-                    } else {
-                        showProjectDetails(cat, idx);
-                    }
+                    showProjectDetails(cat, idx);
                 });
             });
-        });
-    }
-
-    // وظيفة خاصة لعرض تفاصيل مشاريع Brand Presentation
-    function showBrandPresentationDetails(category, projectIndex) {
-        const data = portfolioData[category];
-        const project = data.items[projectIndex];
-        if (!project || !project.slides) return;
-
-        // إخفاء المودال الحالي
-        modal.classList.remove("show-modal");
-        setTimeout(() => {
-            modal.style.display = "none";
-        }, 300);
-
-        // إنشاء مودال جديد للعرض التقديمي
-        let presentationModal = document.getElementById("brand-presentation-modal");
-        if (!presentationModal) {
-            presentationModal = document.createElement("div");
-            presentationModal.id = "brand-presentation-modal";
-            presentationModal.className = "brand-presentation-modal";
-            document.body.appendChild(presentationModal);
-        }
-
-        const slidesHTML = project.slides.map((slide, index) => `
-            <div class="slide-item" data-slide="${index + 1}">
-                <img src="${slide}" 
-                     alt="${project.title} - Slide ${index + 1}" 
-                     class="slide-image"
-                     loading="lazy"
-                     onerror="this.src='images/placeholder.png'">
-            </div>
-        `).join("");
-
-        presentationModal.innerHTML = `
-            <div class="brand-presentation-content">
-                <div class="presentation-controls">
-                    <button class="back-to-projects-presentation">
-                        <i class="fas fa-arrow-left"></i>
-                        Back to Projects
-                    </button>
-                    <h2 class="presentation-title">${project.title}</h2>
-                    <div class="presentation-close">
-                        <i class="fas fa-times"></i>
-                    </div>
-                </div>
-                <div class="slides-container" id="slides-container">
-                    ${slidesHTML}
-                </div>
-                <div class="slide-counter" id="slide-counter">
-                    1 of ${project.slides.length}
-                </div>
-            </div>
-        `;
-
-        // عرض المودال الجديد
-        presentationModal.style.display = "block";
-        setTimeout(() => {
-            presentationModal.classList.add("show-modal");
-        }, 50);
-
-        // إعداد العداد والتمرير
-        const slidesContainer = document.getElementById("slides-container");
-        const slideCounter = document.getElementById("slide-counter");
-        
-        function updateSlideCounter() {
-            const slides = slidesContainer.querySelectorAll(".slide-item");
-            const containerHeight = slidesContainer.clientHeight;
-            const scrollTop = slidesContainer.scrollTop;
-            
-            let currentSlide = 1;
-            slides.forEach((slide, index) => {
-                const slideTop = slide.offsetTop - slidesContainer.offsetTop;
-                const slideBottom = slideTop + slide.offsetHeight;
-                const viewportCenter = scrollTop + containerHeight / 2;
-                
-                if (viewportCenter >= slideTop && viewportCenter <= slideBottom) {
-                    currentSlide = index + 1;
-                }
-            });
-            
-            slideCounter.textContent = `${currentSlide} of ${project.slides.length}`;
-        }
-
-        // تحديث العداد عند التمرير
-        slidesContainer.addEventListener("scroll", updateSlideCounter);
-        
-        // تحديث العداد عند التحميل
-        setTimeout(updateSlideCounter, 100);
-
-        // إعداد أزرار التحكم
-        const backButton = presentationModal.querySelector(".back-to-projects-presentation");
-        const closeButton = presentationModal.querySelector(".presentation-close");
-
-        backButton.addEventListener("click", () => {
-            presentationModal.classList.remove("show-modal");
-            setTimeout(() => {
-                presentationModal.style.display = "none";
-                showProjectList(category);
-            }, 400);
-        });
-
-        closeButton.addEventListener("click", () => {
-            presentationModal.classList.remove("show-modal");
-            setTimeout(() => {
-                presentationModal.style.display = "none";
-            }, 400);
-        });
-
-        // إغلاق عند النقر خارج المحتوى
-        presentationModal.addEventListener("click", (e) => {
-            if (e.target === presentationModal) {
-                presentationModal.classList.remove("show-modal");
-                setTimeout(() => {
-                    presentationModal.style.display = "none";
-                }, 400);
-            }
         });
     }
 
@@ -629,10 +478,10 @@ function showProjectList(category) {
         <p style="color: #999; margin-bottom: 20px; font-size: 0.9rem;"><strong>Tools:</strong> ${project.tools}</p>
         <div class="project-images-container">
             <div class="gallery-progress">1 of ${project.images?.length || 0}</div>
-            <div class="gallery-grid project-images-grid" style="display: flex; overflow-x: auto; gap: 15px; padding-bottom: 10px;">
+            <div class="gallery-grid project-images-grid" style="display: block; overflow-y: auto; height: calc(100vh - 300px); padding-bottom: 10px;">
                 ${project.images && project.images.length > 0 ?
                     project.images.map(img => `
-                        <div class="gallery-item" style="flex: 0 0 30%; max-width:400px;min-width:250px;">
+                    <div class="gallery-item" style="width: 100%; margin-bottom: 15px;">
                             <img src="${img}" alt="${project.title}" class="gallery-image" style="width:100%; height:auto;border-radius:8px;" loading="lazy">
                         </div>
                     `).join("") :
@@ -661,10 +510,10 @@ function showProjectList(category) {
             imagesGrid.addEventListener('scroll', updateImageCounter);
             
             function updateImageCounter() {
-                const scrollPos = imagesGrid.scrollLeft;
-                const imgWidth = imagesGrid.querySelector('.gallery-item')?.offsetWidth || 0;
+                const scrollPos = imagesGrid.scrollTop;
+                const imgHeight = imagesGrid.querySelector(".gallery-item")?.offsetHeight || 0;
                 const gap = 15; // يجب أن يتطابق مع الفجوة في CSS
-                const currentImage = Math.round(scrollPos / (imgWidth + gap)) + 1;
+                const currentImage = Math.round(scrollPos / (imgHeight + gap)) + 1;
                 progressIndicator.textContent = `${currentImage} of ${project.images.length}`;
             }
         }
