@@ -1615,7 +1615,7 @@ body.light-mode .slides-container::-webkit-scrollbar-thumb {
 }
 /* تعديل المسافة بين الشرائح */
 .brand-presentation-modal .slide-item {
-    margin-bottom: 10px !important; /* غير القيمة كما تريد */
+    margin-bottom: 2px !important; /* غير القيمة كما تريد */
 }
 
 .brand-presentation-modal .slides-container {
