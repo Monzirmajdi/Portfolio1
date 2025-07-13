@@ -394,7 +394,21 @@ function showProjectList(category) {
                         "images/Branding/Unilab/unilab13.png",
                         "images/Branding/Unilab/unilab14.png"
                     ]
-                }
+                }, 
+                {
+                    title: "Unilab Medical Equipment",
+                    description: "Complete brand identity presentation for medical equipment company showcasing logo design, color palette, typography, and brand applications",
+                    tools: "Adobe Illustrator, Adobe InDesign, Adobe Photoshop",
+                    previewImage: "images/Branding/Unilab/unilab00.png",
+                    slides: [
+                        "images/presentations/Sa/Sa0.png",
+                        "images/presentations/Sa/Sa1.png",
+                        "images/presentations/Sa/Sa2.png",
+                        "images/presentations/Sa/Sa3.png",
+                        "images/presentations/Sa/Sa4.png",
+                        "images/presentations/Sa/Sa5.png"
+                    ]
+                } 
             ]
         }
     };
