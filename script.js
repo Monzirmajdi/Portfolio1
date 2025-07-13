@@ -396,10 +396,10 @@ function showProjectList(category) {
                     ]
                 }, 
                 {
-                    title: "Unilab Medical Equipment",
-                    description: "Complete brand identity presentation for medical equipment company showcasing logo design, color palette, typography, and brand applications",
+                    title: "Sa Stainless steel and accessories",
+                    description: "brand identity presentation for accessories store showcasing logo design, spacing,and brand applications",
                     tools: "Adobe Illustrator, Adobe InDesign, Adobe Photoshop",
-                    previewImage: "images/Branding/Unilab/unilab00.png",
+                    previewImage: "images/presentations/Sa/Sa0.png",
                     slides: [
                         "images/presentations/Sa/Sa0.png",
                         "images/presentations/Sa/Sa1.png",
