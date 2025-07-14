@@ -258,7 +258,7 @@ function showProjectList(category) {
             ]
         },
         "branding": {
-            title: "Brand Identity & Logos",
+            title: "Brand's Logos",
             items: [
               /* {
                     title: "تليفوني - متجر للهواتف والاكسسوارات",
@@ -291,7 +291,7 @@ function showProjectList(category) {
                
                  {
                     title: "Khubza - فرن لبناني",
-                    description: "تصميم هوية بصرية لفرن لبناني يبيع منتجات عالية الجودة",
+                    description: "تصميم شعار لفرن لبناني يبيع منتجات عالية الجودة",
                     tools: "Adobe Illustrator, Adobe Photoshop",
                     previewImage: "images/Branding/Khobza/Untitled17 (2).webp",
                     images: ["images/Branding/Khobza/Untitled17 (2).webp",
@@ -301,7 +301,7 @@ function showProjectList(category) {
                 }, 
                 {
                     title: "MARVELOUS - متجر لبيع  لعب مارفل و ديزني",
-                    description: "تصميم هوية بصرية لمتجر يبيع لعب مارفل و ديزني",
+                    description: "تصميم شعار لمتجر يبيع لعب مارفل و ديزني",
                     tools: "Adobe Illustrator, Adobe Photoshop",
                     previewImage: "images/Branding/Marvelous/Untitled7_y1HeEYCB7D.webp",
                     images: ["images/Branding/Marvelous/Untitled7_y1HeEYCB7D.webp",
@@ -312,7 +312,7 @@ function showProjectList(category) {
                  }, 
                  {
                     title: "Caas - متجر لبيع القهوة العربية",
-                    description: "تصميم هوية بصرية لمتجر يبيع القهوة العربية",
+                    description: "تصميم شعار لمتجر يبيع القهوة العربية",
                     tools: "Adobe Illustrator, Adobe Photoshop",
                     previewImage: "images/Branding/Caas/Untitled2_20250702084526_9rtchvyA9d.webp",
                     images: ["images/Branding/Caas/Untitled2_20250702084526_9rtchvyA9d.webp",
@@ -323,7 +323,7 @@ function showProjectList(category) {
                 }, 
                 {
                     title: "Ratina - براند سوداني للطرح والمنتجات التجميلية",
-                    description: "تصميم هوية بصرية لبراند سوداني للطرح والمنتجات التجميلية",
+                    description: "تصميم شعار لبراند سوداني للطرح والمنتجات التجميلية",
                     tools: "Adobe Illustrator, Adobe Photoshop",
                     previewImage: "images/Branding/Ratina/Untitled182_20250605061344_CvWhFKhQ4Q.webp",
                     images: ["images/Branding/Ratina/Untitled182_20250605061344_CvWhFKhQ4Q.webp", 
@@ -334,7 +334,7 @@ function showProjectList(category) {
                 }, 
                 {
                     title: "Sa Stainless Steel - براند سوداني للاكسسوارات الفضة الاستيل",
-                    description: "تصميم هوية بصرية لبراند سوداني للاكسسوارات الفضة",
+                    description: "تصميم شعار لبراند سوداني للاكسسوارات الفضة",
                     tools: "Adobe Illustrator, Adobe Photoshop",
                     previewImage: "images/Branding/Sa/Untitled28_20250624203543_YNhA6ynz1M.webp",
                     images: ["images/Branding/Sa/1_NtqvnVum6y.webp", 
