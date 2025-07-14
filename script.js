@@ -649,7 +649,7 @@ function showProjectList(category) {
                     "<div class=\"gallery-placeholder\"><i class=\"fas fa-image\"></i> No images available</div>"
                 }
             </div>
-            ${project.images && project.images.length > 20 ?
+            ${project.images && project.images.length > 100?
                 `<button id="show-more-images-btn" class="btn btn-primary" style="margin: 20px auto; display: block;">Show More</button>` : ""
             }
         </div>
