@@ -219,7 +219,16 @@ function showProjectList(category) {
                              "images/Social-media/Baseline/Untitled148_20250519082112_XYVTTSpm3u_H9cERuBc9Z.webp", 
                              "images/Social-media/Baseline/Untitled149_Restored_20250520022900_OgwbOoZk4r_cqNkq3rX5M.webp", 
                              "images/Social-media/Baseline/Untitled150_20250607161313_PIkd3DHX2S_NxVyUull2f.webp", 
-                             "images/Social-media/Baseline/Untitled169 (1)_CNyjEGoT8O_6IYibalO29.webp"]
+                             "images/Social-media/Baseline/Untitled169 (1)_CNyjEGoT8O_6IYibalO29.webp", 
+                             "images/Social-media/Baseline/Baseline00.webp", "images/Social-media/Baseline/Baseline08.webp", 
+                             "images/Social-media/Baseline/Baseline01.webp", "images/Social-media/Baseline/Baseline09.webp", 
+                             "images/Social-media/Baseline/Baseline02.webp", "images/Social-media/Baseline/Baseline10.webp", 
+                             "images/Social-media/Baseline/Baseline03.webp", "images/Social-media/Baseline/Baseline11.webp", 
+                             "images/Social-media/Baseline/Baseline04.webp", "images/Social-media/Baseline/Baseline12.webp", 
+                             "images/Social-media/Baseline/Baseline05.webp", "images/Social-media/Baseline/Baseline13.webp", 
+                             "images/Social-media/Baseline/Baseline06.webp", "images/Social-media/Baseline/Baseline14.webp", 
+                             "images/Social-media/Baseline/Baseline07.webp", "images/Social-media/Baseline/Baseline15.webp" 
+                            ]
                 },
                 {
                     title: "khomra",
