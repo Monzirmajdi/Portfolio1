@@ -244,7 +244,16 @@ function showProjectList(category) {
                              "images/Social-media/ADS/c1_20250626_06184819_aTkjp5I22h_PACRYc5s2g.webp", 
                              "images/Social-media/ADS/c1_20250626_06183730_n0tZuHHu4j_XkXAH8WV3L.webp", 
                              "images/Social-media/ADS/c1_20250626_06183830_pIuHZwJZ91_B28wVhSp3t.webp" ]
-                }
+                }, 
+                {
+                    title: "Mostfana",
+                    description: "Social media ad for islamic content page",
+                    tools: "Adobe Illustrator, Adobe Photoshop",
+                    previewImage: "images/Social-media/Mostfana/mostfana0.webp",
+                    images: ["images/Social-media/Mostfana/mostfana0.webp", 
+                             "images/Social-media/Mostfana/mostfana1.webp", 
+                             "images/Social-media/Mostfana/mostfana2.webp"]
+                } 
                 
             ]
         },
