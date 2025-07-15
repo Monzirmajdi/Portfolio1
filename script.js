@@ -213,7 +213,7 @@ function showProjectList(category) {
                              "images/Social-media/Baseline/Baseline01.webp", "images/Social-media/Baseline/Baseline09.webp", 
                              "images/Social-media/Baseline/Baseline02.webp", "images/Social-media/Baseline/Baseline10.webp", 
                              "images/Social-media/Baseline/Baseline03.webp", "images/Social-media/Baseline/Baseline11.webp", 
-                             "images/Social-media/Baseline/Baseline04.webp", "images/Social-media/Baseline/Baseline12.webp", 
+                             "images/Social-media/Baseline/Baseline12.webp", 
                              "images/Social-media/Baseline/Baseline05.webp", "images/Social-media/Baseline/Baseline13.webp", 
                              "images/Social-media/Baseline/Baseline06.webp", "images/Social-media/Baseline/Baseline14.webp", 
                              "images/Social-media/Baseline/Baseline07.webp", "images/Social-media/Baseline/Baseline15.webp", 
