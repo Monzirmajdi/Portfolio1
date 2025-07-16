@@ -298,6 +298,21 @@ function showProjectList(category) {
                     previewImage: "images/1000229019.jpg",
                     images: ["images/1000229019.jpg", "images/1000229020.jpg"]
                 },*/
+                
+                 {
+                    title: "Sedra - متجر عسل",
+                    description: "تصميم شعار لمتجر يبيع عسل السدر",
+                    tools: "Adobe Illustrator, Adobe Photoshop",
+                    previewImage: "images/Branding/Sedra/sedra0_001.webp",
+                    images: [
+                             "images/Branding/Sedra/sedra0_001.webp",
+                             "images/Branding/Sedra/sedra1_001.webp", 
+                             "images/Branding/Sedra/sedra2.webp",
+                             "images/Branding/Sedra/sedra3.webp",
+                             "images/Branding/Sedra/sedra4.webp",
+                             "images/Branding/Sedra/sedra5.webp"
+                            ]
+                }, 
                
                  {
                     title: "Khubza - فرن لبناني",
