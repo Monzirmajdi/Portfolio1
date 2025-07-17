@@ -908,6 +908,68 @@ body.light-mode .gallery-placeholder {
     font-size: 0.9rem;
     line-height: 1.4;
 }
+/* ===== CERTIFICATES SECTION ===== */
+.certifications {
+    margin: 50px 0 30px;
+}
+
+.certifications h3 {
+    color: #f4c430;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.certificate-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid rgba(244, 196, 48, 0.1);
+}
+
+.certificate-item:hover {
+    transform: translateY(-5px);
+    background: rgba(244, 196, 48, 0.05);
+    box-shadow: 0 5px 15px rgba(244, 196, 48, 0.1);
+}
+
+.certificate-item img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.certificate-item span {
+    color: #f4c430;
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Light Mode Adjustments */
+body.light-mode .certificate-item {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(212, 160, 23, 0.2);
+}
+
+body.light-mode .certificate-item span {
+    color: #d4a017;
+}
 /* ------ إضافة جديدة - نهاية ------ */
 /* Responsive Design */
 @media (max-width: 768px) {
