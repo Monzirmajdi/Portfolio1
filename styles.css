@@ -970,6 +970,73 @@ body.light-mode .certificate-item {
 body.light-mode .certificate-item span {
     color: #d4a017;
 }
+/* Horizontal Scrolling Styles */
+.certificates-scroller {
+    position: relative;
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 0 40px;
+}
+
+.certificates-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 20px 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    margin: 0 10px;
+}
+
+/* Hide scrollbar */
+.certificates-track::-webkit-scrollbar {
+    display: none;
+}
+
+/* Certificate Items */
+.certificate-item {
+    flex: 0 0 280px; /* Fixed width for each certificate */
+    scroll-snap-align: start;
+}
+
+/* Scroll Buttons */
+.scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(244, 196, 48, 0.7);
+    border: none;
+    border-radius: 50%;
+    color: #0a0a0a;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.scroll-btn:hover {
+    background: #f4c430;
+}
+
+.scroll-left {
+    left: 0;
+}
+
+.scroll-right {
+    right: 0;
+}
+
+/* Hide buttons when not needed */
+.scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
 /* ------ إضافة جديدة - نهاية ------ */
 /* Responsive Design */
 @media (max-width: 768px) {
