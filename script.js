@@ -14,35 +14,34 @@ document.addEventListener("DOMContentLoaded", () => {
             hamburger.classList.remove("active");
             navMenu.classList.remove("active");
         }));
-        // أضف هذا الكود في ملف script.js داخل event listener لـ DOMContentLoaded
-
-// Animation for skill bars
-const skillBars = document.querySelectorAll('.skill-level');
-if (skillBars.length > 0) {
-    const animateSkillBars = () => {
-        skillBars.forEach(bar => {
-            const progress = bar.querySelector('.skill-progress');
-            const level = bar.getAttribute('data-level');
-            progress.style.width = level;
-        });
-    };
-
-    // Trigger animation when section is in view
-    const aboutSection = document.querySelector('#about');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateSkillBars();
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.2 });
-
-    observer.observe(aboutSection);
-}
     }
 
-    // Dynamic Navbar Title on Scroll (تم نقل هذا الجزء هنا)
+    // Animation for skill bars
+    const skillBars = document.querySelectorAll(".skill-level");
+    if (skillBars.length > 0) {
+        const animateSkillBars = () => {
+            skillBars.forEach(bar => {
+                const progress = bar.querySelector(".skill-progress");
+                const level = bar.getAttribute("data-level");
+                progress.style.width = level;
+            });
+        };
+
+        // Trigger animation when section is in view
+        const aboutSection = document.querySelector("#about");
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkillBars();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        observer.observe(aboutSection);
+    }
+
+    // Dynamic Navbar Title on Scroll
     const navLogoSpan = document.querySelector(".nav-logo span");
     const sections = document.querySelectorAll("section[id]");
 
@@ -74,7 +73,7 @@ if (skillBars.length > 0) {
     // استدعاء الدالة عند التمرير
     window.addEventListener("scroll", updateNavLogoTitle);
 
-    // Typing effect for Hero Subtitle (تم إضافة هذا الجزء هنا)
+    // Typing effect for Hero Subtitle
     const heroSubtitle = document.querySelector(".hero-subtitle");
     const textToType = "Graphic Designer & Visual Artist";
     let charIndex = 0;
@@ -97,107 +96,53 @@ if (skillBars.length > 0) {
         }
     }
 
-    // Theme toggle functionality (تم دمجها هنا)
+    // Theme toggle functionality
     const themeToggle = document.querySelector(".theme-toggle");
     const body = document.body;
 
     if (themeToggle) {
         themeToggle.addEventListener("click", () => {
             const icon = themeToggle.querySelector("i");
-            body.classList.toggle('light-mode');
-            if (body.classList.contains('light-mode')) {
-                icon.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('page-theme', 'light');
+            body.classList.toggle("light-mode");
+            if (body.classList.contains("light-mode")) {
+                icon.classList.replace("fa-moon", "fa-sun");
+                localStorage.setItem("page-theme", "light");
             } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
-                localStorage.setItem('page-theme', 'dark');
+                icon.classList.replace("fa-sun", "fa-moon");
+                localStorage.setItem("page-theme", "dark");
             }
         });
 
         // تحميل التفضيل المحفوظ عند بدء التشغيل
-        if (localStorage.getItem('page-theme') === 'light') {
-            body.classList.add('light-mode');
-            themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+        if (localStorage.getItem("page-theme") === "light") {
+            body.classList.add("light-mode");
+            themeToggle.querySelector("i").classList.replace("fa-moon", "fa-sun");
         }
     }
 
-    // Portfolio Modal Functionality (هذا الجزء كان موجوداً بالفعل وتم الاحتفاظ به)
+    // Portfolio Modal Functionality
     const modal = document.getElementById("portfolio-modal");
     const closeModal = document.querySelector(".modal .close");
     const modalTitle = document.getElementById("modal-title");
-    const modalGallery = document.getElementById("modal-gallery");
+    let modalGallery = document.getElementById("modal-gallery"); // Changed to let
 
     // دالة لتحديث المحتوى بسلاسة
-    // في الجزء الخاص بـ updateContentWithFade، استبدل الدالة بالكود التالي:
-function updateContentWithFade(element, newHTML, callback) {
-    element.style.opacity = 0;
-    element.style.pointerEvents = 'none'; // تعطيل التفاعلات أثناء الانتقال
-    
-    setTimeout(() => {
-        element.innerHTML = newHTML;
-        element.style.opacity = '';
-        element.style.pointerEvents = ''; // إعادة تمكين التفاعلات
+    function updateContentWithFade(element, newHTML, callback) {
+        element.style.opacity = 0;
+        element.style.pointerEvents = 'none'; // تعطيل التفاعلات أثناء الانتقال
         
-        // إضافة انتقال سلس للظهور
         setTimeout(() => {
-            if (callback) callback();
-        }, 50); // تأخير بسيط لضمان تطبيق التغييرات
-    }, 300); // يتناسب مع مدة الانتقال في CSS
-}
-
-// في الجزء الخاص بـ showProjectList، تأكد من إزالة معالج الأحداث القديم قبل إضافة الجديد:
-function showProjectList(category) {
-    const data = portfolioData[category];
-    if (!data) return;
-
-    modalTitle.textContent = data.title;
-
-    let htmlContent = "";
-    if (data.items.length === 0) {
-        htmlContent = `
-            <div class="empty-category">
-                <i class="fas fa-folder-open"></i>
-                <h3>No projects yet</h3>
-            </div>
-        `;
-    } else {
-        const gridItems = data.items.map((item, index) => `
-            <div class="project-card" data-category="${category}" data-index="${index}">
-                <div class="image-container">
-                    <img src="${item.previewImage}"
-                         alt="${item.title}"
-                         class="project-image"
-                         onerror="this.src='images/placeholder.png'"
-                         loading="lazy">
-                </div>
-                <div class="project-info">
-                    <h3>${item.title}</h3>
-                    <p>${item.description.substring(0, 60)}...</p>
-                </div>
-            </div>
-        `).join("");
-        htmlContent = `<div class="modal-gallery-grid">${gridItems}</div>`;
+            element.innerHTML = newHTML;
+            element.style.opacity = '';
+            element.style.pointerEvents = ''; // إعادة تمكين التفاعلات
+            
+            // إضافة انتقال سلس للظهور
+            setTimeout(() => {
+                if (callback) callback();
+            }, 50); // تأخير بسيط لضمان تطبيق التغييرات
+        }, 300); // يتناسب مع مدة الانتقال في CSS
     }
 
-    modal.style.display = "block";
-    void modal.offsetWidth;
-    modal.classList.add("show-modal");
-    
-    // إزالة أي معالجات أحداث موجودة مسبقاً
-    const oldGallery = modalGallery.cloneNode(false);
-    modalGallery.parentNode.replaceChild(oldGallery, modalGallery);
-    modalGallery = oldGallery;
-    
-    updateContentWithFade(modalGallery, htmlContent, () => {
-        document.querySelectorAll(".project-card").forEach(card => {
-            card.addEventListener("click", (e) => {
-                const cat = e.currentTarget.dataset.category;
-                const idx = parseInt(e.currentTarget.dataset.index);
-                showProjectDetails(cat, idx);
-            });
-        });
-    });
-}
     // Portfolio data structure
     const portfolioData = {
         "social-media": {
@@ -270,35 +215,6 @@ function showProjectList(category) {
         "branding": {
             title: "Brand's Logos",
             items: [
-              /* {
-                    title: "تليفوني - متجر للهواتف والاكسسوارات",
-                    description: "تصميم هوية بصرية لمتجر هواتف واكسسوارات",
-                    tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/1000229017.jpg",
-                    images: ["images/1000229017.jpg", "images/1000229016.jpg", "images/1000229023.jpg"]
-                },
-                {
-                    title: "مؤسسة د/أبو ذر الكودة - مؤسسة تعليمية",
-                    description: "تصميم شعار لمؤسسة تعليمية",
-                    tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/1000229023.jpg",
-                    images: ["images/1000229023.jpg", "images/1000229024.jpg"]
-                },
-                {
-                    title: "Nook Nest - محل لبيع الأثاث المنزلي والمكتبي",
-                    description: "تصميم هوية بصرية لمحل أثاث منزلي ومكتبي",
-                    tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/1000229008.jpg",
-                    images: ["images/1000229008.jpg", "images/1000229009.jpg"]
-                },
-                {
-                    title: "JK Arts - شعار لمنشئ محتوى فني",
-                    description: "تصميم شعار لمنشئ محتوى فني",
-                    tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/1000229019.jpg",
-                    images: ["images/1000229019.jpg", "images/1000229020.jpg"]
-                },*/
-                
                  {
                     title: "Sedra - متجر عسل",
                     description: "تصميم شعار لمتجر يبيع عسل السدر",
@@ -373,34 +289,6 @@ function showProjectList(category) {
         "ui-ux": {
             title: "UI/UX Design",
             items: [
-             /*   {
-                    title: "Mobile App Interface",
-                    description: "Healthcare mobile application design",
-                    tools: "Figma, Adobe XD",
-                    previewImage: "images/placeholder.png",
-                    images: []
-                },
-                {
-                    title: "E-commerce Website",
-                    description: "Complete website design and user experience",
-                    tools: "Figma, Sketch",
-                    previewImage: "images/placeholder.png",
-                    images: []
-                },
-                {
-                    title: "Dashboard Design",
-                    description: "Admin dashboard for business management",
-                    tools: "Adobe XD, Figma",
-                    previewImage: "images/placeholder.png",
-                    images: []
-                },
-                {
-                    title: "Landing Page Design",
-                    description: "High-converting landing page layouts",
-                    tools: "Figma, Photoshop",
-                    previewImage: "images/placeholder.png",
-                    images: []
-                }*/
             ]
         },
         "brand-presentation": {
@@ -469,8 +357,6 @@ function showProjectList(category) {
             showProjectList(category);
         });
     });
-
-    let currentCategory = null;
 
     function showProjectList(category) {
         const data = portfolioData[category];
@@ -552,7 +438,7 @@ function showProjectList(category) {
                      alt="${project.title} - Slide ${index + 1}" 
                      class="slide-image"
                      loading="lazy"
-                     onerror="this.src='images/placeholder.png'">
+                     onerror="this.src=\'images/placeholder.png\'\">
             </div>
         `).join("");
 
@@ -729,33 +615,31 @@ function showProjectList(category) {
             }, modalTransitionDuration);
         }
     });
-    
-    // ... (your existing hamburger menu, theme toggle, etc. code remains here) ...
 
     /* ================================================== */
     /* HORIZONTAL SCROLLING CERTIFICATES (NEW CODE START) */
     /* ================================================== */
     
     // 1. Get all required elements
-    const certsTrack = document.querySelector('.certificates-track');
-    const scrollLeftBtn = document.querySelector('.scroll-left');
-    const scrollRightBtn = document.querySelector('.scroll-right');
+    const certsTrack = document.querySelector(".certificates-track");
+    const scrollLeftBtn = document.querySelector(".scroll-left");
+    const scrollRightBtn = document.querySelector(".scroll-right");
 
     // Only run if the certificates section exists
     if (certsTrack && scrollLeftBtn && scrollRightBtn) {
         
         // 2. Scroll button click handlers
-        scrollLeftBtn.addEventListener('click', () => {
+        scrollLeftBtn.addEventListener("click", () => {
             certsTrack.scrollBy({
                 left: -300, // Scrolls 300px to the left
-                behavior: 'smooth' // Smooth animation
+                behavior: "smooth" // Smooth animation
             });
         });
 
-        scrollRightBtn.addEventListener('click', () => {
+        scrollRightBtn.addEventListener("click", () => {
             certsTrack.scrollBy({
                 left: 300, // Scrolls 300px to the right
-                behavior: 'smooth'
+                behavior: "smooth"
             });
         });
 
@@ -763,42 +647,44 @@ function showProjectList(category) {
         const checkScrollButtons = () => {
             // Hide left button if at start
             scrollLeftBtn.classList.toggle(
-                'hidden', 
+                "hidden", 
                 certsTrack.scrollLeft === 0
             );
             
             // Hide right button if at end (with 10px tolerance)
             scrollRightBtn.classList.toggle(
-                'hidden',
+                "hidden",
                 certsTrack.scrollLeft + certsTrack.clientWidth >= certsTrack.scrollWidth - 10
             );
         };
 
         // 4. Initial check and scroll event listener
         checkScrollButtons(); // Run once on load
-        certsTrack.addEventListener('scroll', checkScrollButtons); // Run on scroll
+        certsTrack.addEventListener("scroll", checkScrollButtons); // Run on scroll
 
         // 5. Recheck on window resize (responsive adjustment)
-        window.addEventListener('resize', checkScrollButtons);
+        window.addEventListener("resize", checkScrollButtons);
+
+        // Handle certificate clicks to open in new tab
+        document.querySelectorAll('.certificate-item a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default modal behavior
+                window.open(link.href, '_blank'); // Open link in new tab
+            });
+        });
     }
 
-    // ... (your other existing code continues here) ...
+    // Navbar background on scroll
+    window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 100) {
+            navbar.style.background = "rgba(10, 10, 10, 0.8)";
+            navbar.style.backdropFilter = "blur(12px)";
+        } else {
+            navbar.style.background = "rgba(10, 10, 10, 0.6)";
+            navbar.style.backdropFilter = "blur(8px)";
+        }
+    });
 }); // END of DOMContentLoaded
 
-    // إضافة الوظائف التي كانت خارج DOMContentLoaded هنا
-    // Navbar background on scroll - هذا الجزء كان موجوداً بالفعل ولكن خارج الـ DOMContentLoaded الرئيسي
-    // تم نقله إلى بداية الملف (بالتحديد، سيتم استبداله بالـ window.addEventListener("scroll") الذي بالأسفل)
-});
 
-// هذا الجزء سيتم إزالته أو دمجه
-// Navbar background on scroll (هذا كان موجوداً ككتلة منفصلة)
-window.addEventListener("scroll", () => {
-    const navbar = document.querySelector(".navbar");
-    if (window.scrollY > 100) {
-        navbar.style.background = "rgba(10, 10, 10, 0.8)";
-        navbar.style.backdropFilter = "blur(12px)";
-    } else {
-        navbar.style.background = "rgba(10, 10, 10, 0.6)";
-        navbar.style.backdropFilter = "blur(8px)";
-    }
-});
