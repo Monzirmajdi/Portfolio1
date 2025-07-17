@@ -788,7 +788,7 @@ function showProjectList(category) {
     // إضافة الوظائف التي كانت خارج DOMContentLoaded هنا
     // Navbar background on scroll - هذا الجزء كان موجوداً بالفعل ولكن خارج الـ DOMContentLoaded الرئيسي
     // تم نقله إلى بداية الملف (بالتحديد، سيتم استبداله بالـ window.addEventListener("scroll") الذي بالأسفل)
-});
+
 
 // هذا الجزء سيتم إزالته أو دمجه
 // Navbar background on scroll (هذا كان موجوداً ككتلة منفصلة)
