@@ -729,7 +729,7 @@ function showProjectList(category) {
             }, modalTransitionDuration);
         }
     });
-    document.addEventListener("DOMContentLoaded", () => {
+    
     // ... (your existing hamburger menu, theme toggle, etc. code remains here) ...
 
     /* ================================================== */
