@@ -729,6 +729,61 @@ function showProjectList(category) {
             }, modalTransitionDuration);
         }
     });
+    document.addEventListener("DOMContentLoaded", () => {
+    // ... (your existing hamburger menu, theme toggle, etc. code remains here) ...
+
+    /* ================================================== */
+    /* HORIZONTAL SCROLLING CERTIFICATES (NEW CODE START) */
+    /* ================================================== */
+    
+    // 1. Get all required elements
+    const certsTrack = document.querySelector('.certificates-track');
+    const scrollLeftBtn = document.querySelector('.scroll-left');
+    const scrollRightBtn = document.querySelector('.scroll-right');
+
+    // Only run if the certificates section exists
+    if (certsTrack && scrollLeftBtn && scrollRightBtn) {
+        
+        // 2. Scroll button click handlers
+        scrollLeftBtn.addEventListener('click', () => {
+            certsTrack.scrollBy({
+                left: -300, // Scrolls 300px to the left
+                behavior: 'smooth' // Smooth animation
+            });
+        });
+
+        scrollRightBtn.addEventListener('click', () => {
+            certsTrack.scrollBy({
+                left: 300, // Scrolls 300px to the right
+                behavior: 'smooth'
+            });
+        });
+
+        // 3. Auto-hide buttons when at scroll boundaries
+        const checkScrollButtons = () => {
+            // Hide left button if at start
+            scrollLeftBtn.classList.toggle(
+                'hidden', 
+                certsTrack.scrollLeft === 0
+            );
+            
+            // Hide right button if at end (with 10px tolerance)
+            scrollRightBtn.classList.toggle(
+                'hidden',
+                certsTrack.scrollLeft + certsTrack.clientWidth >= certsTrack.scrollWidth - 10
+            );
+        };
+
+        // 4. Initial check and scroll event listener
+        checkScrollButtons(); // Run once on load
+        certsTrack.addEventListener('scroll', checkScrollButtons); // Run on scroll
+
+        // 5. Recheck on window resize (responsive adjustment)
+        window.addEventListener('resize', checkScrollButtons);
+    }
+
+    // ... (your other existing code continues here) ...
+}); // END of DOMContentLoaded
 
     // إضافة الوظائف التي كانت خارج DOMContentLoaded هنا
     // Navbar background on scroll - هذا الجزء كان موجوداً بالفعل ولكن خارج الـ DOMContentLoaded الرئيسي
