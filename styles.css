@@ -1785,3 +1785,62 @@ body.light-mode .slides-container::-webkit-scrollbar-thumb {
         transform: translateY(0);
     }
 }
+
+
+/* ===== FLOATING ELEMENTS RESPONSIVE FIX ===== */
+/* حل مشكلة العناصر الطافية في الشاشات الصغيرة */
+
+@media screen and (max-width: 768px) {
+    .hero .hero-visual {
+        height: 350px !important;
+    }
+    
+    .hero .hero-visual .floating-elements .element.element-1 {
+        width: 90px !important;
+        height: 90px !important;
+        top: 10% !important;
+        right: 15% !important;
+    }
+
+    .hero .hero-visual .floating-elements .element.element-2 {
+        width: 75px !important;
+        height: 75px !important;
+        top: 50% !important;
+        right: 35% !important;
+    }
+
+    .hero .hero-visual .floating-elements .element.element-3 {
+        width: 110px !important;
+        height: 110px !important;
+        top: 30% !important;
+        right: 5% !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero .hero-visual {
+        height: 280px !important;
+    }
+    
+    .hero .hero-visual .floating-elements .element.element-1 {
+        width: 70px !important;
+        height: 70px !important;
+        top: 10% !important;
+        right: 15% !important;
+    }
+
+    .hero .hero-visual .floating-elements .element.element-2 {
+        width: 60px !important;
+        height: 60px !important;
+        top: 50% !important;
+        right: 35% !important;
+    }
+
+    .hero .hero-visual .floating-elements .element.element-3 {
+        width: 85px !important;
+        height: 85px !important;
+        top: 30% !important;
+        right: 5% !important;
+    }
+}
+
