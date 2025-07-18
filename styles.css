@@ -1728,7 +1728,77 @@ body.light-mode .slides-container::-webkit-scrollbar-thumb {
         font-size: 1.2rem;
     }
 }
+@media (max-width: 768px) {
+    /* إعادة ضبط العناصر الطافية للشاشات الصغيرة */
+    .hero-visual {
+        height: 300px;
+        margin-top: 40px;
+        position: relative;
+        overflow: visible; /* تأكد من عدم قص العناصر */
+    }
 
+    .floating-elements {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* توزيع العناصر بشكل متوازن */
+    .element-1 {
+        width: 100px;
+        height: 100px;
+        top: 15%;
+        left: 10%;
+        right: auto;
+        animation-delay: 0s;
+    }
+
+    .element-2 {
+        width: 80px;
+        height: 80px;
+        top: 60%;
+        left: 60%;
+        right: auto;
+        animation-delay: 2s;
+    }
+
+    .element-3 {
+        width: 120px;
+        height: 120px;
+        top: 30%;
+        left: 70%;
+        right: auto;
+        animation-delay: 4s;
+    }
+}
+
+@media (max-width: 480px) {
+    /* تعديلات دقيقة للشاشات الصغيرة جدًا */
+    .hero-visual {
+        height: 250px;
+    }
+
+    .element-1 {
+        width: 80px;
+        height: 80px;
+        top: 20%;
+        left: 5%;
+    }
+
+    .element-2 {
+        width: 60px;
+        height: 60px;
+        top: 65%;
+        left: 55%;
+    }
+
+    .element-3 {
+        width: 90px;
+        height: 90px;
+        top: 35%;
+        left: 65%;
+    }
+}
 /* أنيميشن للشرائح */
 @keyframes slideInUp {
     from {
@@ -1738,32 +1808,5 @@ body.light-mode .slides-container::-webkit-scrollbar-thumb {
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-@media (max-width: 480px) {
-    /* تعديلات إضافية للشاشات الصغيرة جداً */
-    .hero-visual {
-        height: 250px;
-    }
-
-    .element-1 {
-        width: 80px;
-        height: 80px;
-        top: 20%;
-        right: 5%;
-    }
-
-    .element-2 {
-        width: 60px;
-        height: 60px;
-        top: 55%;
-        right: 25%;
-    }
-
-    .element-3 {
-        width: 90px;
-        height: 90px;
-        top: 30%;
-        right: 2%;
     }
 }
