@@ -1124,29 +1124,29 @@ body.light-mode .bar {
     }
 
     .hero-visual {
-        height: 350px;
+        height: 40vh; /* استخدام vh لارتفاع ديناميكي */
     }
 
-    /* تحسين توزيع العناصر الطافية في الشاشات الصغيرة */
+    /* الحفاظ على شكل المثلث باستخدام وحدات نسبية */
     .element-1 {
-        width: 80px;
-        height: 80px;
-        top: 15%;
-        right: 10%;
+        width: 12vw;   /* استخدام vw لحجم ديناميكي */
+        height: 12vw;
+        top: 10%;      /* نفس النسبة الأصلية */
+        right: 15%;    /* نفس النسبة الأصلية */
     }
 
     .element-2 {
-        width: 70px;
-        height: 70px;
-        top: 55%;
-        right: 65%;
+        width: 10vw;
+        height: 10vw;
+        top: 50%;      /* نفس النسبة الأصلية */
+        right: 35%;    /* نفس النسبة الأصلية */
     }
 
     .element-3 {
-        width: 100px;
-        height: 100px;
-        top: 35%;
-        right: 25%;
+        width: 14vw;
+        height: 14vw;
+        top: 30%;      /* نفس النسبة الأصلية */
+        right: 5%;     /* نفس النسبة الأصلية */
     }
 
     .hero-buttons {
@@ -1189,29 +1189,29 @@ body.light-mode .bar {
     }
 
     .hero-visual {
-        height: 280px;
+        height: 35vh; /* تقليل الارتفاع أكثر للشاشات الأصغر */
     }
 
-    /* تحسين إضافي للعناصر الطافية في الشاشات الصغيرة جداً */
+    /* الحفاظ على شكل المثلث في الشاشات الصغيرة جداً */
     .element-1 {
-        width: 60px;
-        height: 60px;
-        top: 10%;
-        right: 8%;
+        width: 15vw;   /* أحجام أكبر قليلاً للشاشات الصغيرة */
+        height: 15vw;
+        top: 10%;      /* نفس النسبة الأصلية */
+        right: 15%;    /* نفس النسبة الأصلية */
     }
 
     .element-2 {
-        width: 50px;
-        height: 50px;
-        top: 60%;
-        right: 70%;
+        width: 12vw;
+        height: 12vw;
+        top: 50%;      /* نفس النسبة الأصلية */
+        right: 35%;    /* نفس النسبة الأصلية */
     }
 
     .element-3 {
-        width: 75px;
-        height: 75px;
-        top: 35%;
-        right: 20%;
+        width: 18vw;
+        height: 18vw;
+        top: 30%;      /* نفس النسبة الأصلية */
+        right: 5%;     /* نفس النسبة الأصلية */
     }
 
     .btn {
