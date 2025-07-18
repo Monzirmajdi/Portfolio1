@@ -1186,71 +1186,9 @@ body.light-mode .bar {
         top: 10px;
         right: 15px;
     }
-    @media (max-width: 768px) {
-    /* تعديلات العناصر الطافية للشاشات الصغيرة مع الحفاظ على الشكل الأصلي */
-    .hero-visual {
-        height: 300px;
-        margin-top: 40px;
-    }
-
-    .element {
-        position: absolute;
-        animation: float 6s ease-in-out infinite;
-        object-fit: contain;
-    }
-
-    .element-1 {
-        width: 100px; /* تصغير الحجم */
-        height: 100px;
-        top: 15%; /* تعديل المواقع النسبية */
-        right: 10%;
-        animation-delay: 0s;
-    }
-
-    .element-2 {
-        width: 80px; /* تصغير الحجم */
-        height: 80px;
-        top: 50%;
-        right: 30%;
-        animation-delay: 2s;
-    }
-
-    .element-3 {
-        width: 120px; /* تصغير الحجم */
-        height: 120px;
-        top: 25%;
-        right: 5%;
-        animation-delay: 4s;
-    }
+    
 }
 
-@media (max-width: 480px) {
-    /* تعديلات إضافية للشاشات الصغيرة جداً */
-    .hero-visual {
-        height: 250px;
-    }
-
-    .element-1 {
-        width: 80px;
-        height: 80px;
-        top: 20%;
-        right: 5%;
-    }
-
-    .element-2 {
-        width: 60px;
-        height: 60px;
-        top: 55%;
-        right: 25%;
-    }
-
-    .element-3 {
-        width: 90px;
-        height: 90px;
-        top: 30%;
-        right: 2%;
-    }
-}
 }
 /* أنماط الوضع الفاتح الكاملة */
 
@@ -1800,5 +1738,32 @@ body.light-mode .slides-container::-webkit-scrollbar-thumb {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+@media (max-width: 480px) {
+    /* تعديلات إضافية للشاشات الصغيرة جداً */
+    .hero-visual {
+        height: 250px;
+    }
+
+    .element-1 {
+        width: 80px;
+        height: 80px;
+        top: 20%;
+        right: 5%;
+    }
+
+    .element-2 {
+        width: 60px;
+        height: 60px;
+        top: 55%;
+        right: 25%;
+    }
+
+    .element-3 {
+        width: 90px;
+        height: 90px;
+        top: 30%;
+        right: 2%;
     }
 }
