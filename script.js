@@ -287,12 +287,12 @@ document.addEventListener("DOMContentLoaded", () => {
             ]
         },
         "ui-ux": {
-            title: "UI/UX Design",
+            title: "UI/UX Designs",
             items: [
             ]
         },
         "brand-presentation": {
-            title: "Brand Presentation",
+            title: "Brand Presentations",
             items: [
                 {
                     title: "Unilab Medical Equipment",
