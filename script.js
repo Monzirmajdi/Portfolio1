@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     title: "Fonts",
                     description: "Some nice fonts for designs",
                     tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/Social-media/Khomra/1000004769_A22mea5b06_qG6cn5Fd2r.webp",
+                    previewImage: "images/Social-media/Fonts/Untitled191_20250614061809.jpeg",
                     images: ["images/Social-media/Fonts/Untitled191_20250614061809.jpeg", 
                              "images/Social-media/Fonts/Untitled191_20250614063039.jpeg", 
                              "images/Social-media/Fonts/Untitled191_20250615002808.jpeg", 
