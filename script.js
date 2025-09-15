@@ -188,6 +188,16 @@ document.addEventListener("DOMContentLoaded", () => {
                              "images/Social-media/Khomra/1000004767_NtGk94AQ8p.webp", 
                              "images/Social-media/Khomra/1000004768_jNCdAheZ0X.webp"]
                 },
+                                {
+                    title: "Fonts",
+                    description: "Some nice fonts for designs",
+                    tools: "Adobe Illustrator, Adobe Photoshop",
+                    previewImage: "images/Social-media/Khomra/1000004769_A22mea5b06_qG6cn5Fd2r.webp",
+                    images: ["images/Social-media/Fonts/Untitled191_20250614061809.jpeg", 
+                             "images/Social-media/Fonts/Untitled191_20250614063039.jpeg", 
+                             "images/Social-media/Fonts/Untitled191_20250615002808.jpeg", 
+                             "images/Social-media/Fonts/Untitled191_20250615081802.jpeg"]
+                },
                 {
                     title: "Social media designs",
                     description: "Mixed social media Designs for real and imaginary brands",
