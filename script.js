@@ -299,11 +299,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 } 
             ]
         },
-        "ui-ux": {
+      /*  "ui-ux": {
             title: "UI/UX Designs",
             items: [
             ]
-        },
+        },*/
         "brand-presentation": {
             title: "Brand Presentations",
             items: [
