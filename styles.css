@@ -2127,3 +2127,128 @@ body.light-mode #contact-modal .btn-primary {
     }
 }
 
+
+/* ===== LOGOFOLIO SECTION ===== */
+.logofolio-section {
+    margin-top: 60px;
+    padding: 40px 0;
+    overflow: hidden;
+}
+
+.logofolio-section h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.logofolio-scroller-wrapper {
+    position: relative;
+    overflow: hidden;
+    /* Fade out effect on edges */
+    mask: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.logofolio-scroller {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.logofolio-track {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* First row - moves right to left */
+.logofolio-track-1 {
+    animation: scrollLeft 30s linear infinite;
+}
+
+/* Second row - moves left to right */
+.logofolio-track-2 {
+    animation: scrollRight 30s linear infinite;
+}
+
+.logofolio-logo {
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border-radius: 0;
+    padding: 10px;
+    transition: transform 0.3s ease;
+    /* Black and white filter */
+    filter: grayscale(100%) brightness(1.2) contrast(1.1);
+}
+
+.logofolio-logo:hover {
+    transform: scale(1.05);
+    filter: grayscale(0%) brightness(1) contrast(1);
+}
+
+.logofolio-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Animations */
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes scrollRight {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Light mode adjustments */
+.light-mode .logofolio-section h3 {
+    color: #333333;
+}
+
+.light-mode .logofolio-logo {
+    background: transparent;
+}
+
+.light-mode .logofolio-scroller-wrapper {
+    mask: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .logofolio-logo {
+        width: 80px;
+        height: 80px;
+        padding: 8px;
+    }
+    
+    .logofolio-track {
+        gap: 20px;
+    }
+    
+    .logofolio-track-1,
+    .logofolio-track-2 {
+        animation-duration: 20s;
+    }
+}
+

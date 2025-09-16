@@ -916,3 +916,69 @@ window.updateNavLogoTitle = function() {
     }
 };
 
+
+    // ===== LOGOFOLIO FUNCTIONALITY =====
+    
+    // Logo data - you can add more logos here
+    const logoData = [
+        { name: "Apple", src: "search_images/qOErnbU3WXqU.png" },
+        { name: "Google", src: "search_images/vGnO0Ke7lLhB.jpg" },
+        { name: "Microsoft", src: "search_images/91YBeIoH00Q9.jpg" },
+        { name: "Amazon", src: "search_images/89UViZ3lkaWf.png" },
+        { name: "Meta", src: "search_images/5EgtCoLI4ajK.jpg" },
+        { name: "Tesla", src: "search_images/6C8nY9ZBxL58.jpg" },
+        { name: "Netflix", src: "search_images/CARzYpBaGcqt.png" },
+        { name: "Nike", src: "search_images/EoLfFIi5i49M.png" }
+    ];
+
+    // Initialize Logofolio
+    function initLogofolio() {
+        const track1 = document.querySelector('.logofolio-track-1');
+        const track2 = document.querySelector('.logofolio-track-2');
+
+        if (!track1 || !track2) return;
+
+        // Create logo elements for first track
+        logoData.forEach(logo => {
+            const logoElement = createLogoElement(logo);
+            track1.appendChild(logoElement);
+        });
+
+        // Create logo elements for second track (different order)
+        const shuffledLogos = [...logoData].reverse();
+        shuffledLogos.forEach(logo => {
+            const logoElement = createLogoElement(logo);
+            track2.appendChild(logoElement);
+        });
+
+        // Duplicate logos for seamless infinite scroll
+        duplicateLogos(track1);
+        duplicateLogos(track2);
+    }
+
+    // Create a single logo element
+    function createLogoElement(logo) {
+        const logoDiv = document.createElement('div');
+        logoDiv.className = 'logofolio-logo';
+        
+        const img = document.createElement('img');
+        img.src = logo.src;
+        img.alt = logo.name;
+        img.loading = 'lazy';
+        
+        logoDiv.appendChild(img);
+        return logoDiv;
+    }
+
+    // Duplicate logos for infinite scroll effect
+    function duplicateLogos(track) {
+        const logos = track.querySelectorAll('.logofolio-logo');
+        logos.forEach(logo => {
+            const clone = logo.cloneNode(true);
+            track.appendChild(clone);
+        });
+    }
+
+    // Initialize logofolio when DOM is loaded
+    initLogofolio();
+
