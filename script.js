@@ -16,39 +16,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }));
     }
 
-   // Animation for skill bars - الإصلاح
-const skillBars = document.querySelectorAll(".skill-level");
-if (skillBars.length > 0) {
-    const animateSkillBars = () => {
-        skillBars.forEach(bar => {
-            const progress = bar.querySelector(".skill-progress");
-            const level = bar.getAttribute("data-level");
-            
-            // إضافة انتقال سلس للشريط
-            progress.style.transition = "width 1.5s ease-in-out";
-            
-            // التأكد من أن العرض يبدأ من 0% ثم يتوسع
-            setTimeout(() => {
+    // Animation for skill bars
+    const skillBars = document.querySelectorAll(".skill-level");
+    if (skillBars.length > 0) {
+        const animateSkillBars = () => {
+            skillBars.forEach(bar => {
+                const progress = bar.querySelector(".skill-progress");
+                const level = bar.getAttribute("data-level");
                 progress.style.width = level;
-            }, 100);
-        });
-    };
-
-    // Trigger animation when section is in view
-    const aboutSection = document.querySelector("#about");
-    if (aboutSection) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateSkillBars();
-                    observer.unobserve(entry.target);
-                }
             });
-        }, { threshold: 0.2 });
-
-        observer.observe(aboutSection);
-    }
-}
+        };
 
         // Trigger animation when section is in view
         const aboutSection = document.querySelector("#about");
