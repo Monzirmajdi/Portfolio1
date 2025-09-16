@@ -286,6 +286,154 @@ document.addEventListener("DOMContentLoaded", () => {
                              "images/Branding/Ratina/Untitled181_20250605061101_BGUEtEPg0Y.webp", 
                              "images/Branding/Ratina/Untitled180_20250605060456_vryLtoMw0E.webp"]
                 }, 
+                [
+            {
+                title: "Rewaq - شركة عقارات",
+                description: "تصميم شعار لشركة عقارات",
+                tools: "Adobe Illustrator, Adobe Photoshop",
+                previewImage: "images/Branding/Rewaq/logo17-01-01_020751.png",
+                images: [
+                         "images/Branding/Rewaq/logo17-01-01_020751.png"
+                        ]
+            },
+            {
+                title: "22 Cafe - مقهى بمفهوم بسيط",
+                description: "تصميم شعار لمقهى بمفهوم بسيط",
+                tools: "Adobe Illustrator, Adobe Photoshop",
+                previewImage: "images/Branding/22cafe/logo17-01-02_020751.png",
+                images: [
+                         "images/Branding/22cafe/logo17-01-02_020751.png"
+                        ]
+            },
+            {  
+    title: "Circles - شركة لحلول النظافة للبيوت و المؤسسات",  
+    description: "تصميم شعار لشركة لحلول النظافة للبيوت و المؤسسات",  
+    tools: "Adobe Illustrator, Adobe Photoshop",  
+    previewImage: "images/Branding/Circles/logo04.png",  
+    images: [  
+             "images/Branding/Circles/logo04.png"  
+            ]   
+},
+
+            {  
+    title: "Glamour - متجر لبيع الازهار و النباتات",  
+    description: "تصميم شعار لمتجر لبيع الازهار و النباتات",  
+    tools: "Adobe Illustrator, Adobe Photoshop",  
+    previewImage: "images/Branding/Glamour/logo06.png",  
+    images: [  
+             "images/Branding/Glamour/logo06.png"  
+            ]   
+}, 
+
+            {  
+    title: "Fyonka - براند ملابس",  
+    description: "تصميم شعار لبراند ملابس",  
+    tools: "Adobe Illustrator, Adobe Photoshop",  
+    previewImage: "images/Branding/Fyonka/logo07.png",  
+    images: [  
+             "images/Branding/Fyonka/logo07.png"  
+            ]   
+}, 
+
+            {  
+    title: "Hoopoe - خدمات الأمن و الحماية",  
+    description: "تصميم شعار لخدمات الأمن و الحماية",  
+    tools: "Adobe Illustrator, Adobe Photoshop",  
+    previewImage: "images/Branding/Hoopoe/logo05.png",  
+    images: [  
+             "images/Branding/Hoopoe/logo05.png"  
+            ]   
+},
+            {  
+    title: "تلفوني - متجر لبيع الهواتف و اكسواراتها",  
+    description: "تصميم شعار لمتجر لبيع الهواتف و اكسواراتها",  
+    tools: "Adobe Illustrator, Adobe Photoshop",  
+    previewImage: "images/Branding/Phoney/logo16.png",  
+    images: [  
+             "images/Branding/Phoney/logo16.png"  
+            ]   
+},
+            {  
+    title: "Samico - وكالة سفر",  
+    description: "تصميم شعار لوكالة سفر",  
+    tools: "Adobe Illustrator, Adobe Photoshop",  
+    previewImage: "images/Branding/Samico/logo11.png",  
+    images: [  
+             "images/Branding/Samico/logo11.png"  
+            ]   
+},
+            {  
+    title: "Thai - شركة للسياحة و الرحلات",  
+    description: "تصميم شعار لشركة سياحة و رحلات",  
+    tools: "Adobe Illustrator, Adobe Photoshop",  
+    previewImage: "images/Branding/Thai/logo12.png",  
+    images: [  
+             "images/Branding/Thai/logo12.png"  
+            ]   
+},
+            {
+                title: "Mr.Crispo - مطعم دجاج مقلي",
+                description: "تصميم شعار لمطعم دجاج مقلي",
+                tools: "Adobe Illustrator, Adobe Photoshop",
+                previewImage: "images/Branding/mrcrispo/logo01.png",
+                images: [
+                         "images/Branding/mrcrispo/logo01.png"
+                        ]
+            },
+            {
+                title: "Kenan - متجر للعطور العربية المتخصصة",
+                description: "تصميم شعار لمتجر عطور عربية متخصصة",
+                tools: "Adobe Illustrator, Adobe Photoshop",
+                previewImage: "images/Branding/Kenan/Untitled38.jpg",
+                images: [
+                         "images/Branding/Kenan/Untitled38.jpg"
+                        ]
+            },
+            {
+                title: "BoltFix - خدمات صيانة منزلية",
+                description: "تصميم شعار لخدمات صيانة منزلية",
+                tools: "Adobe Illustrator, Adobe Photoshop",
+                previewImage: "images/Branding/Boltfix/logo03.png",
+                images: [
+                         "images/Branding/Boltfix/logo03.png"
+                        ]
+            },
+            {  
+    title: "Unilab - شركة تبيع المستلزمات و الاجهزة و محاليل الاجهزة الطبية",  
+    description: "تصميم شعار لشركة مستلزمات و أجهزة طبية",  
+    tools: "Adobe Illustrator, Adobe Photoshop",  
+    previewImage: "images/Branding/Unilab1/logo15.png",  
+    images: [  
+             "images/Branding/Unilab1/logo15.png"  
+            ]   
+},
+            {
+                title: "Visatchi - وكالة استشارات تأشيرات",
+                description: "تصميم شعار لوكالة استشارات تأشيرات",
+                tools: "Adobe Illustrator, Adobe Photoshop",
+                previewImage: "images/Branding/visatchi/logo01.png",
+                images: [
+                         "images/Branding/visatchi/logo01.png"
+                        ]
+            },
+            {
+                title: "Nomadist - معدات خارجية وإكسسوارات سفر",
+                description: "تصميم شعار لمعدات خارجية وإكسسوارات سفر",
+                tools: "Adobe Illustrator, Adobe Photoshop",
+                previewImage: "images/Branding/nomadist/logo01.png",
+                images: [
+                         "images/Branding/nomadist/logo01.png"
+                        ]
+            },
+            {  
+    title: "66 gym & spa- جيم و سبا",  
+    description: "تصميم شعار لمحل جيم و سبا",  
+    tools: "Adobe Illustrator, Adobe Photoshop",  
+    previewImage: "images/Branding/66gym/logo02.png",  
+    images: [  
+             "images/Branding/66gym/logo02.png"  
+            ]   
+}, 
                 {
                     title: "Sa Stainless Steel - براند سوداني للاكسسوارات الفضة الاستيل",
                     description: "تصميم شعار لبراند سوداني للاكسسوارات الفضة",
@@ -330,6 +478,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         "images/Branding/Unilab/unilab14.png"
                     ]
                 }, 
+                
                 {
                     title: "Sa Stainless steel and accessories",
                     description: "brand identity presentation for accessories store showcasing logo design, spacing,and brand applications",
