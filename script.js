@@ -701,3 +701,198 @@ document.addEventListener("DOMContentLoaded", () => {
 }); // END of DOMContentLoaded
 
 
+
+// ===== CONTACT MODAL FUNCTIONALITY =====
+// وظائف النافذة المنبثقة للتواصل
+
+// Get modal elements
+const contactModal = document.getElementById("contact-modal");
+const contactLink = document.querySelector('a[href="#contact"]');
+const closeContactBtn = document.querySelector(".close-contact");
+const contactForm = document.getElementById("contact-form");
+
+// Function to open contact modal
+function openContactModal() {
+    contactModal.style.display = "block";
+    setTimeout(() => {
+        contactModal.classList.add("show-modal");
+    }, 10);
+    document.body.style.overflow = "hidden"; // Prevent background scrolling
+}
+
+// Function to close contact modal
+function closeContactModal() {
+    contactModal.classList.remove("show-modal");
+    setTimeout(() => {
+        contactModal.style.display = "none";
+        document.body.style.overflow = "auto"; // Restore scrolling
+    }, 300);
+}
+
+// Event listeners for opening and closing modal
+if (contactLink) {
+    contactLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        openContactModal();
+    });
+}
+
+if (closeContactBtn) {
+    closeContactBtn.addEventListener("click", closeContactModal);
+}
+
+// Close modal when clicking outside of it
+if (contactModal) {
+    contactModal.addEventListener("click", (e) => {
+        if (e.target === contactModal) {
+            closeContactModal();
+        }
+    });
+}
+
+// Close modal with Escape key
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && contactModal.classList.contains("show-modal")) {
+        closeContactModal();
+    }
+});
+
+// ===== CONTACT FORM SUBMISSION =====
+// وظيفة إرسال نموذج التواصل
+
+if (contactForm) {
+    contactForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(contactForm);
+        const name = formData.get("name");
+        const email = formData.get("email");
+        const subject = formData.get("subject");
+        const message = formData.get("message");
+        
+        // Get submit button
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        
+        // Show loading state
+        submitBtn.textContent = "Sending...";
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = "0.7";
+        
+        try {
+            // Simulate form submission (replace with actual API call)
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            // Create mailto link as fallback
+            const mailtoLink = `mailto:monzir121953@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+            
+            // Show success message
+            showNotification("Message sent successfully! Opening email client...", "success");
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Close modal after a delay
+            setTimeout(() => {
+                closeContactModal();
+            }, 2000);
+            
+        } catch (error) {
+            console.error("Error sending message:", error);
+            showNotification("Error sending message. Please try again.", "error");
+        } finally {
+            // Restore button state
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = "1";
+        }
+    });
+}
+
+// ===== NOTIFICATION SYSTEM =====
+// نظام الإشعارات
+
+function showNotification(message, type = "info") {
+    // Create notification element
+    const notification = document.createElement("div");
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'}"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    
+    // Add notification styles
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${type === 'success' ? 'linear-gradient(45deg, #4CAF50, #45a049)' : type === 'error' ? 'linear-gradient(45deg, #f44336, #da190b)' : 'linear-gradient(45deg, #f4c430, #ffd700)'};
+        color: white;
+        padding: 15px 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        z-index: 10000;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        max-width: 350px;
+        font-weight: 500;
+    `;
+    
+    // Add to page
+    document.body.appendChild(notification);
+    
+    // Animate in
+    setTimeout(() => {
+        notification.style.transform = "translateX(0)";
+    }, 100);
+    
+    // Remove after delay
+    setTimeout(() => {
+        notification.style.transform = "translateX(100%)";
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 4000);
+}
+
+// Add notification styles to the page
+const notificationStyles = document.createElement("style");
+notificationStyles.textContent = `
+    .notification-content {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .notification-content i {
+        font-size: 1.2rem;
+    }
+    
+    .notification-content span {
+        flex: 1;
+        line-height: 1.4;
+    }
+`;
+document.head.appendChild(notificationStyles);
+
+// Update navbar title when contact modal is open
+const originalUpdateNavLogoTitle = window.updateNavLogoTitle;
+window.updateNavLogoTitle = function() {
+    if (contactModal && contactModal.classList.contains("show-modal")) {
+        const navLogoSpan = document.querySelector(".nav-logo span");
+        if (navLogoSpan) {
+            navLogoSpan.textContent = "Contact";
+        }
+    } else if (originalUpdateNavLogoTitle) {
+        originalUpdateNavLogoTitle();
+    }
+};
+
