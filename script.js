@@ -406,24 +406,6 @@ document.addEventListener("DOMContentLoaded", () => {
                              "images/Branding/Unilab1/logo15.png"  
                             ]   
                 },
-                {
-                    title: "Visatchi - وكالة استشارات تأشيرات",
-                    description: "تصميم شعار لوكالة استشارات تأشيرات",
-                    tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/Branding/visatchi/logo01.png",
-                    images: [
-                             "images/Branding/visatchi/logo01.png"
-                            ]
-                },
-                {
-                    title: "Nomadist - معدات خارجية وإكسسوارات سفر",
-                    description: "تصميم شعار لمعدات خارجية وإكسسوارات سفر",
-                    tools: "Adobe Illustrator, Adobe Photoshop",
-                    previewImage: "images/Branding/nomadist/logo01.png",
-                    images: [
-                             "images/Branding/nomadist/logo01.png"
-                            ]
-                },
                 {  
                     title: "66 gym & spa- جيم و سبا",  
                     description: "تصميم شعار لمحل جيم و سبا",  
@@ -438,11 +420,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     description: "تصميم شعار لبراند سوداني للاكسسوارات الفضة",
                     tools: "Adobe Illustrator, Adobe Photoshop",
                     previewImage: "images/Branding/Sa/Untitled28_20250624203543_YNhA6ynz1M.webp",
-                    images: ["images/Branding/Sa/1_NtqvnVum6y.webp", 
-                             "images/Branding/Sa/2_iabZA5PC8E.webp", 
-                             "images/Branding/Sa/4_GfPbVJRk7O.webp", 
-                             "images/Branding/Sa/5_xheKK6K81L.webp", 
-                             "images/Branding/Sa/6_2PZqglIW4P.webp"]
+                    images: ["images/Branding/Sa/Untitled28_20250624203543_YNhA6ynz1M.webp"
                 } 
             ]
         },
