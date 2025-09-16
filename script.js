@@ -982,3 +982,38 @@ window.updateNavLogoTitle = function() {
     // Initialize logofolio when DOM is loaded
     initLogofolio();
 
+
+
+
+// Logofolio Infinite Scroller
+const logofolioTrack1 = document.querySelector('.logofolio-track-1');
+const logofolioTrack2 = document.querySelector('.logofolio-track-2');
+
+if (logofolioTrack1 && logofolioTrack2) {
+    const logos = portfolioData.branding.items.flatMap(item => item.images.map(image => ({ src: image, alt: item.title })));
+
+    // Shuffle logos for variety
+    const shuffledLogos1 = [...logos].sort(() => Math.random() - 0.5);
+    const shuffledLogos2 = [...logos].sort(() => Math.random() - 0.5);
+
+    const populateTrack = (track, logoSet) => {
+        logoSet.forEach(logo => {
+            const img = document.createElement('img');
+            img.src = logo.src;
+            img.alt = logo.alt;
+            track.appendChild(img);
+        });
+        // Duplicate for seamless looping
+        logoSet.forEach(logo => {
+            const img = document.createElement('img');
+            img.src = logo.src;
+            img.alt = logo.alt;
+            track.appendChild(img);
+        });
+    };
+
+    populateTrack(logofolioTrack1, shuffledLogos1);
+    populateTrack(logofolioTrack2, shuffledLogos2);
+}
+
+

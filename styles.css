@@ -11,7 +11,7 @@ html {
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #0a0a0a;
+    background-color: #000000;
     color: #ffffff;
     line-height: 1.6;
     overflow-x: hidden;
@@ -29,7 +29,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(10, 10, 10, 0.6);
+    background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(8px);
     z-index: 1000;
     transition: all 0.3s ease;
@@ -106,7 +106,7 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    background: linear-gradient(135deg, #000000 0%, #111111 100%);
     overflow: hidden;
 }
 
@@ -286,7 +286,7 @@ body {
 /* About Section */
 .about {
     padding: 120px 0;
-    background: #111111;
+    background: #000000;
 }
 
 .about-content {
@@ -334,7 +334,7 @@ body {
 /* Portfolio Section */
 .portfolio {
     padding: 120px 0;
-    background: #0a0a0a;
+    background: #000000;
 }
 
 .portfolio-grid {
@@ -488,7 +488,7 @@ body {
 /* Contact Section */
 .contact {
     padding: 120px 0;
-    background: #111111;
+    background: #000000;
 }
 
 .contact-content {
@@ -563,7 +563,7 @@ body {
 
 /* Footer */
 .footer {
-    background: #0a0a0a;
+    background: #000000;
     padding: 40px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -2251,4 +2251,51 @@ body.light-mode #contact-modal .btn-primary {
         animation-duration: 20s;
     }
 }
+
+
+
+.logofolio-scroller-wrapper {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+}
+
+.logofolio-scroller {
+    display: flex;
+    width: max-content;
+    animation: scroll-left 40s linear infinite;
+}
+
+.logofolio-scroller-bottom {
+    animation-direction: reverse;
+    animation-delay: -20s; /* Start halfway through the animation */
+}
+
+.logofolio-scroller:hover {
+    animation-play-state: paused;
+}
+
+.logofolio-track {
+    display: flex;
+    gap: 40px;
+    padding: 20px 0;
+}
+
+.logofolio-track img {
+    height: 80px; /* Adjust as needed */
+    object-fit: contain;
+    filter: grayscale(100%) brightness(0.8);
+    transition: filter 0.3s ease;
+}
+
+.logofolio-track img:hover {
+    filter: grayscale(0%) brightness(1);
+}
+
+@keyframes scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
 
