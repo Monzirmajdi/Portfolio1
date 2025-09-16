@@ -757,8 +757,8 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
-// ===== CONTACT FORM SUBMISSION =====
-// وظيفة إرسال نموذج التواصل
+// ===== CONTACT FORM SUBMISSION WITH FORMSUBMIT =====
+// وظيفة إرسال نموذج التواصل باستخدام FormSubmit
 
 if (contactForm) {
     contactForm.addEventListener("submit", async (e) => {
@@ -766,10 +766,6 @@ if (contactForm) {
         
         // Get form data
         const formData = new FormData(contactForm);
-        const name = formData.get("name");
-        const email = formData.get("email");
-        const subject = formData.get("subject");
-        const message = formData.get("message");
         
         // Get submit button
         const submitBtn = contactForm.querySelector('button[type="submit"]');
@@ -781,16 +777,43 @@ if (contactForm) {
         submitBtn.style.opacity = "0.7";
         
         try {
-            // Simulate form submission (replace with actual API call)
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            // Submit form to FormSubmit
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
             
-            // Create mailto link as fallback
+            if (response.ok) {
+                // Show success message
+                showNotification("Message sent successfully! Thank you for contacting us.", "success");
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Close modal after a delay
+                setTimeout(() => {
+                    closeContactModal();
+                }, 2000);
+                
+            } else {
+                throw new Error('Form submission failed');
+            }
+            
+        } catch (error) {
+            console.error("Error sending message:", error);
+            
+            // Fallback to mailto if FormSubmit fails
+            const name = formData.get("name");
+            const email = formData.get("email");
+            const subject = formData.get("subject");
+            const message = formData.get("message");
+            
             const mailtoLink = `mailto:monzir121953@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
             
-            // Show success message
-            showNotification("Message sent successfully! Opening email client...", "success");
-            
-            // Open email client
+            showNotification("Unable to send via FormSubmit. Opening email client as fallback...", "info");
             window.location.href = mailtoLink;
             
             // Reset form
@@ -801,9 +824,6 @@ if (contactForm) {
                 closeContactModal();
             }, 2000);
             
-        } catch (error) {
-            console.error("Error sending message:", error);
-            showNotification("Error sending message. Please try again.", "error");
         } finally {
             // Restore button state
             submitBtn.textContent = originalText;
