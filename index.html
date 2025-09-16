@@ -9,15 +9,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
                 <span>Portfolio</span>
             </div>
             
+            <!-- NEW: زر تبديل الوضع الفاتح/الداكن -->
             <div class="theme-toggle">
                 <i class="fas fa-moon"></i>
             </div>
+            <!-- /NEW -->
+            
             <ul class="nav-menu">
                 <li class="nav-item">
                     <a href="#home" class="nav-link">Home</a>
@@ -29,10 +33,9 @@
                     <a href="#portfolio" class="nav-link">Portfolio</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link" id="contact-link">Contact</a>
+                    <a href="#contact" class="nav-link">Contact</a>
                 </li>
             </ul>
-
             <div class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -41,28 +44,34 @@
         </div>
     </nav>
 
-    <header id="home" class="hero">
-        <div class="container">
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Monzir Magdi</h1>
-                    <p class="role-text">Graphic Designer</p>
-                    <div class="social-icons">
-                        <a href="https://linkedin.com/in/monzirgraphix" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://www.facebook.com/share/15ss3pWBjG/?mibextid=qi2Omg" target="_blank" class="social-link"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/monzir_magdi?igsh=Z25paDEybHVzeWM=" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="mailto:monzir121953@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
-                        <a href="https://wa.me/201108635843" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                    <div class="hero-buttons">
-                        <a href="#portfolio" class="btn btn-primary">My Work</a>
-                        <a href="#" class="btn btn-secondary" id="contact-link-hero">Hire Me</a>
-                    </div>
+                <h1 class="hero-title">
+                    <span class="title-line">MONZIR</span>
+                    <span class="title-line">GRAPHIX</span>
+                </h1>
+                <p class="hero-subtitle">Graphic Designer & Visual Artist</p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary">View Portfolio</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-elements">
+                    <img src="images/Untitled24_20250624195444_BrobfRFK7c.png" alt="Floating Element 1" class="element element-1">
+                    <img src="images/Untitled24_20250624194320_Xc8ml8Vk2q.png" alt="Floating Element 2" class="element element-2">
+                    <img src="images/Untitled23_20250624194118_XFkCbgG27i.png" alt="Floating Element 3" class="element element-3">
                 </div>
             </div>
         </div>
-    </header>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
 
+    <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
             <div class="section-header">
@@ -70,91 +79,306 @@
                 <div class="section-line"></div>
             </div>
             <div class="about-content">
-                <p>Hello! I'm Monzir Magdi, a passionate and creative graphic designer with a strong foundation in visual communication and branding. With over 3 years of experience in the field, I specialize in crafting compelling visual identities that resonate with audiences and tell a unique story. I am dedicated to transforming ideas into stunning visuals that leave a lasting impression.</p>
-                <div class="skills-section">
-                    <h3>My Skills</h3>
-                    <div class="skill-item">
-                        <p class="skill-name">Branding</p>
-                        <div class="skill-level" data-level="95%">
-                            <div class="skill-progress"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <p class="skill-name">UI/UX Design</p>
-                        <div class="skill-level" data-level="85%">
-                            <div class="skill-progress"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <p class="skill-name">Print Design</p>
-                        <div class="skill-level" data-level="90%">
-                            <div class="skill-progress"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <p class="skill-name">Motion Graphics</p>
-                        <div class="skill-level" data-level="75%">
-                            <div class="skill-progress"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <div class="about-text">
+                    <p>I'm Monzir, a graphic designer with 1+ year of experience in branding, logo design, and visual identity, and over 5 years of experience in the broader visual arts, including both digital and traditional illustration.</p>
+                    <p>I’m a final-year Aeronautical Engineering student at Sudan University of Science and Technology, based in Sudan and currently residing in Egypt.</p>
+                </p>
+                    <p>Certified in Graphic Design and Adobe tools.</p>
+                    <p>Currently working remotely as a graphic designer with Baseline Medical.</p>
+                    <p>Let’s bring your vision to life.</p>
+                    </p>
+                            <!-- داخل قسم about-text بعد العنصر <ul> وقبل <div class="skills-grid"> -->
+<div class="skills-section">
+    <h3>Skill levels</h3>
+    <div class="skill-bar">
+        <div class="skill-name">AI Tools</div>
+        <div class="skill-level" data-level="95%">
+            <div class="skill-progress" style="width: 0%"></div>
         </div>
-    </section>
+    </div>
+    <div class="skill-bar">
+        <div class="skill-name">Adobe illustrator </div>
+        <div class="skill-level" data-level="90%">
+            <div class="skill-progress" style="width: 0%"></div>
+        </div>
+    </div>
+    <div class="skill-bar">
+        <div class="skill-name">Adobe Photoshop</div>
+        <div class="skill-level" data-level="85%">
+            <div class="skill-progress" style="width: 0%"></div>
+        </div>
+    </div>
+    <div class="skill-bar">
+        <div class="skill-name">Brand Identity</div>
+        <div class="skill-level" data-level="80%">
+            <div class="skill-progress" style="width: 0%"></div>
+        </div>
+    </div>
+    <div class="skill-bar">
+        <div class="skill-name">UI/UX Design</div>
+        <div class="skill-level" data-level="75%">
+            <div class="skill-progress" style="width: 0%"></div>
+        </div>
+    </div>
+</div>
+                    <div class="skills-grid">
+    <!-- Adobe Illustrator -->
+    <div class="skill-item">
+        <img src="images/icons/illustrator.svg" alt="Illustrator" class="software-icon" loading="lazy">
+        <span>Illustrator</span>
+    </div>
+    
+    <!-- Adobe Photoshop -->
+    <div class="skill-item">
+        <img src="images/icons/photoshop.svg" alt="Photoshop" class="software-icon" loading="lazy">
+        <span>Photoshop</span>
+    </div>
+    
+    <!-- Adobe InDesign -->
+    <div class="skill-item">
+        <img src="images/icons/indesign.svg" alt="InDesign" class="software-icon" loading="lazy">
+        <span>InDesign</span>
+    </div>
+                            <!-- creativecloud -->
+    <div class="skill-item">
+        <img src="images/icons/creativecloud.svg" alt="creative cloud" class="software-icon" loading="lazy">
+        <span>creative cloud</span>
+    </div>
+    
+    <!-- Figma -->
+    <div class="skill-item">
+        <img src="images/icons/figma.svg" alt="Figma" class="software-icon" loading="lazy">
+        <span>Figma</span>
+    </div>
+</div>
+                    <!-- ===== CERTIFICATES ===== -->
+<!-- Inside your About section -->
+<div class="certifications">
+    <h3>Certifications</h3>
+    
+    <div class="certificates-scroller">
+        <!-- Left Scroll Button -->
+        <button class="scroll-btn scroll-left" aria-label="Scroll left">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <!-- Certificates Container -->
+        <div class="certificates-track">
+            <!-- Certificate 1 -->
+            <a href="https://coursera.org/share/fde0e0e69c6d09f8b99e19e9dce389a5" class="certificate-item" target="_blank">
+                <img src="images/certificates/cert1.png" alt="Graphic Design Certificate">
+                <span>Graphic Design</span>
+            </a>
+             <!-- Certificate 2 -->
+            <a href="https://coursera.org/share/a85ddfc42d7b52b7d4d5a2b7a5200697" class="certificate-item" target="_blank">
+                <img src="images/certificates/cert2.png" alt="Graphic Design Certificate">
+                <span>Create Victor Artworks</span>
+                   <span>with illustrator</span>
+            </a>
+             <!-- Certificate 3 -->
+            <a href="Lhttps://coursera.org/share/163b669c5e1e669eaac177997fac51bb" class="certificate-item" target="_blank">
+                <img src="images/certificates/cert3.png" alt="Graphic Design Certificate">
+                <span>Photoshop Generative Ai</span>
+                        <span>images</span>
+            </a>
+             <!-- Certificate 4 -->
+            <a href="https://coursera.org/share/100a93d640f90c4233e32282f7a8ddcc" class="certificate-item" target="_blank">
+                <img src="images/certificates/cert4.png" alt="Graphic Design Certificate">
+                <span>Formatting and Designing</span>
+                     <span>Presentations</span>
+            </a>
+            <!-- Certificate 5 -->
+            <a href="https://coursera.org/share/101fc6afb31d8cd7529f4db13e7373b0" class="certificate-item" target="_blank">
+                <img src="images/certificates/cert5.png" alt="Graphic Design Certificate">
+                <span>Google Prompting Essentials</span>
+            </a>
+            
+            <!-- Add more certificates as needed -->
+            <!-- Certificate 6 -->
+            <a href="https://coursera.org/share/0dc18c0434adec1b747c7b26925be0e2" class="certificate-item" target="_blank">
+                <img src="images/certificates/cert6.png" alt="Illustrator Certificate">
+                <span>Adobe Illustrator Create</span>
+                     <span>color Gradients</span>
+            </a>
+            <!-- Certificate 7 -->
+            <a href="https://coursera.org/share/56ce72dcc24b2e91a7592c3044cb0cfb" class="certificate-item" target="_blank">
+                <img src="images/certificates/cert7.png" alt="flyer design">
+                <span>Adobe inDesign</span>
+                 <span>flyer design</span>
+            </a>
+            
+            <!-- Continue adding certificates... -->
+        </div>
+        
+        <!-- Right Scroll Button -->
+        <button class="scroll-btn scroll-right" aria-label="Scroll right">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+</div>
+                </div>
+            </div> 
+        </div> 
+    </section>  
 
+    <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">My Portfolio</h2>
+                <h2 class="section-title">Portfolio</h2>
                 <div class="section-line"></div>
             </div>
             <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="https://i.ibb.co/6P06FjS/d77293a9-3d02-4d23-960f-1a9805562095.jpg" alt="Portfolio Item 1">
-                    <div class="item-overlay">
-                        <h4>Brand Identity</h4>
-                        <a href="https://i.ibb.co/6P06FjS/d77293a9-3d02-4d23-960f-1a9805562095.jpg" target="_blank" class="view-btn">View</a>
+                <div class="portfolio-category" data-category="social-media">
+                    <div class="category-card">
+                        <div class="card-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <h3 class="card-title">Social Media Design</h3>
+                        <p class="card-description">Creative social media campaigns and visual content for various platforms</p>
+                        <div class="card-preview">
+                            <div class="preview-item"></div>
+                            <div class="preview-item"></div>
+                            <div class="preview-item"></div>
+                        </div>
+                        <button class="card-btn">View Projects</button>
                     </div>
                 </div>
-                <div class="portfolio-item">
-                    <img src="https://i.ibb.co/221J45B/246405788-2947814838792042-3011403207038446261-n.jpg" alt="Portfolio Item 2">
-                    <div class="item-overlay">
-                        <h4>Poster Design</h4>
-                        <a href="https://i.ibb.co/221J45B/246405788-2947814838792042-3011403207038446261-n.jpg" target="_blank" class="view-btn">View</a>
+                
+                <div class="portfolio-category" data-category="branding">
+                    <div class="category-card">
+                        <div class="card-icon">
+                            <i class="fas fa-trademark"></i>
+                        </div>
+                        <h3 class="card-title">Brand's Logos</h3>
+                        <p class="card-description">Brand's memorable logo designs</p>
+                        <div class="card-preview">
+                            <div class="preview-item"></div>
+                            <div class="preview-item"></div>
+                            <div class="preview-item"></div>
+                        </div>
+                        <button class="card-btn">View Projects</button>
                     </div>
                 </div>
-                <div class="portfolio-item">
-                    <img src="https://i.ibb.co/2g03f6f/288302061-3096057053967828-4422209772594691459-n.jpg" alt="Portfolio Item 3">
-                    <div class="item-overlay">
-                        <h4>Social Media Design</h4>
-                        <a href="https://i.ibb.co/2g03f6f/288302061-3096057053967828-4422209772594691459-n.jpg" target="_blank" class="view-btn">View</a>
+                
+                <div class="portfolio-category" data-category="ui-ux">
+                    <div class="category-card">
+                        <div class="card-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="card-title">UI/UX Design</h3>
+                        <p class="card-description">User interface and experience design for web and mobile applications</p>
+                        <div class="card-preview">
+                            <div class="preview-item"></div>
+                            <div class="preview-item"></div>
+                            <div class="preview-item"></div>
+                        </div>
+                        <button class="card-btn">View Projects</button>
                     </div>
                 </div>
-                <div class="portfolio-item">
-                    <img src="https://i.ibb.co/8b72s2V/118815187-2683076931932501-8178667623916298642-n.jpg" alt="Portfolio Item 4">
-                    <div class="item-overlay">
-                        <h4>Packaging Design</h4>
-                        <a href="https://i.ibb.co/8b72s2V/118815187-2683076931932501-8178667623916298642-n.jpg" target="_blank" class="view-btn">View</a>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://i.ibb.co/6122dws/307455855-3221975764709289-4971844964177579123-n.jpg" alt="Portfolio Item 5">
-                    <div class="item-overlay">
-                        <h4>Logo Design</h4>
-                        <a href="https://i.ibb.co/6122dws/307455855-3221975764709289-4971844964177579123-n.jpg" target="_blank" class="view-btn">View</a>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://i.ibb.co/L5T199N/256860000-2993165207590338-7828989502127395066-n.jpg" alt="Portfolio Item 6">
-                    <div class="item-overlay">
-                        <h4>Branding</h4>
-                        <a href="https://i.ibb.co/L5T199N/256860000-2993165207590338-7828989502127395066-n.jpg" target="_blank" class="view-btn">View</a>
+                
+                <div class="portfolio-category" data-category="brand-presentation">
+                    <div class="category-card">
+                        <div class="card-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h3 class="card-title">Brand Presentations</h3>
+                        <p class="card-description">Professional brand presentations and visual storytelling for businesses</p>
+                        <div class="card-preview">
+                            <div class="preview-item"></div>
+                            <div class="preview-item"></div>
+                            <div class="preview-item"></div>
+                        </div>
+                        <button class="card-btn">View Projects</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Portfolio Modal -->
+    <div id="portfolio-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 id="modal-title">Portfolio Category</h2>
+            </div>
+            <div class="modal-body">
+                <div id="modal-gallery" class="gallery-grid">
+                    <!-- سيتم تحميل عناصر البورتفوليو هنا ديناميكيًا -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>monzir121953@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p>+249906332116 / +201108635843</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>LinkedIn</h4>
+                            <p>linkedin.com/in/monzirgraphix</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>Egypt / Sudan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -182,60 +406,6 @@
         </div>
     </footer>
 
-    <div id="contact-modal" class="modal">
-        <div class="modal-content contact-modal-content">
-            <span class="close-button">&times;</span>
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Get In Touch</h2>
-                    <div class="section-line"></div>
-                </div>
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Location</h4>
-                                <p>Egypt</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Email</h4>
-                                <p>monzir121953@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fab fa-whatsapp"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Whatsapp</h4>
-                                <p>+201108635843</p>
-                            </div>
-                        </div>
-                    </div>
-                    <form class="contact-form">
-                        <div class="form-group">
-                            <input type="text" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
     <script src="script.js"></script>
 </body>
-</html>
+                    </html>
