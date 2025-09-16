@@ -914,3 +914,5 @@ window.updateNavLogoTitle = function() {
     } else if (originalUpdateNavLogoTitle) {
         originalUpdateNavLogoTitle();
     }
+};
+
